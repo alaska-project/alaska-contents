@@ -41,15 +41,17 @@ export class ContentFieldComponent {
         switch (this.field.type) {
             case 'string':
                 return this.renderTextField();
-
+            case 'html':
+                return this.renderHtmlField();
         }
     }
 
     private renderEditingField(): HTMLFieldElement {
         switch (this.field.type) {
             case 'string':
-                return this.renderEditorTextField();
-
+                return this.renderTextFieldEditor();
+            case 'html':
+                return this.renderHtmlFieldEditor();
         }
     }
 
@@ -57,8 +59,16 @@ export class ContentFieldComponent {
         return <aly-text-field ref={(el) => this.setInnerField(el)}></aly-text-field>;
     }
 
-    private renderEditorTextField(): HTMLFieldElement {
+    private renderTextFieldEditor(): HTMLFieldElement {
         return <aly-text-field-editor ref={(el) => this.setInnerField(el)}></aly-text-field-editor>;
+    }
+
+    private renderHtmlField(): HTMLFieldElement {
+        return <aly-html-field ref={(el) => this.setInnerField(el)}></aly-html-field>;
+    }
+
+    private renderHtmlFieldEditor(): HTMLFieldElement {
+        return <aly-html-field-editor ref={(el) => this.setInnerField(el)}></aly-html-field-editor>;
     }
 
     private setInnerField(element: HTMLFieldElement) {

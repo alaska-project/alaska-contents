@@ -13,12 +13,21 @@
 
 <body>
 
+  <h4>Text Field</h4>
   <aly-content-field id="field1"></aly-content-field>
+
+  <h4>Html Field</h4>
+  <aly-content-field id="field2"></aly-content-field>
+
   <script>
     window.addEventListener("load", function (event) {
       document.getElementById('field1').setField({
         type: 'string',
-        value: 'Hello'
+        value: 'Holaaa <b>!</b>'
+      });
+      document.getElementById('field2').setField({
+        type: 'html',
+        value: 'Holaaa <b>!</b>'
       });
     });
   </script>

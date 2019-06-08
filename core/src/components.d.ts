@@ -19,6 +19,12 @@ export namespace Components {
     'setField': (field: ContentField<any>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
+  interface AlyHtmlField {
+    'setField': (field: ContentField<string>) => Promise<void>;
+  }
+  interface AlyHtmlFieldEditor {
+    'setField': (field: ContentField<string>) => Promise<void>;
+  }
   interface AlyTextField {
     'setField': (field: ContentField<string>) => Promise<void>;
   }
@@ -36,6 +42,18 @@ declare global {
     new (): HTMLAlyContentFieldElement;
   };
 
+  interface HTMLAlyHtmlFieldElement extends Components.AlyHtmlField, HTMLStencilElement {}
+  var HTMLAlyHtmlFieldElement: {
+    prototype: HTMLAlyHtmlFieldElement;
+    new (): HTMLAlyHtmlFieldElement;
+  };
+
+  interface HTMLAlyHtmlFieldEditorElement extends Components.AlyHtmlFieldEditor, HTMLStencilElement {}
+  var HTMLAlyHtmlFieldEditorElement: {
+    prototype: HTMLAlyHtmlFieldEditorElement;
+    new (): HTMLAlyHtmlFieldEditorElement;
+  };
+
   interface HTMLAlyTextFieldElement extends Components.AlyTextField, HTMLStencilElement {}
   var HTMLAlyTextFieldElement: {
     prototype: HTMLAlyTextFieldElement;
@@ -49,6 +67,8 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'aly-content-field': HTMLAlyContentFieldElement;
+    'aly-html-field': HTMLAlyHtmlFieldElement;
+    'aly-html-field-editor': HTMLAlyHtmlFieldEditorElement;
     'aly-text-field': HTMLAlyTextFieldElement;
     'aly-text-field-editor': HTMLAlyTextFieldEditorElement;
   }
@@ -56,11 +76,15 @@ declare global {
 
 declare namespace LocalJSX {
   interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
+  interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {}
+  interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {}
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {}
   interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {}
 
   interface IntrinsicElements {
     'aly-content-field': AlyContentField;
+    'aly-html-field': AlyHtmlField;
+    'aly-html-field-editor': AlyHtmlFieldEditor;
     'aly-text-field': AlyTextField;
     'aly-text-field-editor': AlyTextFieldEditor;
   }
