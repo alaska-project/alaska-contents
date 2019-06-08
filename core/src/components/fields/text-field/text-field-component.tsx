@@ -1,4 +1,4 @@
-import { Component, Method, State, } from '@stencil/core';
+import { Component, Method, State } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({
@@ -17,6 +17,6 @@ export class TextFieldComponent {
     }
 
     render() {
-        return this.field.value;
+        return this.field  ? this.field.value : undefined;
     }
 }

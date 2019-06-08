@@ -22,6 +22,9 @@ export namespace Components {
   interface AlyTextField {
     'setField': (field: ContentField<string>) => Promise<void>;
   }
+  interface AlyTextFieldEditor {
+    'setField': (field: ContentField<string>) => Promise<void>;
+  }
 }
 
 declare global {
@@ -38,19 +41,28 @@ declare global {
     prototype: HTMLAlyTextFieldElement;
     new (): HTMLAlyTextFieldElement;
   };
+
+  interface HTMLAlyTextFieldEditorElement extends Components.AlyTextFieldEditor, HTMLStencilElement {}
+  var HTMLAlyTextFieldEditorElement: {
+    prototype: HTMLAlyTextFieldEditorElement;
+    new (): HTMLAlyTextFieldEditorElement;
+  };
   interface HTMLElementTagNameMap {
     'aly-content-field': HTMLAlyContentFieldElement;
     'aly-text-field': HTMLAlyTextFieldElement;
+    'aly-text-field-editor': HTMLAlyTextFieldEditorElement;
   }
 }
 
 declare namespace LocalJSX {
   interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {}
+  interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {}
 
   interface IntrinsicElements {
     'aly-content-field': AlyContentField;
     'aly-text-field': AlyTextField;
+    'aly-text-field-editor': AlyTextFieldEditor;
   }
 }
 

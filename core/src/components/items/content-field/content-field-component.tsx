@@ -28,16 +28,28 @@ export class ContentFieldComponent {
     }
 
     render() {
-        return this.field ?
-            this.renderField() :
-            undefined;
+        if (!this.field) {
+            return;
+        }
+
+        return this.mode === 'Default' ?
+            this.renderDefaultField() :
+            this.renderEditingField();
     }
 
-    private renderField(): HTMLFieldElement {
+    private renderDefaultField(): HTMLFieldElement {
         switch (this.field.type) {
             case 'string':
                 return this.renderTextField();
-            
+
+        }
+    }
+
+    private renderEditingField(): HTMLFieldElement {
+        switch (this.field.type) {
+            case 'string':
+                return this.renderEditorTextField();
+
         }
     }
 
@@ -45,8 +57,14 @@ export class ContentFieldComponent {
         return <aly-text-field ref={(el) => this.setInnerField(el)}></aly-text-field>;
     }
 
+    private renderEditorTextField(): HTMLFieldElement {
+        return <aly-text-field-editor ref={(el) => this.setInnerField(el)}></aly-text-field-editor>;
+    }
+
     private setInnerField(element: HTMLFieldElement) {
         this.innerField = element;
-        this.innerField.setField(this.field);
+        if (element) {
+            this.innerField.setField(this.field);
+        }
     }
 }
