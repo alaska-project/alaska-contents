@@ -6,56 +6,51 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import {
+  ContentField,
+} from './models/content-models';
+import {
+  ContentMode,
+} from './models/component-models';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+  interface AlyContentField {
+    'setField': (field: ContentField<any>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+  }
+  interface AlyTextField {
+    'setField': (field: ContentField<string>) => Promise<void>;
   }
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLAlyContentFieldElement extends Components.AlyContentField, HTMLStencilElement {}
+  var HTMLAlyContentFieldElement: {
+    prototype: HTMLAlyContentFieldElement;
+    new (): HTMLAlyContentFieldElement;
+  };
+
+  interface HTMLAlyTextFieldElement extends Components.AlyTextField, HTMLStencilElement {}
+  var HTMLAlyTextFieldElement: {
+    prototype: HTMLAlyTextFieldElement;
+    new (): HTMLAlyTextFieldElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'aly-content-field': HTMLAlyContentFieldElement;
+    'aly-text-field': HTMLAlyTextFieldElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
+  interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'aly-content-field': AlyContentField;
+    'aly-text-field': AlyTextField;
   }
 }
 

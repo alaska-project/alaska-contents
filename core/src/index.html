@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
@@ -9,9 +10,19 @@
   <script nomodule src="/build/alaska-contents.js"></script>
 
 </head>
+
 <body>
 
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <aly-content-field id="field1"></aly-content-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('field1').setField({
+        type: 'string',
+        value: 'Hello'
+      });
+    });
+  </script>
 
 </body>
+
 </html>
