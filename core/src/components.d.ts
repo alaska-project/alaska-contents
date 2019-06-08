@@ -8,6 +8,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ContentField,
+  ImageFieldData,
 } from './models/content-models';
 import {
   ContentMode,
@@ -24,6 +25,9 @@ export namespace Components {
   }
   interface AlyHtmlFieldEditor {
     'setField': (field: ContentField<string>) => Promise<void>;
+  }
+  interface AlyImageField {
+    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
   }
   interface AlyTextField {
     'setField': (field: ContentField<string>) => Promise<void>;
@@ -54,6 +58,12 @@ declare global {
     new (): HTMLAlyHtmlFieldEditorElement;
   };
 
+  interface HTMLAlyImageFieldElement extends Components.AlyImageField, HTMLStencilElement {}
+  var HTMLAlyImageFieldElement: {
+    prototype: HTMLAlyImageFieldElement;
+    new (): HTMLAlyImageFieldElement;
+  };
+
   interface HTMLAlyTextFieldElement extends Components.AlyTextField, HTMLStencilElement {}
   var HTMLAlyTextFieldElement: {
     prototype: HTMLAlyTextFieldElement;
@@ -69,6 +79,7 @@ declare global {
     'aly-content-field': HTMLAlyContentFieldElement;
     'aly-html-field': HTMLAlyHtmlFieldElement;
     'aly-html-field-editor': HTMLAlyHtmlFieldEditorElement;
+    'aly-image-field': HTMLAlyImageFieldElement;
     'aly-text-field': HTMLAlyTextFieldElement;
     'aly-text-field-editor': HTMLAlyTextFieldEditorElement;
   }
@@ -78,6 +89,7 @@ declare namespace LocalJSX {
   interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
   interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {}
   interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {}
+  interface AlyImageField extends JSXBase.HTMLAttributes<HTMLAlyImageFieldElement> {}
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {}
   interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {}
 
@@ -85,6 +97,7 @@ declare namespace LocalJSX {
     'aly-content-field': AlyContentField;
     'aly-html-field': AlyHtmlField;
     'aly-html-field-editor': AlyHtmlFieldEditor;
+    'aly-image-field': AlyImageField;
     'aly-text-field': AlyTextField;
     'aly-text-field-editor': AlyTextFieldEditor;
   }

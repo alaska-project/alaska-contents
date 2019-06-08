@@ -43,6 +43,8 @@ export class ContentFieldComponent {
                 return this.renderTextField();
             case 'html':
                 return this.renderHtmlField();
+            case 'image':
+                return this.renderImageField();
         }
     }
 
@@ -52,6 +54,8 @@ export class ContentFieldComponent {
                 return this.renderTextFieldEditor();
             case 'html':
                 return this.renderHtmlFieldEditor();
+            case 'image':
+                return this.renderImageFieldEditor();
         }
     }
 
@@ -69,6 +73,14 @@ export class ContentFieldComponent {
 
     private renderHtmlFieldEditor(): HTMLFieldElement {
         return <aly-html-field-editor ref={(el) => this.setInnerField(el)}></aly-html-field-editor>;
+    }
+
+    private renderImageField(): HTMLFieldElement {
+        return <aly-image-field ref={(el) => this.setInnerField(el)}></aly-image-field>;
+    }
+
+    private renderImageFieldEditor(): HTMLFieldElement {
+        return <aly-image-field-editor ref={(el) => this.setInnerField(el)}></aly-image-field-editor>;
     }
 
     private setInnerField(element: HTMLFieldElement) {
