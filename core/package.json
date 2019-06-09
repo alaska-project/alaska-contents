@@ -26,5 +26,8 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "tinymce": "^5.0.7"
+  }
 }
