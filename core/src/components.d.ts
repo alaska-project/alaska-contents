@@ -9,6 +9,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ContentField,
   ImageFieldData,
+  LinkFieldData,
 } from './models/content-models';
 import {
   ContentMode,
@@ -28,6 +29,12 @@ export namespace Components {
   }
   interface AlyImageField {
     'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+  }
+  interface AlyLinkField {
+    'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
+  }
+  interface AlyLinkFieldEditor {
+    'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
   }
   interface AlyTextField {
     'setField': (field: ContentField<string>) => Promise<void>;
@@ -64,6 +71,18 @@ declare global {
     new (): HTMLAlyImageFieldElement;
   };
 
+  interface HTMLAlyLinkFieldElement extends Components.AlyLinkField, HTMLStencilElement {}
+  var HTMLAlyLinkFieldElement: {
+    prototype: HTMLAlyLinkFieldElement;
+    new (): HTMLAlyLinkFieldElement;
+  };
+
+  interface HTMLAlyLinkFieldEditorElement extends Components.AlyLinkFieldEditor, HTMLStencilElement {}
+  var HTMLAlyLinkFieldEditorElement: {
+    prototype: HTMLAlyLinkFieldEditorElement;
+    new (): HTMLAlyLinkFieldEditorElement;
+  };
+
   interface HTMLAlyTextFieldElement extends Components.AlyTextField, HTMLStencilElement {}
   var HTMLAlyTextFieldElement: {
     prototype: HTMLAlyTextFieldElement;
@@ -80,6 +99,8 @@ declare global {
     'aly-html-field': HTMLAlyHtmlFieldElement;
     'aly-html-field-editor': HTMLAlyHtmlFieldEditorElement;
     'aly-image-field': HTMLAlyImageFieldElement;
+    'aly-link-field': HTMLAlyLinkFieldElement;
+    'aly-link-field-editor': HTMLAlyLinkFieldEditorElement;
     'aly-text-field': HTMLAlyTextFieldElement;
     'aly-text-field-editor': HTMLAlyTextFieldEditorElement;
   }
@@ -90,6 +111,8 @@ declare namespace LocalJSX {
   interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {}
   interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {}
   interface AlyImageField extends JSXBase.HTMLAttributes<HTMLAlyImageFieldElement> {}
+  interface AlyLinkField extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldElement> {}
+  interface AlyLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldEditorElement> {}
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {}
   interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {}
 
@@ -98,6 +121,8 @@ declare namespace LocalJSX {
     'aly-html-field': AlyHtmlField;
     'aly-html-field-editor': AlyHtmlFieldEditor;
     'aly-image-field': AlyImageField;
+    'aly-link-field': AlyLinkField;
+    'aly-link-field-editor': AlyLinkFieldEditor;
     'aly-text-field': AlyTextField;
     'aly-text-field-editor': AlyTextFieldEditor;
   }
