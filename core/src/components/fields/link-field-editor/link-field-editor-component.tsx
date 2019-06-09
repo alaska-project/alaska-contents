@@ -3,13 +3,10 @@ import { ContentField, LinkFieldData } from '../../../models/content-models';
 
 @Component({
     tag: 'aly-link-field-editor',
-    styleUrl: 'link-field-component-editor.scss',
+    styleUrl: 'link-field-editor-component.scss',
     shadow: true
 })
 export class LinkFieldEditorComponent {
-
-    // @Element() 
-    // el: HTMLElement;
 
     @State()
     field: ContentField<LinkFieldData>;

@@ -1,6 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 import { HTMLFieldElement, ContentMode } from '../../../models/component-models';
+import { AlaskaFields } from '../../../services/field-settings';
 
 @Component({
     tag: 'aly-content-field',
@@ -37,15 +38,20 @@ export class ContentFieldComponent {
             this.renderEditingField();
     }
 
-    private renderDefaultField(): HTMLFieldElement {
-        switch (this.field.type) {
-            case 'string':
-                return this.renderTextField();
-            case 'html':
-                return this.renderHtmlField();
-            case 'image':
-                return this.renderImageField();
+    private renderDefaultField() {
+        if (!this.field) {
+            return;
         }
+
+        return AlaskaFields.getFactory().createFieldRenderer(this.field);
+        // switch (this.field.type) {
+        //     case 'string':
+        //         return this.renderTextField();
+        //     case 'html':
+        //         return this.renderHtmlField();
+        //     case 'image':
+        //         return this.renderImageField();
+        // }
     }
 
     private renderEditingField(): HTMLFieldElement {
@@ -59,25 +65,25 @@ export class ContentFieldComponent {
         }
     }
 
-    private renderTextField(): HTMLFieldElement {
-        return <aly-text-field ref={(el) => this.setInnerField(el)}></aly-text-field>;
-    }
+    // private renderTextField(): HTMLFieldElement {
+    //     return <aly-text-field ref={(el) => this.setInnerField(el)}></aly-text-field>;
+    // }
 
     private renderTextFieldEditor(): HTMLFieldElement {
         return <aly-text-field-editor ref={(el) => this.setInnerField(el)}></aly-text-field-editor>;
     }
 
-    private renderHtmlField(): HTMLFieldElement {
-        return <aly-html-field ref={(el) => this.setInnerField(el)}></aly-html-field>;
-    }
+    // private renderHtmlField(): HTMLFieldElement {
+    //     return <aly-html-field ref={(el) => this.setInnerField(el)}></aly-html-field>;
+    // }
 
     private renderHtmlFieldEditor(): HTMLFieldElement {
         return <aly-html-field-editor ref={(el) => this.setInnerField(el)}></aly-html-field-editor>;
     }
 
-    private renderImageField(): HTMLFieldElement {
-        return <aly-image-field ref={(el) => this.setInnerField(el)}></aly-image-field>;
-    }
+    // private renderImageField(): HTMLFieldElement {
+    //     return <aly-image-field ref={(el) => this.setInnerField(el)}></aly-image-field>;
+    // }
 
     private renderImageFieldEditor(): HTMLFieldElement {
         return <aly-image-field-editor ref={(el) => this.setInnerField(el)}></aly-image-field-editor>;

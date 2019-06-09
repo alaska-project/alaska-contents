@@ -17,6 +17,6 @@ export class HtmlFieldComponent {
     }
 
     render() {
-        return this.field  ? <div innerHTML={this.field.value}></div> : undefined;
+        return this.field ? <div innerHTML={this.field.value}></div> : undefined;
     }
 }
