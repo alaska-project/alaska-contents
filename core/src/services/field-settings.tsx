@@ -23,6 +23,9 @@ export class AlaskaFields {
         factory.registerFieldRenderer('image', (field) => <aly-image-field ref={(el) => el.setField(field)}></aly-image-field>);
         factory.registerFieldEditor('image', (field) => <aly-image-field-editor ref={(el) => el.setField(field)}></aly-image-field-editor>);
 
+        factory.registerFieldRenderer('link', (field) => <aly-link-field ref={(el) => el.setField(field)}></aly-link-field>);
+        factory.registerFieldEditor('link', (field) => <aly-link-field-editor ref={(el) => el.setField(field)}></aly-link-field-editor>);
+
         return factory;
     }
 }
