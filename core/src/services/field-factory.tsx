@@ -13,6 +13,7 @@ export class FieldFactory {
     }
 
     createFieldRenderer(field: ContentField<any>): JSX.Element {
+        console.log(field);
         if (!this.fieldRendererMap.has(field.type)) {
             throw new Error(`Cannot resolve field renderer ${field.type}`);
         }

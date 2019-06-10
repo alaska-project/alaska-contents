@@ -30,9 +30,14 @@ export class ContentFieldComponent {
             return undefined;
         }
 
+
         return (<div>
-            <aly-content-field-default hidden={this.mode !== 'Default'} ref={(el) => el.setField(this.field)}></aly-content-field-default>
-            <aly-content-field-editor hidden={this.mode !== 'Editing'} ref={(el) => el.setField(this.field)}></aly-content-field-editor>
+            {this.mode === 'Default' 
+                ? <aly-content-field-default propfield={this.field}></aly-content-field-default>
+                : <aly-content-field-editor propfield={this.field} ></aly-content-field-editor>
+            }
+
+
         </div>
         );
     }

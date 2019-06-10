@@ -22,9 +22,11 @@ export namespace Components {
     'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlyContentFieldDefault {
+    'propfield': any;
     'setField': (field: ContentField<any>) => Promise<void>;
   }
   interface AlyContentFieldEditor {
+    'propfield': any;
     'setField': (field: ContentField<any>) => Promise<void>;
   }
   interface AlyHtmlField {
@@ -138,8 +140,12 @@ declare global {
 
 declare namespace LocalJSX {
   interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
-  interface AlyContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlyContentFieldDefaultElement> {}
-  interface AlyContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyContentFieldEditorElement> {}
+  interface AlyContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlyContentFieldDefaultElement> {
+    'propfield'?: any;
+  }
+  interface AlyContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyContentFieldEditorElement> {
+    'propfield'?: any;
+  }
   interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {}
   interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {}
   interface AlyImageField extends JSXBase.HTMLAttributes<HTMLAlyImageFieldElement> {}
