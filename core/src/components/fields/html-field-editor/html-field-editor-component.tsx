@@ -1,5 +1,5 @@
 import { Component, Method, State } from '@stencil/core';
-import { ContentField } from '../../../models/content-models';
+import { FieldData } from '../../../models/content-models';
 
 @Component({
     tag: 'aly-html-field-editor',
@@ -9,14 +9,14 @@ import { ContentField } from '../../../models/content-models';
 export class HtmlFieldEditorComponent {
 
     @State()
-    field: ContentField<string>;
+    field: FieldData<any>;
 
     @Method()
-    async setField(field: ContentField<string>) {
+    async setField(field: FieldData<any>) {
         this.field = field;
     }
 
     render() {
-        return this.field  ? this.field.value : undefined;
+        return this.field  ? this.field.data.value : undefined;
     }
 }

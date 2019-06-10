@@ -13,7 +13,7 @@ export class ContentFieldEditorComponent {
 
     render() {
         return this.field ?
-            AlaskaFields.getFactory().createFieldEditor(this.field.data) : 
+            AlaskaFields.getFactory().createFieldEditor(this.field) : 
             undefined;
     }
 }

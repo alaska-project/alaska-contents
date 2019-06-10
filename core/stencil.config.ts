@@ -5,7 +5,6 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'alaska-contents',
-  globalScript: './src/settings.initializer.ts',
   plugins: [
     builtins(),
     globals(),

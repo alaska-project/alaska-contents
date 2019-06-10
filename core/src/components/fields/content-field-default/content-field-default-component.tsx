@@ -13,7 +13,7 @@ export class ContentFieldDefaultComponent {
 
     render() {
         return this.field ?
-            AlaskaFields.getFactory().createFieldRenderer(this.field.data) : 
+            AlaskaFields.getFactory().createFieldRenderer(this.field) : 
             undefined;
     }
 }

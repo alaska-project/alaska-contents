@@ -1,5 +1,5 @@
 import { Component, Method, State, h } from '@stencil/core';
-import { ContentField, LinkFieldData } from '../../../models/content-models';
+import { LinkFieldData, FieldData } from '../../../models/content-models';
 
 @Component({
     tag: 'aly-link-field-editor',
@@ -9,20 +9,20 @@ import { ContentField, LinkFieldData } from '../../../models/content-models';
 export class LinkFieldEditorComponent {
 
     @State()
-    field: ContentField<LinkFieldData>;
+    field: FieldData<LinkFieldData>;
 
     @Method()
-    async setField(field: ContentField<LinkFieldData>) {
+    async setField(field: FieldData<LinkFieldData>) {
         this.field = field;
     }
 
     render() {
-        if (!this.field || !this.field.value.url) {
+        if (!this.field || !this.field.data.value.url) {
             return;
         }
-        return <a href={this.field.value.url} target={this.field.value.target}>
-            {this.field.value.text ?
-                this.field.value.text :
+        return <a href={this.field.data.value.url} target={this.field.data.value.target}>
+            {this.field.data.value.text ?
+                this.field.data.value.text :
                 undefined}
         </a>;
     }

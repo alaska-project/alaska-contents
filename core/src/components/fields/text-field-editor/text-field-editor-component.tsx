@@ -1,5 +1,5 @@
 import { Component, Method, State, h, } from '@stencil/core';
-import { ContentField } from '../../../models/content-models';
+import { FieldData } from '../../../models/content-models';
 
 @Component({
     tag: 'aly-text-field-editor',
@@ -9,10 +9,10 @@ import { ContentField } from '../../../models/content-models';
 export class TextFieldEditorComponent {
 
     @State()
-    field: ContentField<string>;
+    field: FieldData<string>;
 
     @Method()
-    async setField(field: ContentField<string>) {
+    async setField(field: FieldData<string>) {
         this.field = field;
     }
 
@@ -20,6 +20,6 @@ export class TextFieldEditorComponent {
         if (!this.field) {
             return;
         }
-        return <input value={this.field.value}></input>;
+        return <input value={this.field.data.value}></input>;
     }
 }

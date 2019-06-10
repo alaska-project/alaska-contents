@@ -29,28 +29,28 @@ export namespace Components {
     'field': FieldData<any>;
   }
   interface AlyHtmlField {
-    'setField': (field: ContentField<string>) => Promise<void>;
+    'setField': (field: FieldData<string>) => Promise<void>;
   }
   interface AlyHtmlFieldEditor {
-    'setField': (field: ContentField<string>) => Promise<void>;
+    'setField': (field: FieldData<any>) => Promise<void>;
   }
   interface AlyImageField {
-    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+    'setField': (field: FieldData<ImageFieldData>) => Promise<void>;
   }
   interface AlyImageFieldEditor {
-    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+    'setField': (field: FieldData<ImageFieldData>) => Promise<void>;
   }
   interface AlyLinkField {
-    'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
+    'setField': (field: FieldData<LinkFieldData>) => Promise<void>;
   }
   interface AlyLinkFieldEditor {
-    'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
+    'setField': (field: FieldData<LinkFieldData>) => Promise<void>;
   }
   interface AlyTextField {
-    'setField': (field: ContentField<string>) => Promise<void>;
+    'setField': (field: FieldData<string>) => Promise<void>;
   }
   interface AlyTextFieldEditor {
-    'setField': (field: ContentField<string>) => Promise<void>;
+    'setField': (field: FieldData<string>) => Promise<void>;
   }
 }
 

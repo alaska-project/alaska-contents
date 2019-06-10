@@ -1,5 +1,5 @@
 import { Component, Method, State } from '@stencil/core';
-import { ContentField } from '../../../models/content-models';
+import { FieldData } from '../../../models/content-models';
 
 @Component({
     tag: 'aly-text-field',
@@ -9,14 +9,14 @@ import { ContentField } from '../../../models/content-models';
 export class TextFieldComponent {
 
     @State()
-    field: ContentField<string>;
+    field: FieldData<string>;
 
     @Method()
-    async setField(field: ContentField<string>) {
+    async setField(field: FieldData<string>) {
         this.field = field;
     }
 
     render() {
-        return this.field  ? this.field.value : undefined;
+        return this.field  ? this.field.data.value : undefined;
     }
 }
