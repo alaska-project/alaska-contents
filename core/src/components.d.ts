@@ -15,6 +15,9 @@ import {
 import {
   ContentMode,
 } from './models/component-models';
+import {
+  TinyMceSettings,
+} from './models/tinymce-models';
 
 
 export namespace Components {
@@ -46,7 +49,9 @@ export namespace Components {
   interface AlyLinkFieldEditor {
     'field': FieldData<LinkFieldData>;
   }
-  interface AlyRichTextEditor {}
+  interface AlyRichTextEditor {
+    'initialize': (settings: TinyMceSettings) => Promise<void>;
+  }
   interface AlyTextField {
     'field': FieldData<string>;
   }

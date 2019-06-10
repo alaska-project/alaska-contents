@@ -1,5 +1,6 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Method } from '@stencil/core';
 import { randomId } from '../../../utils/utils';
+import { TinyMceSettings } from '../../../models/tinymce-models';
 
 @Component({
     tag: 'aly-rich-text-editor',
@@ -10,17 +11,23 @@ export class RichTextEditorComponent {
 
     private editorId = randomId();
 
+    @Method()
+    async initialize(settings: TinyMceSettings) {
+        const tiny = this.getTinymce();
+        if (settings.baseURL) {
+            tiny.baseURL = settings.baseURL;
+        }
+        tiny.init({
+            selector: `#${this.editorId}`,
+
+        });
+    }
+
     render() {
         return (
             <div class="tinymce-editor-container">
                 <textarea id={this.editorId}></textarea>
             </div>);
-    }
-
-    componentDidRender() {
-        this.getTinymce().init({
-            selector: `#${this.editorId}`
-        });
     }
 
     private getTinymce() {

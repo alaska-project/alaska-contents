@@ -77,7 +77,14 @@
   </script>
 
   <h4>Rich Text Editor</h4>
-  <aly-rich-text-editor></aly-rich-text-editor>
+  <aly-rich-text-editor id="editor1"></aly-rich-text-editor>
+  <script>
+    window.addEventListener("load", function (event) { 
+      document.getElementById('editor1').initialize({
+        
+      });
+    });
+  </script>
 
 </body>
 
