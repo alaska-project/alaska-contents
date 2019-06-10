@@ -1,4 +1,4 @@
-import { Component, Method, State, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { LinkFieldData, FieldData } from '../../../models/content-models';
 
 @Component({
@@ -8,13 +8,8 @@ import { LinkFieldData, FieldData } from '../../../models/content-models';
 })
 export class LinkFieldComponent {
 
-    @State()
+    @Prop()
     field: FieldData<LinkFieldData>;
-
-    @Method()
-    async setField(field: FieldData<LinkFieldData>) {
-        this.field = field;
-    }
 
     render() {
         if (!this.field || !this.field.data.value.url) {

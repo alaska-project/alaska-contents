@@ -1,4 +1,4 @@
-import { Component, Method, State, h, } from '@stencil/core';
+import { Component, h, Prop, } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
@@ -8,13 +8,8 @@ import { FieldData } from '../../../models/content-models';
 })
 export class TextFieldEditorComponent {
 
-    @State()
+    @Prop()
     field: FieldData<string>;
-
-    @Method()
-    async setField(field: FieldData<string>) {
-        this.field = field;
-    }
 
     render() {
         if (!this.field) {

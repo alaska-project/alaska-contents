@@ -1,4 +1,4 @@
-import { Component, Method, State } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
@@ -8,15 +8,12 @@ import { FieldData } from '../../../models/content-models';
 })
 export class HtmlFieldEditorComponent {
 
-    @State()
+    @Prop()
     field: FieldData<any>;
 
-    @Method()
-    async setField(field: FieldData<any>) {
-        this.field = field;
-    }
-
     render() {
-        return this.field  ? this.field.data.value : undefined;
+        return (this.field  ? 
+            <div class="field">this.field.data.value</div> : 
+            undefined);
     }
 }

@@ -29,28 +29,28 @@ export namespace Components {
     'field': FieldData<any>;
   }
   interface AlyHtmlField {
-    'setField': (field: FieldData<string>) => Promise<void>;
+    'field': FieldData<any>;
   }
   interface AlyHtmlFieldEditor {
-    'setField': (field: FieldData<any>) => Promise<void>;
+    'field': FieldData<any>;
   }
   interface AlyImageField {
-    'setField': (field: FieldData<ImageFieldData>) => Promise<void>;
+    'field': FieldData<ImageFieldData>;
   }
   interface AlyImageFieldEditor {
-    'setField': (field: FieldData<ImageFieldData>) => Promise<void>;
+    'field': FieldData<ImageFieldData>;
   }
   interface AlyLinkField {
-    'setField': (field: FieldData<LinkFieldData>) => Promise<void>;
+    'field': FieldData<LinkFieldData>;
   }
   interface AlyLinkFieldEditor {
-    'setField': (field: FieldData<LinkFieldData>) => Promise<void>;
+    'field': FieldData<LinkFieldData>;
   }
   interface AlyTextField {
-    'setField': (field: FieldData<string>) => Promise<void>;
+    'field': FieldData<string>;
   }
   interface AlyTextFieldEditor {
-    'setField': (field: FieldData<string>) => Promise<void>;
+    'field': FieldData<string>;
   }
 }
 
@@ -145,14 +145,30 @@ declare namespace LocalJSX {
   interface AlyContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyContentFieldEditorElement> {
     'field'?: FieldData<any>;
   }
-  interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {}
-  interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {}
-  interface AlyImageField extends JSXBase.HTMLAttributes<HTMLAlyImageFieldElement> {}
-  interface AlyImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyImageFieldEditorElement> {}
-  interface AlyLinkField extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldElement> {}
-  interface AlyLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldEditorElement> {}
-  interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {}
-  interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {}
+  interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {
+    'field'?: FieldData<any>;
+  }
+  interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {
+    'field'?: FieldData<any>;
+  }
+  interface AlyImageField extends JSXBase.HTMLAttributes<HTMLAlyImageFieldElement> {
+    'field'?: FieldData<ImageFieldData>;
+  }
+  interface AlyImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyImageFieldEditorElement> {
+    'field'?: FieldData<ImageFieldData>;
+  }
+  interface AlyLinkField extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldElement> {
+    'field'?: FieldData<LinkFieldData>;
+  }
+  interface AlyLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldEditorElement> {
+    'field'?: FieldData<LinkFieldData>;
+  }
+  interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {
+    'field'?: FieldData<string>;
+  }
+  interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {
+    'field'?: FieldData<string>;
+  }
 
   interface IntrinsicElements {
     'aly-content-field': AlyContentField;

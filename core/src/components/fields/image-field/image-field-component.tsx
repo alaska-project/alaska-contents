@@ -1,4 +1,4 @@
-import { Component, Method, State, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { ImageFieldData, FieldData } from '../../../models/content-models';
 
 @Component({
@@ -8,13 +8,8 @@ import { ImageFieldData, FieldData } from '../../../models/content-models';
 })
 export class ImageFieldComponent {
 
-    @State()
+    @Prop()
     field: FieldData<ImageFieldData>;
-
-    @Method()
-    async setField(field: FieldData<ImageFieldData>) {
-        this.field = field;
-    }
 
     render() {
         if (!this.field || !this.field.data.value.url) {
