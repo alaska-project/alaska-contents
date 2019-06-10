@@ -11,9 +11,13 @@ export class HtmlFieldEditorComponent {
     @Prop()
     field: FieldData<any>;
 
+    async openRichTextEditor() {
+
+    }
+
     render() {
         return (this.field  ? 
-            <span class="field">{this.field.data.value}</span> : 
+            <span class="field" onClick={() => this.openRichTextEditor()}>{this.field.data.value}</span> : 
             undefined);
     }
 }
