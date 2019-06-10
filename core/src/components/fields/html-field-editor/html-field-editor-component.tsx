@@ -15,8 +15,8 @@ export class HtmlFieldEditorComponent {
     edit: EventEmitter;
 
     render() {
-        return (this.field  ? 
-            <span class="field" onClick={() => this.edit.emit()}>{this.field.data.value}</span> : 
+        return (this.field ?
+            <span class="field" onClick={() => this.edit.emit()}>{this.field.data.value}</span> :
             undefined);
     }
 }

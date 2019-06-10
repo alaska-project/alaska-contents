@@ -23,6 +23,7 @@
   "devDependencies": {
     "@stencil/core": "^1.0.0",
     "@stencil/sass": "^0.2.3",
+    "@types/tinymce": "^4.5.22",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0"
   },

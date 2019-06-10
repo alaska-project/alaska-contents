@@ -8,7 +8,7 @@
 
   <script type="module" src="/build/alaska-contents.esm.js"></script>
   <script nomodule src="/build/alaska-contents.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.6/tinymce.min.js"></script>
 </head>
 
 <body>
@@ -75,6 +75,10 @@
       document.querySelectorAll('aly-content-field').forEach(x => x.setMode(mode));
     }
   </script>
+
+  <h4>Rich Text Editor</h4>
+  <aly-rich-text-editor></aly-rich-text-editor>
+
 </body>
 
 </html>

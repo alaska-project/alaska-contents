@@ -46,6 +46,7 @@ export namespace Components {
   interface AlyLinkFieldEditor {
     'field': FieldData<LinkFieldData>;
   }
+  interface AlyRichTextEditor {}
   interface AlyTextField {
     'field': FieldData<string>;
   }
@@ -111,6 +112,12 @@ declare global {
     new (): HTMLAlyLinkFieldEditorElement;
   };
 
+  interface HTMLAlyRichTextEditorElement extends Components.AlyRichTextEditor, HTMLStencilElement {}
+  var HTMLAlyRichTextEditorElement: {
+    prototype: HTMLAlyRichTextEditorElement;
+    new (): HTMLAlyRichTextEditorElement;
+  };
+
   interface HTMLAlyTextFieldElement extends Components.AlyTextField, HTMLStencilElement {}
   var HTMLAlyTextFieldElement: {
     prototype: HTMLAlyTextFieldElement;
@@ -132,6 +139,7 @@ declare global {
     'aly-image-field-editor': HTMLAlyImageFieldEditorElement;
     'aly-link-field': HTMLAlyLinkFieldElement;
     'aly-link-field-editor': HTMLAlyLinkFieldEditorElement;
+    'aly-rich-text-editor': HTMLAlyRichTextEditorElement;
     'aly-text-field': HTMLAlyTextFieldElement;
     'aly-text-field-editor': HTMLAlyTextFieldEditorElement;
   }
@@ -164,6 +172,7 @@ declare namespace LocalJSX {
   interface AlyLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldEditorElement> {
     'field'?: FieldData<LinkFieldData>;
   }
+  interface AlyRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlyRichTextEditorElement> {}
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {
     'field'?: FieldData<string>;
   }
@@ -181,6 +190,7 @@ declare namespace LocalJSX {
     'aly-image-field-editor': AlyImageFieldEditor;
     'aly-link-field': AlyLinkField;
     'aly-link-field-editor': AlyLinkFieldEditor;
+    'aly-rich-text-editor': AlyRichTextEditor;
     'aly-text-field': AlyTextField;
     'aly-text-field-editor': AlyTextFieldEditor;
   }
