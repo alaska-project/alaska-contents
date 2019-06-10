@@ -1,4 +1,4 @@
-import { Component, Method, State, h } from '@stencil/core';
+import { Component, Method, State, Element, h } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 
@@ -8,6 +8,9 @@ import { ContentMode } from '../../../models/component-models';
     shadow: true
 })
 export class ContentFieldComponent {
+
+    @Element()
+    element: HTMLElement;
 
     @State()
     field: ContentField<any>;
@@ -30,15 +33,19 @@ export class ContentFieldComponent {
             return undefined;
         }
 
-
         return (<div>
             {this.mode === 'Default' 
-                ? <aly-content-field-default propfield={this.field}></aly-content-field-default>
-                : <aly-content-field-editor propfield={this.field} ></aly-content-field-editor>
+                ? <aly-content-field-default field={this.createFieldData()}></aly-content-field-default>
+                : <aly-content-field-editor field={this.createFieldData()}></aly-content-field-editor>
             }
-
-
         </div>
         );
+    }
+
+    private createFieldData() {
+        return {
+            data: this.field,
+            hostElement: this.element
+        };
     }
 }

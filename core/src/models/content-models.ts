@@ -1,7 +1,10 @@
 
-export interface ContentItem {
-
+export interface FieldData<T> {
+    data: ContentField<T>;
+    hostElement: HTMLElement;
 }
+
+export interface ContentItem {}
 
 export interface ContentField<T> {
     type: string;

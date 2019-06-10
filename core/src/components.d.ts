@@ -8,6 +8,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ContentField,
+  FieldData,
   ImageFieldData,
   LinkFieldData,
 } from './models/content-models';
@@ -22,12 +23,10 @@ export namespace Components {
     'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlyContentFieldDefault {
-    'propfield': any;
-    'setField': (field: ContentField<any>) => Promise<void>;
+    'field': FieldData<any>;
   }
   interface AlyContentFieldEditor {
-    'propfield': any;
-    'setField': (field: ContentField<any>) => Promise<void>;
+    'field': FieldData<any>;
   }
   interface AlyHtmlField {
     'setField': (field: ContentField<string>) => Promise<void>;
@@ -141,10 +140,10 @@ declare global {
 declare namespace LocalJSX {
   interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
   interface AlyContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlyContentFieldDefaultElement> {
-    'propfield'?: any;
+    'field'?: FieldData<any>;
   }
   interface AlyContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyContentFieldEditorElement> {
-    'propfield'?: any;
+    'field'?: FieldData<any>;
   }
   interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {}
   interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {}

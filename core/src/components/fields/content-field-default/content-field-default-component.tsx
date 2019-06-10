@@ -1,5 +1,5 @@
-import { Component, Method, State, Prop } from '@stencil/core';
-import { ContentField } from '../../../models/content-models';
+import { Component, Prop } from '@stencil/core';
+import { FieldData } from '../../../models/content-models';
 import { AlaskaFields } from '../../../services/field-settings';
 
 @Component({
@@ -9,19 +9,11 @@ import { AlaskaFields } from '../../../services/field-settings';
 })
 export class ContentFieldDefaultComponent {
 
-    @State()
-    field: ContentField<any>;
-
-    @Method()
-    async setField(field: ContentField<any>) {
-        this.field = field;
-    }
-    @Prop() propfield: any;
+    @Prop() field: FieldData<any>;
 
     render() {
-        console.log(this.propfield)
-        return this.propfield ?
-            AlaskaFields.getFactory().createFieldRenderer(this.propfield) : 
+        return this.field ?
+            AlaskaFields.getFactory().createFieldRenderer(this.field.data) : 
             undefined;
     }
 }
