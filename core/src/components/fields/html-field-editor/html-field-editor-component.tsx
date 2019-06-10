@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
@@ -11,13 +11,12 @@ export class HtmlFieldEditorComponent {
     @Prop()
     field: FieldData<any>;
 
-    async openRichTextEditor() {
-
-    }
+    @Event()
+    edit: EventEmitter;
 
     render() {
         return (this.field  ? 
-            <span class="field" onClick={() => this.openRichTextEditor()}>{this.field.data.value}</span> : 
+            <span class="field" onClick={() => this.edit.emit()}>{this.field.data.value}</span> : 
             undefined);
     }
 }
