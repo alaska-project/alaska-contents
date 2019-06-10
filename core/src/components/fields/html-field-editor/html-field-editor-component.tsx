@@ -13,7 +13,7 @@ export class HtmlFieldEditorComponent {
 
     render() {
         return (this.field  ? 
-            <div class="field">this.field.data.value</div> : 
+            <span class="field">{this.field.data.value}</span> : 
             undefined);
     }
 }

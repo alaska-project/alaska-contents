@@ -1,4 +1,4 @@
-import { Component, h, Prop, } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
