@@ -22,5 +22,13 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null // disable service workers
     }
+    // {
+    //   type: 'angular',
+    //   componentCorePackage: '@ionic/core',
+    //   directivesProxyFile: '../angular/projects/alaska-contents/src/lib/directives/proxies.ts',
+    //   directivesUtilsFile: '../angular/projects/alaska-contents/src/lib/directives/proxies-utils.ts',
+    //   directivesArrayFile: '../angular/projects/alaska-contents/src/lib/directives/proxies-list.txt',
+    //   excludeComponents: [],
+    // }
   ]
 };
