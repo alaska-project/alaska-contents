@@ -170,12 +170,14 @@ declare namespace LocalJSX {
   }
   interface AlyImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyImageFieldEditorElement> {
     'field'?: FieldData<ImageFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlyLinkField extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldElement> {
     'field'?: FieldData<LinkFieldData>;
   }
   interface AlyLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldEditorElement> {
     'field'?: FieldData<LinkFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlyRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlyRichTextEditorElement> {}
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {
