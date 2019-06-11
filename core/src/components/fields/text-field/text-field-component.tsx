@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
@@ -12,6 +12,6 @@ export class TextFieldComponent {
     field: FieldData<string>;
 
     render() {
-        return this.field  ? this.field.data.value : undefined;
+        return this.field ? <div innerHTML={this.field.data.value}></div> : undefined;
     }
 }
