@@ -1,8 +1,17 @@
 {
-  "name": "alaska-contents",
+  "name": "alaska-contents-angular",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0"
+    "@angular/core": "^8.0.0",
+    "@angular/animations": "^8.0.0",
+    "@angular/cdk": "^8.0.1",
+    "@angular/forms": "^8.0.0",
+    "@angular/http": "^7.2.15",
+    "@angular/material": "^8.0.1",
+    "rxjs": "^6.5.2"
+  },
+  "dependencies": {
+    "tinymce": "^5.0.7"
   }
 }
