@@ -52,7 +52,16 @@ export namespace Components {
     'field': FieldData<LinkFieldData>;
   }
   interface AlyRichTextEditor {
+    'contentCss': string;
+    'fontFormats': string;
+    'height': string;
     'initialize': (settings: TinyMceSettings, value: string) => Promise<void>;
+    'inline': boolean;
+    'mobileTheme': string;
+    'plugins': string;
+    'resize': boolean;
+    'skin': string;
+    'toolbar': string;
   }
   interface AlyTextField {
     'field': FieldData<string>;
@@ -182,6 +191,11 @@ declare namespace LocalJSX {
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlyRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlyRichTextEditorElement> {
+    'contentCss'?: string;
+    'fontFormats'?: string;
+    'height'?: string;
+    'inline'?: boolean;
+    'mobileTheme'?: string;
     'onOnActivate'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnAddUndo'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnBeforeAddUndo'?: (event: CustomEvent<EventObj<any>>) => void;
@@ -245,6 +259,10 @@ declare namespace LocalJSX {
     'onOnUndo'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnVisualAid'?: (event: CustomEvent<EventObj<any>>) => void;
     'onValueChanged'?: (event: CustomEvent<string>) => void;
+    'plugins'?: string;
+    'resize'?: boolean;
+    'skin'?: string;
+    'toolbar'?: string;
   }
   interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {
     'field'?: FieldData<string>;

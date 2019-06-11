@@ -1,4 +1,4 @@
-import { Component, Method, Event, EventEmitter, h } from '@stencil/core';
+import { Component, Method, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { randomId } from '../../../utils/utils';
 import { TinyMceSettings } from '../../../models/tinymce-models';
 
@@ -76,8 +76,17 @@ export class RichTextEditorComponent {
     @Event() onUndo: EventEmitter<EventObj<any>>;
     @Event() onVisualAid: EventEmitter<EventObj<any>>;
 
-    @Event()
-    valueChanged: EventEmitter<string>;
+    @Event() valueChanged: EventEmitter<string>;
+
+    @Prop() plugins = 'code preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help';
+    @Prop() toolbar = 'undo redo | formatselect | fontsizeselect | fontselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment | code';
+    @Prop() inline = false;
+    @Prop() resize = false;
+    @Prop() skin = 'oxide';
+    @Prop() mobileTheme = 'silver';
+    @Prop() height = '100%';
+    @Prop() contentCss = '';
+    @Prop() fontFormats = '';
 
     @Method()
     async initialize(settings: TinyMceSettings, value: string) {
@@ -92,9 +101,18 @@ export class RichTextEditorComponent {
 
     private createInitOptions(settings: TinyMceSettings, setup?: (editor: any) => void) {
         return Object.assign({},
-            settings,
             { selector: `#${this.editorId}` },
-            { setup: setup }
+            { plugins: this.plugins },
+            { toolbar: this.toolbar },
+            { inline: this.inline },
+            { resize: this.resize },
+            { skin: this.skin },
+            { mobile: { theme: this.mobileTheme } },
+            { height: this.height },
+            { content_css: this.contentCss },
+            { font_formats: this.fontFormats },
+            settings,
+            { setup: setup },
         );
     }
 
