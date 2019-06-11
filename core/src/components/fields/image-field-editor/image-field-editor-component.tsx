@@ -15,6 +15,6 @@ export class ImageFieldEditorComponent {
         if (!this.field || !this.field.data.value.url) {
             return;
         }
-        return <img class={this.field.data.value.class} src={this.field.data.value.url} alt={this.field.data.value.alt}></img>;
+        return <img class={'image-editor ' + this.field.data.value.class} src={this.field.data.value.url} alt={this.field.data.value.alt}></img>;
     }
 }

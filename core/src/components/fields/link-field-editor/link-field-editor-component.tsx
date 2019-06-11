@@ -15,7 +15,7 @@ export class LinkFieldEditorComponent {
         if (!this.field || !this.field.data.value.url) {
             return;
         }
-        return <a href={this.field.data.value.url} target={this.field.data.value.target}>
+        return <a class="link-editor" href={this.field.data.value.url} target={this.field.data.value.target}>
             {this.field.data.value.text ?
                 this.field.data.value.text :
                 undefined}
