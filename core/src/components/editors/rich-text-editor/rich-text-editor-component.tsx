@@ -1,4 +1,4 @@
-import { Component, h, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, Method, Event, EventEmitter, h } from '@stencil/core';
 import { randomId } from '../../../utils/utils';
 import { TinyMceSettings } from '../../../models/tinymce-models';
 
@@ -40,7 +40,6 @@ export class RichTextEditorComponent {
     @Event() onMouseOver: EventEmitter<EventObj<MouseEvent>>;
     @Event() onMouseUp: EventEmitter<EventObj<MouseEvent>>;
     @Event() onPaste: EventEmitter<EventObj<ClipboardEvent>>;
-    @Event() onSelectionChange: EventEmitter<EventObj<Event>>;
     @Event() onActivate: EventEmitter<EventObj<any>>;
     @Event() onAddUndo: EventEmitter<EventObj<any>>;
     @Event() onBeforeAddUndo: EventEmitter<EventObj<any>>;
@@ -202,7 +201,6 @@ export const validEvents: (keyof RichTextEditorComponent)[] = [
     'onRemove',
     'onReset',
     'onSaveContent',
-    'onSelectionChange',
     'onSetAttrib',
     'onSetContent',
     'onShow',

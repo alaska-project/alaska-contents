@@ -19,12 +19,8 @@ import {
   EventObj,
 } from './components/editors/rich-text-editor/rich-text-editor-component';
 import {
-  Event,
-} from '@stencil/core';
-import {
   TinyMceSettings,
 } from './models/tinymce-models';
-
 
 export namespace Components {
   interface AlyContentField {
@@ -242,7 +238,6 @@ declare namespace LocalJSX {
     'onOnRemove'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnReset'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnSaveContent'?: (event: CustomEvent<EventObj<any>>) => void;
-    'onOnSelectionChange'?: (event: CustomEvent<EventObj<Event>>) => void;
     'onOnSetAttrib'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnSetContent'?: (event: CustomEvent<EventObj<any>>) => void;
     'onOnShow'?: (event: CustomEvent<EventObj<any>>) => void;
