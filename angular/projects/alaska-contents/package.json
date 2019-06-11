@@ -10,8 +10,5 @@
     "@angular/http": "^7.2.15",
     "@angular/material": "^8.0.1",
     "rxjs": "^6.5.2"
-  },
-  "dependencies": {
-    "tinymce": "^5.0.7"
   }
 }
