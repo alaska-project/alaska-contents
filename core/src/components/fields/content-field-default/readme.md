@@ -16,13 +16,13 @@
 
 ### Used by
 
- - [aly-content-field](..\content-field)
+ - [alaska-content-field](..\content-field)
 
 ### Graph
 ```mermaid
 graph TD;
-  aly-content-field --> aly-content-field-default
-  style aly-content-field-default fill:#f9f,stroke:#333,stroke-width:4px
+  alaska-content-field --> alaska-content-field-default
+  style alaska-content-field-default fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

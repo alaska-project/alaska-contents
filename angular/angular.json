@@ -122,6 +122,11 @@
     },
     "alaska-contents": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/alaska-contents",
       "sourceRoot": "projects/alaska-contents/src",
       "prefix": "aly",
@@ -154,6 +159,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "alaska"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "alaska-contents-core",
+  "name": "@alaska-project/contents-core",
   "version": "0.0.1",
   "description": "Alaska Contents Core",
   "main": "dist/index.js",

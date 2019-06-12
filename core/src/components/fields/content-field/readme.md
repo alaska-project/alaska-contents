@@ -32,15 +32,15 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [aly-content-field-default](..\content-field-default)
-- [aly-content-field-editor](..\content-field-editor)
+- [alaska-content-field-default](..\content-field-default)
+- [alaska-content-field-editor](..\content-field-editor)
 
 ### Graph
 ```mermaid
 graph TD;
-  aly-content-field --> aly-content-field-default
-  aly-content-field --> aly-content-field-editor
-  style aly-content-field fill:#f9f,stroke:#333,stroke-width:4px
+  alaska-content-field --> alaska-content-field-default
+  alaska-content-field --> alaska-content-field-editor
+  style alaska-content-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
