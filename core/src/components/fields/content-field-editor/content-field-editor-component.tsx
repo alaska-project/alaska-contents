@@ -1,4 +1,4 @@
-import { Component, Prop  } from '@stencil/core';
+import { Component, Prop, Element } from '@stencil/core';
 import { AlaskaFields } from '../../../services/field-settings';
 import { ContentField } from '../../../models/content-models';
 
@@ -9,11 +9,14 @@ import { ContentField } from '../../../models/content-models';
 })
 export class ContentFieldEditorComponent {
 
+    @Element()
+    element: HTMLElement;
+
     @Prop() field: ContentField<any>;
 
     render() {
         return this.field ?
-            AlaskaFields.getFactory().createFieldEditor(this.field) : 
+            AlaskaFields.getFactory().createFieldEditor(this.field, this.element) : 
             undefined;
     }
 }

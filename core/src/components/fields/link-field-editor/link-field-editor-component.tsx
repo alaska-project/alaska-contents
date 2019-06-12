@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, Element, EventEmitter } from '@stencil/core';
 import { LinkFieldData, ContentField } from '../../../models/content-models';
 
 @Component({
@@ -7,6 +7,9 @@ import { LinkFieldData, ContentField } from '../../../models/content-models';
     shadow: true
 })
 export class LinkFieldEditorComponent {
+
+    @Element()
+    element: HTMLElement;
 
     @Prop()
     field: ContentField<LinkFieldData>;
@@ -18,10 +21,8 @@ export class LinkFieldEditorComponent {
         if (!this.field || !this.field.value.url) {
             return;
         }
-        return <a class="link-editor" onClick={() => this.edit.emit()}>
-            {this.field.value.text ?
-                this.field.value.text :
-                undefined}
+        return <a class="link-editor" onClick={() => this.edit.emit()} innerHTML={this.element.innerHTML}>
+            {this.field.value.text}
         </a>;
     }
 }

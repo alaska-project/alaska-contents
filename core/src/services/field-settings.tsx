@@ -20,11 +20,11 @@ export class AlaskaFields {
         factory.registerFieldRenderer('html', (field) => <alaska-html-field field={field}></alaska-html-field>);
         factory.registerFieldEditor('html', (field) => <alaska-html-field-editor field={field}></alaska-html-field-editor>);
 
-        factory.registerFieldRenderer('image', (field) => <alaska-image-field field={field}></alaska-image-field>);
-        factory.registerFieldEditor('image', (field) => <alaska-image-field-editor field={field}></alaska-image-field-editor>);
+        factory.registerFieldRenderer('image', (field, host) => <alaska-image-field field={field} innerHTML={host.innerHTML}></alaska-image-field>);
+        factory.registerFieldEditor('image', (field, host) => <alaska-image-field-editor field={field} innerHTML={host.innerHTML}></alaska-image-field-editor>);
 
-        factory.registerFieldRenderer('link', (field) => <alaska-link-field field={field}></alaska-link-field>);
-        factory.registerFieldEditor('link', (field) => <alaska-link-field-editor field={field}></alaska-link-field-editor>);
+        factory.registerFieldRenderer('link', (field, host) => <alaska-link-field field={field} innerHTML={host.innerHTML}></alaska-link-field>);
+        factory.registerFieldEditor('link', (field, host) => <alaska-link-field-editor field={field} innerHTML={host.innerHTML}></alaska-link-field-editor>);
 
         return factory;
     }

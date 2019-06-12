@@ -15,6 +15,8 @@ export class ContentFieldComponent {
     @State()
     field: ContentField<any>;
 
+    private innerHtml: string;
+
     @Method()
     async setField(field: ContentField<any>) {
         this.field = field;
@@ -28,15 +30,19 @@ export class ContentFieldComponent {
         this.mode = mode;
     }
 
+    connectedCallback() {
+        this.innerHtml = this.element.innerHTML;
+    }
+
     render() {
         if (!this.field) {
             return undefined;
         }
 
         return (<div>
-            {this.mode === 'Default' 
-                ? <alaska-content-field-default field={this.field}></alaska-content-field-default>
-                : <alaska-content-field-editor field={this.field}></alaska-content-field-editor>
+            {this.mode === 'Default'
+                ? <alaska-content-field-default field={this.field} innerHTML={this.innerHtml}></alaska-content-field-default>
+                : <alaska-content-field-editor field={this.field} innerHTML={this.innerHtml}></alaska-content-field-editor>
             }
         </div>
         );

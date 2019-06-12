@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Element } from '@stencil/core';
 import { LinkFieldData, ContentField } from '../../../models/content-models';
 
 @Component({
@@ -8,6 +8,9 @@ import { LinkFieldData, ContentField } from '../../../models/content-models';
 })
 export class LinkFieldComponent {
 
+    @Element()
+    element: HTMLElement;
+
     @Prop()
     field: ContentField<LinkFieldData>;
 
@@ -15,10 +18,8 @@ export class LinkFieldComponent {
         if (!this.field || !this.field.value.url) {
             return;
         }
-        return <a href={this.field.value.url} target={this.field.value.target}>
-            {this.field.value.text ?
-                this.field.value.text :
-                undefined}
+        return <a href={this.field.value.url} target={this.field.value.target} innerHTML={this.element.innerHTML}>
+            {this.field.value.text}
         </a>;
     }
 }
