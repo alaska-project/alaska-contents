@@ -1,11 +1,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AlaskaContentsComponent } from './alaska-contents.component';
 
 @NgModule({
-  declarations: [AlaskaContentsComponent],
+  declarations: [],
   imports: [
   ],
-  exports: [AlaskaContentsComponent],
+  exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AlaskaContentsModule { }
