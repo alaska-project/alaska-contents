@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                        | Default     |
-| -------- | --------- | ----------- | --------------------------- | ----------- |
-| `field`  | --        |             | `FieldData<ImageFieldData>` | `undefined` |
+| Property | Attribute | Description | Type                           | Default     |
+| -------- | --------- | ----------- | ------------------------------ | ----------- |
+| `field`  | --        |             | `ContentField<ImageFieldData>` | `undefined` |
 
 
 ----------------------------------------------

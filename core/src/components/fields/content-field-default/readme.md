@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type             | Default     |
-| -------- | --------- | ----------- | ---------------- | ----------- |
-| `field`  | --        |             | `FieldData<any>` | `undefined` |
+| Property | Attribute | Description | Type                | Default     |
+| -------- | --------- | ----------- | ------------------- | ----------- |
+| `field`  | --        |             | `ContentField<any>` | `undefined` |
 
 
 ## Dependencies
