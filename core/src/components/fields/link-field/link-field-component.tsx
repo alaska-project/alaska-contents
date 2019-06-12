@@ -19,7 +19,7 @@ export class LinkFieldComponent {
             return;
         }
         return <a href={this.field.value.url} target={this.field.value.target} innerHTML={this.element.innerHTML}>
-            {this.field.value.text}
+            {this.element.innerHTML ? undefined : this.field.value.text}
         </a>;
     }
 }

@@ -22,7 +22,7 @@ export class LinkFieldEditorComponent {
             return;
         }
         return <a class="link-editor" onClick={() => this.edit.emit()} innerHTML={this.element.innerHTML}>
-            {this.field.value.text}
+            {this.element.innerHTML ? undefined : this.field.value.text}
         </a>;
     }
 }
