@@ -1,6 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { LinkFieldData } from '../../../models/content-models';
-import { FieldData } from '../../../models/component-models';
+import { LinkFieldData, ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-link-field',
@@ -10,15 +9,15 @@ import { FieldData } from '../../../models/component-models';
 export class LinkFieldComponent {
 
     @Prop()
-    field: FieldData<LinkFieldData>;
+    field: ContentField<LinkFieldData>;
 
     render() {
-        if (!this.field || !this.field.data.value.url) {
+        if (!this.field || !this.field.value.url) {
             return;
         }
-        return <a href={this.field.data.value.url} target={this.field.data.value.target}>
-            {this.field.data.value.text ?
-                this.field.data.value.text :
+        return <a href={this.field.value.url} target={this.field.value.target}>
+            {this.field.value.text ?
+                this.field.value.text :
                 undefined}
         </a>;
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { ContentField } from '@alaska-project/contents-core/dist/types/models/content-models';
 
 @Component({
@@ -6,7 +6,10 @@ import { ContentField } from '@alaska-project/contents-core/dist/types/models/co
   templateUrl: './text-field.component.html',
   styleUrls: ['./text-field.component.scss']
 })
-export class TextFieldComponent implements OnInit {
+export class TextFieldComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(HTMLAlaskaTextFieldEditorElement, {static: false}) 
+  fieldElement: HTMLAlaskaTextFieldEditorElement;
 
   @Input()
   field: ContentField<any>;
@@ -16,4 +19,7 @@ export class TextFieldComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit(): void {
+    this.fieldElement.field = this.field;
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
-import { FieldData } from '../../../models/component-models';
+import { ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-html-field-editor',
@@ -9,14 +9,14 @@ import { FieldData } from '../../../models/component-models';
 export class HtmlFieldEditorComponent {
 
     @Prop()
-    field: FieldData<any>;
+    field: ContentField<any>;
 
     @Event()
     edit: EventEmitter;
 
     render() {
         return (this.field ?
-            <span class="field" onClick={() => this.edit.emit()}>{this.field.data.value}</span> :
+            <span class="field" onClick={() => this.edit.emit()}>{this.field.value}</span> :
             undefined);
     }
 }

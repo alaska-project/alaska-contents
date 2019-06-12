@@ -1,6 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { ImageFieldData } from '../../../models/content-models';
-import { FieldData } from '../../../models/component-models';
+import { ImageFieldData, ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-image-field',
@@ -10,12 +9,12 @@ import { FieldData } from '../../../models/component-models';
 export class ImageFieldComponent {
 
     @Prop()
-    field: FieldData<ImageFieldData>;
+    field: ContentField<ImageFieldData>;
 
     render() {
-        if (!this.field || !this.field.data.value.url) {
+        if (!this.field || !this.field.value.url) {
             return;
         }
-        return <img class={this.field.data.value.class} src={this.field.data.value.url} alt={this.field.data.value.alt}></img>;
+        return <img class={this.field.value.class} src={this.field.value.url} alt={this.field.value.alt}></img>;
     }
 }

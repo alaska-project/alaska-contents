@@ -1,6 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
-import { LinkFieldData } from '../../../models/content-models';
-import { FieldData } from '../../../models/component-models';
+import { LinkFieldData, ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-link-field-editor',
@@ -10,18 +9,18 @@ import { FieldData } from '../../../models/component-models';
 export class LinkFieldEditorComponent {
 
     @Prop()
-    field: FieldData<LinkFieldData>;
+    field: ContentField<LinkFieldData>;
 
     @Event()
     edit: EventEmitter;
 
     render() {
-        if (!this.field || !this.field.data.value.url) {
+        if (!this.field || !this.field.value.url) {
             return;
         }
         return <a class="link-editor" onClick={() => this.edit.emit()}>
-            {this.field.data.value.text ?
-                this.field.data.value.text :
+            {this.field.value.text ?
+                this.field.value.text :
                 undefined}
         </a>;
     }

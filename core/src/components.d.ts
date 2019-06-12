@@ -13,7 +13,6 @@ import {
 } from './models/content-models';
 import {
   ContentMode,
-  FieldData,
 } from './models/component-models';
 import {
   EventObj,
@@ -28,28 +27,28 @@ export namespace Components {
     'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaContentFieldDefault {
-    'field': FieldData<any>;
+    'field': ContentField<any>;
   }
   interface AlaskaContentFieldEditor {
-    'field': FieldData<any>;
+    'field': ContentField<any>;
   }
   interface AlaskaHtmlField {
-    'field': FieldData<any>;
+    'field': ContentField<any>;
   }
   interface AlaskaHtmlFieldEditor {
-    'field': FieldData<any>;
+    'field': ContentField<any>;
   }
   interface AlaskaImageField {
-    'field': FieldData<ImageFieldData>;
+    'field': ContentField<ImageFieldData>;
   }
   interface AlaskaImageFieldEditor {
-    'field': FieldData<ImageFieldData>;
+    'field': ContentField<ImageFieldData>;
   }
   interface AlaskaLinkField {
-    'field': FieldData<LinkFieldData>;
+    'field': ContentField<LinkFieldData>;
   }
   interface AlaskaLinkFieldEditor {
-    'field': FieldData<LinkFieldData>;
+    'field': ContentField<LinkFieldData>;
   }
   interface AlaskaRichTextEditor {
     'contentCss': string;
@@ -64,10 +63,10 @@ export namespace Components {
     'toolbar': string;
   }
   interface AlaskaTextField {
-    'field': FieldData<string>;
+    'field': ContentField<string>;
   }
   interface AlaskaTextFieldEditor {
-    'field': FieldData<string>;
+    'field': ContentField<string>;
   }
 }
 
@@ -164,30 +163,30 @@ declare global {
 declare namespace LocalJSX {
   interface AlaskaContentField extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldElement> {}
   interface AlaskaContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldDefaultElement> {
-    'field'?: FieldData<any>;
+    'field'?: ContentField<any>;
   }
   interface AlaskaContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldEditorElement> {
-    'field'?: FieldData<any>;
+    'field'?: ContentField<any>;
   }
   interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {
-    'field'?: FieldData<any>;
+    'field'?: ContentField<any>;
   }
   interface AlaskaHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldEditorElement> {
-    'field'?: FieldData<any>;
+    'field'?: ContentField<any>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaImageField extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldElement> {
-    'field'?: FieldData<ImageFieldData>;
+    'field'?: ContentField<ImageFieldData>;
   }
   interface AlaskaImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldEditorElement> {
-    'field'?: FieldData<ImageFieldData>;
+    'field'?: ContentField<ImageFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaLinkField extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldElement> {
-    'field'?: FieldData<LinkFieldData>;
+    'field'?: ContentField<LinkFieldData>;
   }
   interface AlaskaLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldEditorElement> {
-    'field'?: FieldData<LinkFieldData>;
+    'field'?: ContentField<LinkFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlaskaRichTextEditorElement> {
@@ -265,10 +264,10 @@ declare namespace LocalJSX {
     'toolbar'?: string;
   }
   interface AlaskaTextField extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldElement> {
-    'field'?: FieldData<string>;
+    'field'?: ContentField<string>;
   }
   interface AlaskaTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldEditorElement> {
-    'field'?: FieldData<string>;
+    'field'?: ContentField<string>;
   }
 
   interface IntrinsicElements {

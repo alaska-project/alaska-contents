@@ -1,5 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { FieldData } from '../../../models/component-models';
+import { ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-html-field',
@@ -9,9 +9,9 @@ import { FieldData } from '../../../models/component-models';
 export class HtmlFieldComponent {
 
     @Prop()
-    field: FieldData<any>;
+    field: ContentField<any>;
 
     render() {
-        return this.field ? <div innerHTML={this.field.data.value}></div> : undefined;
+        return this.field ? <div innerHTML={this.field.value}></div> : undefined;
     }
 }

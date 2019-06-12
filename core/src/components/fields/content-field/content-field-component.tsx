@@ -35,17 +35,10 @@ export class ContentFieldComponent {
 
         return (<div>
             {this.mode === 'Default' 
-                ? <alaska-content-field-default field={this.createFieldData()}></alaska-content-field-default>
-                : <alaska-content-field-editor field={this.createFieldData()}></alaska-content-field-editor>
+                ? <alaska-content-field-default field={this.field}></alaska-content-field-default>
+                : <alaska-content-field-editor field={this.field}></alaska-content-field-editor>
             }
         </div>
         );
-    }
-
-    private createFieldData() {
-        return {
-            data: this.field,
-            hostElement: this.element
-        };
     }
 }

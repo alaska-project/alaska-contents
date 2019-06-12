@@ -1,6 +1,6 @@
 import { Component, Prop  } from '@stencil/core';
 import { AlaskaFields } from '../../../services/field-settings';
-import { FieldData } from '../../../models/component-models';
+import { ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-content-field-editor',
@@ -9,7 +9,7 @@ import { FieldData } from '../../../models/component-models';
 })
 export class ContentFieldEditorComponent {
 
-    @Prop() field: FieldData<any>;
+    @Prop() field: ContentField<any>;
 
     render() {
         return this.field ?

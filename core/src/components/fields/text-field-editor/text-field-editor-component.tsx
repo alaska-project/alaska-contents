@@ -1,5 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { FieldData } from '../../../models/component-models';
+import { ContentField } from '../../../models/content-models';
 
 @Component({
     tag: 'alaska-text-field-editor',
@@ -11,13 +11,13 @@ export class TextFieldEditorComponent {
     private editorElement: HTMLElement;
 
     @Prop()
-    field: FieldData<string>;
+    field: ContentField<string>;
 
     render() {
         if (!this.field) {
             return;
         }
-        return <div class="text-editor" ref={el => this.editorElement = el} contenteditable="true" innerHTML={this.field.data.value}></div>;
+        return <div class="text-editor" ref={el => this.editorElement = el} contenteditable="true" innerHTML={this.field.value}></div>;
     }
 
     componentDidLoad() {
@@ -25,6 +25,6 @@ export class TextFieldEditorComponent {
     }
 
     private setValue(value: string) {
-        this.field.data.value = value;
+        this.field.value = value;
     }
 }
