@@ -84,7 +84,7 @@ export class RichTextEditorComponent {
     @Prop() resize = false;
     @Prop() skin = 'oxide';
     @Prop() mobileTheme = 'silver';
-    @Prop() height = '100%';
+    @Prop() height = '';
     @Prop() contentCss = '';
     @Prop() fontFormats = '';
 
