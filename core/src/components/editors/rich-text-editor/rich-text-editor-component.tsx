@@ -3,7 +3,7 @@ import { randomId } from '../../../utils/utils';
 import { TinyMceSettings } from '../../../models/tinymce-models';
 
 @Component({
-    tag: 'aly-rich-text-editor',
+    tag: 'alaska-rich-text-editor',
     styleUrl: 'rich-text-editor-component.scss',
     shadow: false
 })

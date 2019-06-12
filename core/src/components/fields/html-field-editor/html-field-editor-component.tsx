@@ -2,7 +2,7 @@ import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
-    tag: 'aly-html-field-editor',
+    tag: 'alaska-html-field-editor',
     styleUrl: 'html-field-editor-component.scss',
     shadow: true
 })

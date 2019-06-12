@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { LinkFieldData, FieldData } from '../../../models/content-models';
 
 @Component({
-    tag: 'aly-link-field',
+    tag: 'alaska-link-field',
     styleUrl: 'link-field-component.scss',
     shadow: true
 })

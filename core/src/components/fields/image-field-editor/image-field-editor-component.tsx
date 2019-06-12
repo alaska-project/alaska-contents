@@ -2,7 +2,7 @@ import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ImageFieldData, FieldData } from '../../../models/content-models';
 
 @Component({
-    tag: 'aly-image-field-editor',
+    tag: 'alaska-image-field-editor',
     styleUrl: 'image-field-editor-component.scss',
     shadow: true
 })

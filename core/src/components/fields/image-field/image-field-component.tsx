@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { ImageFieldData, FieldData } from '../../../models/content-models';
 
 @Component({
-    tag: 'aly-image-field',
+    tag: 'alaska-image-field',
     styleUrl: 'image-field-component.scss',
     shadow: true
 })

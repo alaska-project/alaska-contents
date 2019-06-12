@@ -2,7 +2,7 @@ import { Component, Prop, h } from '@stencil/core';
 import { FieldData } from '../../../models/content-models';
 
 @Component({
-    tag: 'aly-text-field',
+    tag: 'alaska-text-field',
     styleUrl: 'text-field-component.scss',
     shadow: true
 })

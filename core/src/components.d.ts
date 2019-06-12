@@ -23,35 +23,35 @@ import {
 } from './models/tinymce-models';
 
 export namespace Components {
-  interface AlyContentField {
+  interface AlaskaContentField {
     'setField': (field: ContentField<any>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
-  interface AlyContentFieldDefault {
+  interface AlaskaContentFieldDefault {
     'field': FieldData<any>;
   }
-  interface AlyContentFieldEditor {
+  interface AlaskaContentFieldEditor {
     'field': FieldData<any>;
   }
-  interface AlyHtmlField {
+  interface AlaskaHtmlField {
     'field': FieldData<any>;
   }
-  interface AlyHtmlFieldEditor {
+  interface AlaskaHtmlFieldEditor {
     'field': FieldData<any>;
   }
-  interface AlyImageField {
+  interface AlaskaImageField {
     'field': FieldData<ImageFieldData>;
   }
-  interface AlyImageFieldEditor {
+  interface AlaskaImageFieldEditor {
     'field': FieldData<ImageFieldData>;
   }
-  interface AlyLinkField {
+  interface AlaskaLinkField {
     'field': FieldData<LinkFieldData>;
   }
-  interface AlyLinkFieldEditor {
+  interface AlaskaLinkFieldEditor {
     'field': FieldData<LinkFieldData>;
   }
-  interface AlyRichTextEditor {
+  interface AlaskaRichTextEditor {
     'contentCss': string;
     'fontFormats': string;
     'height': string;
@@ -63,10 +63,10 @@ export namespace Components {
     'skin': string;
     'toolbar': string;
   }
-  interface AlyTextField {
+  interface AlaskaTextField {
     'field': FieldData<string>;
   }
-  interface AlyTextFieldEditor {
+  interface AlaskaTextFieldEditor {
     'field': FieldData<string>;
   }
 }
@@ -74,123 +74,123 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLAlyContentFieldElement extends Components.AlyContentField, HTMLStencilElement {}
-  var HTMLAlyContentFieldElement: {
-    prototype: HTMLAlyContentFieldElement;
-    new (): HTMLAlyContentFieldElement;
+  interface HTMLAlaskaContentFieldElement extends Components.AlaskaContentField, HTMLStencilElement {}
+  var HTMLAlaskaContentFieldElement: {
+    prototype: HTMLAlaskaContentFieldElement;
+    new (): HTMLAlaskaContentFieldElement;
   };
 
-  interface HTMLAlyContentFieldDefaultElement extends Components.AlyContentFieldDefault, HTMLStencilElement {}
-  var HTMLAlyContentFieldDefaultElement: {
-    prototype: HTMLAlyContentFieldDefaultElement;
-    new (): HTMLAlyContentFieldDefaultElement;
+  interface HTMLAlaskaContentFieldDefaultElement extends Components.AlaskaContentFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaContentFieldDefaultElement: {
+    prototype: HTMLAlaskaContentFieldDefaultElement;
+    new (): HTMLAlaskaContentFieldDefaultElement;
   };
 
-  interface HTMLAlyContentFieldEditorElement extends Components.AlyContentFieldEditor, HTMLStencilElement {}
-  var HTMLAlyContentFieldEditorElement: {
-    prototype: HTMLAlyContentFieldEditorElement;
-    new (): HTMLAlyContentFieldEditorElement;
+  interface HTMLAlaskaContentFieldEditorElement extends Components.AlaskaContentFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaContentFieldEditorElement: {
+    prototype: HTMLAlaskaContentFieldEditorElement;
+    new (): HTMLAlaskaContentFieldEditorElement;
   };
 
-  interface HTMLAlyHtmlFieldElement extends Components.AlyHtmlField, HTMLStencilElement {}
-  var HTMLAlyHtmlFieldElement: {
-    prototype: HTMLAlyHtmlFieldElement;
-    new (): HTMLAlyHtmlFieldElement;
+  interface HTMLAlaskaHtmlFieldElement extends Components.AlaskaHtmlField, HTMLStencilElement {}
+  var HTMLAlaskaHtmlFieldElement: {
+    prototype: HTMLAlaskaHtmlFieldElement;
+    new (): HTMLAlaskaHtmlFieldElement;
   };
 
-  interface HTMLAlyHtmlFieldEditorElement extends Components.AlyHtmlFieldEditor, HTMLStencilElement {}
-  var HTMLAlyHtmlFieldEditorElement: {
-    prototype: HTMLAlyHtmlFieldEditorElement;
-    new (): HTMLAlyHtmlFieldEditorElement;
+  interface HTMLAlaskaHtmlFieldEditorElement extends Components.AlaskaHtmlFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaHtmlFieldEditorElement: {
+    prototype: HTMLAlaskaHtmlFieldEditorElement;
+    new (): HTMLAlaskaHtmlFieldEditorElement;
   };
 
-  interface HTMLAlyImageFieldElement extends Components.AlyImageField, HTMLStencilElement {}
-  var HTMLAlyImageFieldElement: {
-    prototype: HTMLAlyImageFieldElement;
-    new (): HTMLAlyImageFieldElement;
+  interface HTMLAlaskaImageFieldElement extends Components.AlaskaImageField, HTMLStencilElement {}
+  var HTMLAlaskaImageFieldElement: {
+    prototype: HTMLAlaskaImageFieldElement;
+    new (): HTMLAlaskaImageFieldElement;
   };
 
-  interface HTMLAlyImageFieldEditorElement extends Components.AlyImageFieldEditor, HTMLStencilElement {}
-  var HTMLAlyImageFieldEditorElement: {
-    prototype: HTMLAlyImageFieldEditorElement;
-    new (): HTMLAlyImageFieldEditorElement;
+  interface HTMLAlaskaImageFieldEditorElement extends Components.AlaskaImageFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaImageFieldEditorElement: {
+    prototype: HTMLAlaskaImageFieldEditorElement;
+    new (): HTMLAlaskaImageFieldEditorElement;
   };
 
-  interface HTMLAlyLinkFieldElement extends Components.AlyLinkField, HTMLStencilElement {}
-  var HTMLAlyLinkFieldElement: {
-    prototype: HTMLAlyLinkFieldElement;
-    new (): HTMLAlyLinkFieldElement;
+  interface HTMLAlaskaLinkFieldElement extends Components.AlaskaLinkField, HTMLStencilElement {}
+  var HTMLAlaskaLinkFieldElement: {
+    prototype: HTMLAlaskaLinkFieldElement;
+    new (): HTMLAlaskaLinkFieldElement;
   };
 
-  interface HTMLAlyLinkFieldEditorElement extends Components.AlyLinkFieldEditor, HTMLStencilElement {}
-  var HTMLAlyLinkFieldEditorElement: {
-    prototype: HTMLAlyLinkFieldEditorElement;
-    new (): HTMLAlyLinkFieldEditorElement;
+  interface HTMLAlaskaLinkFieldEditorElement extends Components.AlaskaLinkFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaLinkFieldEditorElement: {
+    prototype: HTMLAlaskaLinkFieldEditorElement;
+    new (): HTMLAlaskaLinkFieldEditorElement;
   };
 
-  interface HTMLAlyRichTextEditorElement extends Components.AlyRichTextEditor, HTMLStencilElement {}
-  var HTMLAlyRichTextEditorElement: {
-    prototype: HTMLAlyRichTextEditorElement;
-    new (): HTMLAlyRichTextEditorElement;
+  interface HTMLAlaskaRichTextEditorElement extends Components.AlaskaRichTextEditor, HTMLStencilElement {}
+  var HTMLAlaskaRichTextEditorElement: {
+    prototype: HTMLAlaskaRichTextEditorElement;
+    new (): HTMLAlaskaRichTextEditorElement;
   };
 
-  interface HTMLAlyTextFieldElement extends Components.AlyTextField, HTMLStencilElement {}
-  var HTMLAlyTextFieldElement: {
-    prototype: HTMLAlyTextFieldElement;
-    new (): HTMLAlyTextFieldElement;
+  interface HTMLAlaskaTextFieldElement extends Components.AlaskaTextField, HTMLStencilElement {}
+  var HTMLAlaskaTextFieldElement: {
+    prototype: HTMLAlaskaTextFieldElement;
+    new (): HTMLAlaskaTextFieldElement;
   };
 
-  interface HTMLAlyTextFieldEditorElement extends Components.AlyTextFieldEditor, HTMLStencilElement {}
-  var HTMLAlyTextFieldEditorElement: {
-    prototype: HTMLAlyTextFieldEditorElement;
-    new (): HTMLAlyTextFieldEditorElement;
+  interface HTMLAlaskaTextFieldEditorElement extends Components.AlaskaTextFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaTextFieldEditorElement: {
+    prototype: HTMLAlaskaTextFieldEditorElement;
+    new (): HTMLAlaskaTextFieldEditorElement;
   };
   interface HTMLElementTagNameMap {
-    'aly-content-field': HTMLAlyContentFieldElement;
-    'aly-content-field-default': HTMLAlyContentFieldDefaultElement;
-    'aly-content-field-editor': HTMLAlyContentFieldEditorElement;
-    'aly-html-field': HTMLAlyHtmlFieldElement;
-    'aly-html-field-editor': HTMLAlyHtmlFieldEditorElement;
-    'aly-image-field': HTMLAlyImageFieldElement;
-    'aly-image-field-editor': HTMLAlyImageFieldEditorElement;
-    'aly-link-field': HTMLAlyLinkFieldElement;
-    'aly-link-field-editor': HTMLAlyLinkFieldEditorElement;
-    'aly-rich-text-editor': HTMLAlyRichTextEditorElement;
-    'aly-text-field': HTMLAlyTextFieldElement;
-    'aly-text-field-editor': HTMLAlyTextFieldEditorElement;
+    'alaska-content-field': HTMLAlaskaContentFieldElement;
+    'alaska-content-field-default': HTMLAlaskaContentFieldDefaultElement;
+    'alaska-content-field-editor': HTMLAlaskaContentFieldEditorElement;
+    'alaska-html-field': HTMLAlaskaHtmlFieldElement;
+    'alaska-html-field-editor': HTMLAlaskaHtmlFieldEditorElement;
+    'alaska-image-field': HTMLAlaskaImageFieldElement;
+    'alaska-image-field-editor': HTMLAlaskaImageFieldEditorElement;
+    'alaska-link-field': HTMLAlaskaLinkFieldElement;
+    'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
+    'alaska-rich-text-editor': HTMLAlaskaRichTextEditorElement;
+    'alaska-text-field': HTMLAlaskaTextFieldElement;
+    'alaska-text-field-editor': HTMLAlaskaTextFieldEditorElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface AlyContentField extends JSXBase.HTMLAttributes<HTMLAlyContentFieldElement> {}
-  interface AlyContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlyContentFieldDefaultElement> {
+  interface AlaskaContentField extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldElement> {}
+  interface AlaskaContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldDefaultElement> {
     'field'?: FieldData<any>;
   }
-  interface AlyContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyContentFieldEditorElement> {
+  interface AlaskaContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldEditorElement> {
     'field'?: FieldData<any>;
   }
-  interface AlyHtmlField extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldElement> {
+  interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {
     'field'?: FieldData<any>;
   }
-  interface AlyHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyHtmlFieldEditorElement> {
+  interface AlaskaHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldEditorElement> {
     'field'?: FieldData<any>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
-  interface AlyImageField extends JSXBase.HTMLAttributes<HTMLAlyImageFieldElement> {
+  interface AlaskaImageField extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldElement> {
     'field'?: FieldData<ImageFieldData>;
   }
-  interface AlyImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyImageFieldEditorElement> {
+  interface AlaskaImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldEditorElement> {
     'field'?: FieldData<ImageFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
-  interface AlyLinkField extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldElement> {
+  interface AlaskaLinkField extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldElement> {
     'field'?: FieldData<LinkFieldData>;
   }
-  interface AlyLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyLinkFieldEditorElement> {
+  interface AlaskaLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldEditorElement> {
     'field'?: FieldData<LinkFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
-  interface AlyRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlyRichTextEditorElement> {
+  interface AlaskaRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlaskaRichTextEditorElement> {
     'contentCss'?: string;
     'fontFormats'?: string;
     'height'?: string;
@@ -264,26 +264,26 @@ declare namespace LocalJSX {
     'skin'?: string;
     'toolbar'?: string;
   }
-  interface AlyTextField extends JSXBase.HTMLAttributes<HTMLAlyTextFieldElement> {
+  interface AlaskaTextField extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldElement> {
     'field'?: FieldData<string>;
   }
-  interface AlyTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlyTextFieldEditorElement> {
+  interface AlaskaTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldEditorElement> {
     'field'?: FieldData<string>;
   }
 
   interface IntrinsicElements {
-    'aly-content-field': AlyContentField;
-    'aly-content-field-default': AlyContentFieldDefault;
-    'aly-content-field-editor': AlyContentFieldEditor;
-    'aly-html-field': AlyHtmlField;
-    'aly-html-field-editor': AlyHtmlFieldEditor;
-    'aly-image-field': AlyImageField;
-    'aly-image-field-editor': AlyImageFieldEditor;
-    'aly-link-field': AlyLinkField;
-    'aly-link-field-editor': AlyLinkFieldEditor;
-    'aly-rich-text-editor': AlyRichTextEditor;
-    'aly-text-field': AlyTextField;
-    'aly-text-field-editor': AlyTextFieldEditor;
+    'alaska-content-field': AlaskaContentField;
+    'alaska-content-field-default': AlaskaContentFieldDefault;
+    'alaska-content-field-editor': AlaskaContentFieldEditor;
+    'alaska-html-field': AlaskaHtmlField;
+    'alaska-html-field-editor': AlaskaHtmlFieldEditor;
+    'alaska-image-field': AlaskaImageField;
+    'alaska-image-field-editor': AlaskaImageFieldEditor;
+    'alaska-link-field': AlaskaLinkField;
+    'alaska-link-field-editor': AlaskaLinkFieldEditor;
+    'alaska-rich-text-editor': AlaskaRichTextEditor;
+    'alaska-text-field': AlaskaTextField;
+    'alaska-text-field-editor': AlaskaTextFieldEditor;
   }
 }
 

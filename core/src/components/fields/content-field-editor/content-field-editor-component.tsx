@@ -3,7 +3,7 @@ import { FieldData } from '../../../models/content-models';
 import { AlaskaFields } from '../../../services/field-settings';
 
 @Component({
-    tag: 'aly-content-field-editor',
+    tag: 'alaska-content-field-editor',
     styleUrl: 'content-field-editor-component.scss',
     shadow: true
 })

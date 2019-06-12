@@ -3,7 +3,7 @@ import { ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 
 @Component({
-    tag: 'aly-content-field',
+    tag: 'alaska-content-field',
     styleUrl: 'content-field-component.scss',
     shadow: true
 })
@@ -35,8 +35,8 @@ export class ContentFieldComponent {
 
         return (<div>
             {this.mode === 'Default' 
-                ? <aly-content-field-default field={this.createFieldData()}></aly-content-field-default>
-                : <aly-content-field-editor field={this.createFieldData()}></aly-content-field-editor>
+                ? <alaska-content-field-default field={this.createFieldData()}></alaska-content-field-default>
+                : <alaska-content-field-editor field={this.createFieldData()}></alaska-content-field-editor>
             }
         </div>
         );
