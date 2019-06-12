@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
-import { FieldData } from '../../../models/content-models';
+import { FieldData } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-html-field-editor',

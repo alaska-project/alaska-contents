@@ -1,10 +1,20 @@
 
-export interface FieldData<T> {
-    data: ContentField<T>;
-    hostElement: HTMLElement;
+export interface ContentItem {
+    info: ContentItemInfo;
+    fields: ContentItemFields;
 }
 
-export interface ContentItem {}
+export interface ContentItemInfo {
+    id: string;
+    language: string;
+    publishingTarget: string;
+    templateId: string;
+    path: string[];
+    idPath: string[];
+}
+
+export interface ContentItemFields extends Map<string, ContentField<any>> {
+}
 
 export interface ContentField<T> {
     type: string;

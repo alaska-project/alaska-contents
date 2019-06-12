@@ -1,4 +1,4 @@
-import { FieldData } from "../models/content-models";
+import { FieldData } from '../models/component-models';
 import { JSX } from "@stencil/core/dist/declarations";
 
 export class FieldFactory {

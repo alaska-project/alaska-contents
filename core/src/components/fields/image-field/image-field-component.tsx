@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
-import { ImageFieldData, FieldData } from '../../../models/content-models';
+import { ImageFieldData } from '../../../models/content-models';
+import { FieldData } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-image-field',

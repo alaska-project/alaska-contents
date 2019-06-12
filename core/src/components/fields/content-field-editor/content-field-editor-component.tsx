@@ -1,6 +1,6 @@
 import { Component, Prop  } from '@stencil/core';
-import { FieldData } from '../../../models/content-models';
 import { AlaskaFields } from '../../../services/field-settings';
+import { FieldData } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-content-field-editor',

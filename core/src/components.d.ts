@@ -8,12 +8,12 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   ContentField,
-  FieldData,
   ImageFieldData,
   LinkFieldData,
 } from './models/content-models';
 import {
   ContentMode,
+  FieldData,
 } from './models/component-models';
 import {
   EventObj,
