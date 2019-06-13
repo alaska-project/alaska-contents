@@ -12,7 +12,7 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   fieldElement: ElementRef<HTMLAlaskaTextFieldElement>;
 
   @Input()
-  field: ContentField<any>;
+  field: ContentField<string>;
 
   constructor() { }
 
