@@ -14,6 +14,10 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   @Input()
   field: ContentField<string>;
 
+  setField(field: ContentField<string>) {
+    this.field = field;
+  }
+
   constructor() { }
 
   ngOnInit() {
