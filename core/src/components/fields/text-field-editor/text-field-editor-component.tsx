@@ -8,8 +8,6 @@ import { ContentField } from '../../../models/content-models';
 })
 export class TextFieldEditorComponent {
 
-    private editorElement: HTMLElement;
-
     @Prop()
     field: ContentField<string>;
 
@@ -17,11 +15,11 @@ export class TextFieldEditorComponent {
         if (!this.field) {
             return;
         }
-        return <div class="text-editor" ref={el => this.editorElement = el} contenteditable="true" innerHTML={this.field.value}></div>;
+        return <div class="text-editor" ref={el => this.configureEditor(el)} contenteditable="true" innerHTML={this.field.value}></div>;
     }
 
-    componentDidLoad() {
-        this.editorElement.addEventListener('input', () => this.setValue(this.editorElement.innerHTML));
+    configureEditor(editorElement: HTMLElement) {
+        editorElement.addEventListener('input', () => this.setValue(editorElement.innerHTML));
     }
 
     private setValue(value: string) {
