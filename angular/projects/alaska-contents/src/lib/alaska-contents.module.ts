@@ -22,7 +22,8 @@ import { defineCustomElements } from '@alaska-project/contents-core/loader';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AlaskaContentsModule { 
-  forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders {
+    defineCustomElements(window);
     return {
       ngModule: AlaskaContentsModule,
       providers: []
@@ -30,6 +31,3 @@ export class AlaskaContentsModule {
   }
 }
 
-export function defineAlaskaElements(w: Window) {
-  defineCustomElements(w);
-}

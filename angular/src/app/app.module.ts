@@ -12,10 +12,11 @@ import { AlaskaContentsModule } from 'projects/alaska-contents/src/public-api';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlaskaContentsModule
+    AlaskaContentsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {
+}
