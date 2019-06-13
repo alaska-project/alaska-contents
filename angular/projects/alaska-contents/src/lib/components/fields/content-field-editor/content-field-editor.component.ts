@@ -27,7 +27,7 @@ export class ContentFieldEditorComponent implements OnInit, AfterViewInit {
     }
 
     this.fieldFactory.renderField(this.field.type, this.getEditingMode(), this.viewContainerRef, (ref) => {
-      (<any>ref).field = this.field;
+      (<any>ref.instance).field = this.field;
     });
   }
 
