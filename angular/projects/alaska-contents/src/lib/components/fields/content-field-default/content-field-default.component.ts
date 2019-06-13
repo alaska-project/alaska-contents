@@ -1,13 +1,14 @@
-import { Component, OnInit, Input, OnChanges, ViewContainerRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewContainerRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ContentField } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { FieldFactoryService } from '../../../services/field-factory/field-factory.service';
+import { ContentMode } from '@alaska-project/contents-core/dist/types/models/component-models';
 
 @Component({
   selector: 'aly-content-field-default',
   templateUrl: './content-field-default.component.html',
   styleUrls: ['./content-field-default.component.scss']
 })
-export class ContentFieldDefaultComponent implements OnInit, OnChanges {
+export class ContentFieldDefaultComponent implements OnInit, AfterViewInit {
 
   @Input()
   field: ContentField<any>;
@@ -19,8 +20,18 @@ export class ContentFieldDefaultComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    
+  ngAfterViewInit(): void {
+    if (!this.field) {
+      this.viewContainerRef.clear();
+      return;
+    }
+
+    this.fieldFactory.renderField(this.field.type, this.getEditingMode(), this.viewContainerRef, (ref) => {
+      (<any>ref).field = this.field;
+    });
   }
 
+  private getEditingMode(): ContentMode {
+    return 'Default';
+  }
 }

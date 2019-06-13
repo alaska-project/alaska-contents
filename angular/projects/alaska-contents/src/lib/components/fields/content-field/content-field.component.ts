@@ -18,7 +18,7 @@ export class ContentFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input()
   mode: ContentMode;
-  
+
   constructor(private contentEditingService: ContentEditingService) { }
 
   ngOnInit() {
@@ -32,7 +32,9 @@ export class ContentFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (!this.isExplicitContentMode()) {
-      this.contentModeSubscription = this.contentEditingService.editingMode().subscribe(x => this.mode = x);
+      this.contentModeSubscription = this.contentEditingService.editingMode().subscribe(x => {
+        setTimeout(() => this.mode = x);
+      });
     }
   }
 
