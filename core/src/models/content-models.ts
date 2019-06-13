@@ -13,7 +13,8 @@ export interface ContentItemInfo {
     idPath: string[];
 }
 
-export interface ContentItemFields extends Map<string, ContentField<any>> {
+export interface ContentItemFields {
+    [key: string]: ContentField<any>;
 }
 
 export interface ContentField<T> {

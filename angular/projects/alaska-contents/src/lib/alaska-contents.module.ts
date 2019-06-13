@@ -18,15 +18,18 @@ import { defineCustomElements } from '@alaska-project/contents-core/loader';
   declarations: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent, ContentFieldComponent, ContentFieldDefaultComponent, ContentFieldEditorComponent, RichTextEditorComponent],
   imports: [
   ],
-  exports: [],
+  exports: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent, ContentFieldComponent, ContentFieldDefaultComponent, ContentFieldEditorComponent, RichTextEditorComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AlaskaContentsModule { 
   forRoot(): ModuleWithProviders {
-    defineCustomElements(window);
     return {
       ngModule: AlaskaContentsModule,
       providers: []
     };
   }
+}
+
+export function defineAlaskaElements(w: Window) {
+  defineCustomElements(w);
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContentItem } from 'projects/alaska-contents/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'alaska';
+  
+  item: ContentItem = {
+    info: {
+      id: '',
+      idPath: [],
+      language: '',
+      path: [],
+      publishingTarget: '',
+      templateId: ''
+    },
+    fields: {
+      title: {
+        type: 'string',
+        value: 'Titolo'
+      }
+    }
+  };  
 }

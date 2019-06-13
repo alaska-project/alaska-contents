@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Method } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({
@@ -11,7 +11,14 @@ export class TextFieldComponent {
     @Prop()
     field: ContentField<string>;
 
+    @Method()
+    async setField(field: ContentField<string>) {
+        this.field = field;
+        console.log('setting field', field);
+    }
+
     render() {
+        console.log('rendering component', this.field);
         return this.field ? <div innerHTML={this.field.value}></div> : undefined;
     }
 }

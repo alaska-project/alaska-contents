@@ -64,6 +64,7 @@ export namespace Components {
   }
   interface AlaskaTextField {
     'field': ContentField<string>;
+    'setField': (field: ContentField<string>) => Promise<void>;
   }
   interface AlaskaTextFieldEditor {
     'field': ContentField<string>;
