@@ -14,11 +14,9 @@ export class TextFieldComponent {
     @Method()
     async setField(field: ContentField<string>) {
         this.field = field;
-        console.log('setting field', field);
     }
 
     render() {
-        console.log('rendering component', this.field);
         return this.field ? <div innerHTML={this.field.value}></div> : undefined;
     }
 }

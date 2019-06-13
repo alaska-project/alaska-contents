@@ -19,7 +19,6 @@ export class ContentFieldComponent {
 
     @Method()
     async setField(field: ContentField<any>) {
-        console.log('Set field', field);
         this.field = field;
     }
 
