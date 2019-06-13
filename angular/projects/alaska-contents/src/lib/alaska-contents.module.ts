@@ -13,15 +13,18 @@ import { ContentFieldEditorComponent } from './components/fields/content-field-e
 import { RichTextEditorComponent } from './components/editors/rich-text-editor/rich-text-editor.component';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { defineCustomElements } from '@alaska-project/contents-core/loader';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent, ContentFieldComponent, ContentFieldDefaultComponent, ContentFieldEditorComponent, RichTextEditorComponent],
   imports: [
+    CommonModule
   ],
   exports: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent, ContentFieldComponent, ContentFieldDefaultComponent, ContentFieldEditorComponent, RichTextEditorComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent],
 })
-export class AlaskaContentsModule { 
+export class AlaskaContentsModule {
   static forRoot(): ModuleWithProviders {
     defineCustomElements(window);
     return {

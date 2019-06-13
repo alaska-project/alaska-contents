@@ -1,3 +1,2 @@
-<p>
-  content-field works!
-</p>
+<aly-content-field-default *ngIf="mode === 'Default'" [field]="field"></aly-content-field-default>
+<aly-content-field-editor *ngIf="mode === 'Editing'" [field]="field"></aly-content-field-editor>
