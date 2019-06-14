@@ -24,6 +24,18 @@ export class AppComponent {
       title: {
         type: 'string',
         value: 'Titolo'
+      },
+      description: {
+        type: 'html',
+        value: 'Hoooola <strong>simo</strong>'
+      },
+      image: {
+        type: 'image',
+        value: {
+          url: 'https://source.unsplash.com/random/300x200',
+          alt: 'My Image',
+          class: 'my-image',
+        }
       }
     }
   };
