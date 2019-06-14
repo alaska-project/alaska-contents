@@ -1,2 +1,2 @@
-<aly-content-field-default *ngIf="mode === 'Default'" [field]="field"></aly-content-field-default>
-<aly-content-field-editor *ngIf="mode === 'Editing'" [field]="field"></aly-content-field-editor>
+<aly-content-field-default *ngIf="mode === 'Default'" [field]="field"><ng-content></ng-content></aly-content-field-default>
+<aly-content-field-editor *ngIf="mode === 'Editing'" [field]="field"><ng-content></ng-content></aly-content-field-editor>

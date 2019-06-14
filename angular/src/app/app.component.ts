@@ -36,6 +36,15 @@ export class AppComponent {
           alt: 'My Image',
           class: 'my-image',
         }
+      },
+      cta: {
+        type: 'link',
+        value: {
+          linkType: '',
+          url: 'https://www.alpitour.it',
+          target: '_blank',
+          text: 'Clikkami'
+        }
       }
     }
   };
