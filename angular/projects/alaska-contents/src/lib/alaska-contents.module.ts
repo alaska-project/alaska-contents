@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextFieldComponent } from './components/fields/text-field/text-field.component';
 import { TextFieldEditorComponent } from './components/fields/text-field-editor/text-field-editor.component';
 import { LinkFieldEditorComponent } from './components/fields/link-field-editor/link-field-editor.component';
@@ -14,15 +15,58 @@ import { RichTextEditorComponent } from './components/editors/rich-text-editor/r
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { defineCustomElements } from '@alaska-project/contents-core/loader';
 import { CommonModule } from '@angular/common';
+import { RichTextEditorPopoverComponent } from './components/editors/rich-text-editor-popover/rich-text-editor-popover.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent, ContentFieldComponent, ContentFieldDefaultComponent, ContentFieldEditorComponent, RichTextEditorComponent],
-  imports: [
-    CommonModule
+  declarations: [
+    TextFieldComponent, 
+    TextFieldEditorComponent, 
+    LinkFieldEditorComponent, 
+    LinkFieldComponent, 
+    ImageFieldComponent, 
+    ImageFieldEditorComponent, 
+    HtmlFieldEditorComponent, 
+    HtmlFieldComponent, 
+    ContentFieldComponent, 
+    ContentFieldDefaultComponent, 
+    ContentFieldEditorComponent, 
+    RichTextEditorComponent, 
+    RichTextEditorPopoverComponent
   ],
-  exports: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent, ContentFieldComponent, ContentFieldDefaultComponent, ContentFieldEditorComponent, RichTextEditorComponent],
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
+  ],
+  exports: [
+    TextFieldComponent,
+    TextFieldEditorComponent,
+    LinkFieldEditorComponent,
+    LinkFieldComponent,
+    ImageFieldComponent,
+    ImageFieldEditorComponent,
+    HtmlFieldEditorComponent,
+    HtmlFieldComponent,
+    ContentFieldComponent,
+    ContentFieldDefaultComponent,
+    ContentFieldEditorComponent,
+    RichTextEditorComponent
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [TextFieldComponent, TextFieldEditorComponent, LinkFieldEditorComponent, LinkFieldComponent, ImageFieldComponent, ImageFieldEditorComponent, HtmlFieldEditorComponent, HtmlFieldComponent],
+  entryComponents: [
+    RichTextEditorPopoverComponent,
+    TextFieldComponent,
+    TextFieldEditorComponent,
+    LinkFieldEditorComponent,
+    LinkFieldComponent,
+    ImageFieldComponent,
+    ImageFieldEditorComponent,
+    HtmlFieldEditorComponent,
+    HtmlFieldComponent
+  ],
 })
 export class AlaskaContentsModule {
   static forRoot(): ModuleWithProviders {

@@ -89,14 +89,19 @@ export class RichTextEditorComponent {
     @Prop() fontFormats = '';
 
     @Method()
-    async initialize(settings: TinyMceSettings, value: string) {
+    async initialize(settings: TinyMceSettings, value: string, callback?: () => void) {
         this.value = value;
         const tiny = this.getTinymce();
         if (settings.baseURL) {
             tiny.baseURL = settings.baseURL;
         }
-        const options = this.createInitOptions(settings, (editor) => this.setupEditor(editor));
+        const options = this.createInitOptions(settings, (editor) => this.setupEditor(editor, callback));
         tiny.init(options);
+    }
+
+    @Method()
+    async setValue(value: string) {
+        this.value = value;
     }
 
     private createInitOptions(settings: TinyMceSettings, setup?: (editor: any) => void) {
@@ -116,11 +121,14 @@ export class RichTextEditorComponent {
         );
     }
 
-    private setupEditor(editor: any) {
+    private setupEditor(editor: any, callback?: () => void) {
         this.editor = editor;
         console.log('Editor initialized', this.editor);
         editor.on('init', (e: Event) => {
             this.initEditor(e, editor);
+            if (callback) {
+                callback();
+            }
         });
     }
 

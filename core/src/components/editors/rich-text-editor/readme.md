@@ -91,7 +91,17 @@
 
 ## Methods
 
-### `initialize(settings: TinyMceSettings, value: string) => Promise<void>`
+### `initialize(settings: TinyMceSettings, value: string, callback?: () => void) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setValue(value: string) => Promise<void>`
 
 
 

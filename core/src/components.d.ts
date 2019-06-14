@@ -54,11 +54,12 @@ export namespace Components {
     'contentCss': string;
     'fontFormats': string;
     'height': string;
-    'initialize': (settings: TinyMceSettings, value: string) => Promise<void>;
+    'initialize': (settings: TinyMceSettings, value: string, callback?: () => void) => Promise<void>;
     'inline': boolean;
     'mobileTheme': string;
     'plugins': string;
     'resize': boolean;
+    'setValue': (value: string) => Promise<void>;
     'skin': string;
     'toolbar': string;
   }
