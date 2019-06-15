@@ -42,14 +42,11 @@ export class HtmlFieldEditorComponent implements OnInit, OnDestroy, AfterViewIni
       data: { initialValue: this.field.value }
     });
 
-    const dialogComponent = <RichTextEditorPopoverComponent>dialogRef.componentInstance;
-    this._editorValueSubscripion = dialogComponent.onValueChanged().subscribe(value => {
-      this.field.value = value;
-    });
-
-    dialogRef.afterClosed().toPromise().then(() => {
-      this._editorValueSubscripion.unsubscribe();
-      this._editorValueSubscripion = undefined;
+    dialogRef.afterClosed().toPromise().then((result: string) => {
+      if (result) {
+        this.field.value = result;
+        this.fieldElement.nativeElement.forceUpdate();
+      }
     });
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Subject } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,8 +7,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./rich-text-editor-popover.component.scss']
 })
 export class RichTextEditorPopoverComponent implements OnInit {
-
-  private valueChanged = new Subject<string>();
 
   editorValue: string;
 
@@ -26,12 +23,11 @@ export class RichTextEditorPopoverComponent implements OnInit {
   }
 
   save() {
-    this.valueChanged.next(this.editorValue);
-    this.dialogRef.close();
+    this.dialogRef.close(this.editorValue);
   }
   
-  onValueChanged() {
-    return this.valueChanged.asObservable();
+  valueChanged(event: any) {
+    this.editorValue = event.detail;
   }
 }
 

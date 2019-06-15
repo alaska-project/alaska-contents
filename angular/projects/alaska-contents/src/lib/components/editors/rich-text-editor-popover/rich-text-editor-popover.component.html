@@ -1,6 +1,6 @@
 <div class="editor-panel">
   <div class="editor-component">
-    <aly-rich-text-editor #editor height="100%" [initialValue]="editorValue" [(ngModel)]="editorValue"></aly-rich-text-editor>
+    <aly-rich-text-editor #editor height="100%" [initialValue]="editorValue" (valueChanged)="valueChanged($event)"></aly-rich-text-editor>
   </div>
   <div class="editor-controls">
     <button mat-button class="editor-btn" (click)="cancel()">Annulla</button>

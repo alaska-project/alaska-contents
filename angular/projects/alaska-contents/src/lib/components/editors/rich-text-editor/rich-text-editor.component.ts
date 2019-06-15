@@ -23,7 +23,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit, ControlVa
   initialValue: string | undefined;
 
   @Output()
-  valueChanged: EventEmitter<string>;
+  valueChanged: EventEmitter<string> = new EventEmitter<string>();
   
   private isInitialized = false;
   private onTouchedCallback = () => { };
@@ -41,6 +41,11 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit, ControlVa
     }, 
     this.initialValue, 
     () => this.isInitialized = true);
+
+    this.editor.nativeElement.addEventListener('valueChanged', event => {
+      const newValue = (<any>event).detail;
+      this.emitNewValue(newValue);
+    });
   }
 
   writeValue(value: string | null): void {
@@ -63,7 +68,10 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit, ControlVa
   setDisabledState(isDisabled: boolean) {
   }
 
-  emitValue(event: any) {
-    console.log('e', event);
+  private emitNewValue(value: string) {
+    if (this.onChangeCallback) {
+      this.onChangeCallback(value);
+    }
+    this.valueChanged.emit(value);
   }
 }
