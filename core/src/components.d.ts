@@ -46,6 +46,8 @@ export namespace Components {
   }
   interface AlaskaLinkField {
     'field': ContentField<LinkFieldData>;
+    'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaLinkFieldDefault {
     'field': ContentField<LinkFieldData>;

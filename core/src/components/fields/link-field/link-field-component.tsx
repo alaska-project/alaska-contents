@@ -1,5 +1,6 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, State, Method } from '@stencil/core';
 import { LinkFieldData, ContentField } from '../../../models/content-models';
+import { ContentMode } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-link-field',
@@ -11,15 +12,30 @@ export class LinkFieldComponent {
     @Element()
     element: HTMLElement;
 
+    @State()
+    mode: ContentMode = 'Default';
+
+    @Method()
+    async setMode(mode: ContentMode) {
+        this.mode = mode;
+    }
+
     @Prop()
     field: ContentField<LinkFieldData>;
 
+    @Method()
+    async setField(field: ContentField<LinkFieldData>) {
+        this.field = field;
+    }
+    
     render() {
-        if (!this.field || !this.field.value.url) {
-            return;
+        switch (this.mode) {
+            case 'Default':
+                return <alaska-link-field-default field={this.field}></alaska-link-field-default>;
+            case 'Editing':
+                return <alaska-link-field-editor field={this.field}></alaska-link-field-editor>;
+            default:
+                undefined;
         }
-        return <a href={this.field.value.url} target={this.field.value.target} innerHTML={this.element.innerHTML}>
-            {this.element.innerHTML ? undefined : this.field.value.text}
-        </a>;
     }
 }
