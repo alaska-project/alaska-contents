@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({
@@ -9,12 +9,14 @@ import { ContentField } from '../../../models/content-models';
 export class HtmlFieldEditorComponent {
 
     private modal: M.Modal;
+    private currentValue: string;
+    private editor: HTMLAlaskaRichTextEditorElement;
+
+    @State()
+    n = 0;
 
     @Prop()
     field: ContentField<string>;
-
-    @Event()
-    edit: EventEmitter;
 
     render() {
         if (!this.field) {
@@ -26,11 +28,11 @@ export class HtmlFieldEditorComponent {
                 <div ref={el => this.initializeModal(el)} class="modal">
                     <div class="modal-container">
                         <div class="modal-content">
-                            <alaska-rich-text-editor height="100%" ref={el => this.initializeRichTextEditor(el)}></alaska-rich-text-editor>
+                            <alaska-rich-text-editor onValueChanged={(event: any) => this.valueChanged(event)} height="100%" ref={el => this.initializeRichTextEditor(el)}></alaska-rich-text-editor>
                         </div>
                         <div class="modal-footer">
-                            <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn-flat">Cancel</button>
-                            <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn">Save</button>
+                            <button onClick={() => this.cancelAndClose()} class="modal-close waves-effect waves-green btn-flat">Cancel</button>
+                            <button onClick={() => this.saveValueAndClose()} class="modal-close waves-effect waves-green btn">Save</button>
                         </div>
                     </div>
                 </div>
@@ -46,10 +48,29 @@ export class HtmlFieldEditorComponent {
     }
 
     private initializeRichTextEditor(editor: HTMLAlaskaRichTextEditorElement) {
+        this.currentValue = this.field.value;
         editor.initialize({
             baseURL: undefined,
             options: {
             }
         }, this.field.value);
+        this.editor = editor;
+    }
+
+    private valueChanged(event: any) {
+        this.currentValue = event.detail;
+    }
+
+    private cancelAndClose() {
+        this.editor.setValue(this.field.value);
+        this.currentValue = this.field.value;
+        this.modal.close();
+        this.n++;
+    }
+
+    private saveValueAndClose() {
+        this.field.value = this.currentValue;
+        this.modal.close();
+        this.n++;
     }
 }

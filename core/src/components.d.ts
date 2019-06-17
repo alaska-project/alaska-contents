@@ -68,7 +68,6 @@ export namespace Components {
     'skin': string;
     'toolbar': string;
   }
-  interface AlaskaRichTextEditorDialog {}
   interface AlaskaTextField {
     'field': ContentField<string>;
     'setField': (field: ContentField<string>) => Promise<void>;
@@ -145,12 +144,6 @@ declare global {
     new (): HTMLAlaskaRichTextEditorElement;
   };
 
-  interface HTMLAlaskaRichTextEditorDialogElement extends Components.AlaskaRichTextEditorDialog, HTMLStencilElement {}
-  var HTMLAlaskaRichTextEditorDialogElement: {
-    prototype: HTMLAlaskaRichTextEditorDialogElement;
-    new (): HTMLAlaskaRichTextEditorDialogElement;
-  };
-
   interface HTMLAlaskaTextFieldElement extends Components.AlaskaTextField, HTMLStencilElement {}
   var HTMLAlaskaTextFieldElement: {
     prototype: HTMLAlaskaTextFieldElement;
@@ -179,7 +172,6 @@ declare global {
     'alaska-link-field-default': HTMLAlaskaLinkFieldDefaultElement;
     'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
     'alaska-rich-text-editor': HTMLAlaskaRichTextEditorElement;
-    'alaska-rich-text-editor-dialog': HTMLAlaskaRichTextEditorDialogElement;
     'alaska-text-field': HTMLAlaskaTextFieldElement;
     'alaska-text-field-default': HTMLAlaskaTextFieldDefaultElement;
     'alaska-text-field-editor': HTMLAlaskaTextFieldEditorElement;
@@ -195,7 +187,6 @@ declare namespace LocalJSX {
   }
   interface AlaskaHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldEditorElement> {
     'field'?: ContentField<string>;
-    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaImageField extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldElement> {
     'field'?: ContentField<ImageFieldData>;
@@ -291,7 +282,6 @@ declare namespace LocalJSX {
     'skin'?: string;
     'toolbar'?: string;
   }
-  interface AlaskaRichTextEditorDialog extends JSXBase.HTMLAttributes<HTMLAlaskaRichTextEditorDialogElement> {}
   interface AlaskaTextField extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldElement> {
     'field'?: ContentField<string>;
   }
@@ -313,7 +303,6 @@ declare namespace LocalJSX {
     'alaska-link-field-default': AlaskaLinkFieldDefault;
     'alaska-link-field-editor': AlaskaLinkFieldEditor;
     'alaska-rich-text-editor': AlaskaRichTextEditor;
-    'alaska-rich-text-editor-dialog': AlaskaRichTextEditorDialog;
     'alaska-text-field': AlaskaTextField;
     'alaska-text-field-default': AlaskaTextFieldDefault;
     'alaska-text-field-editor': AlaskaTextFieldEditor;
