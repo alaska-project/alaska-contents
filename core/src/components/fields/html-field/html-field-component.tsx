@@ -5,7 +5,7 @@ import { ContentMode } from '../../../models/component-models';
 @Component({
     tag: 'alaska-html-field',
     styleUrl: 'html-field-component.scss',
-    shadow: true
+    shadow: false
 })
 export class HtmlFieldComponent {
 

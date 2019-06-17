@@ -23,6 +23,7 @@
   "devDependencies": {
     "@stencil/core": "^1.0.4",
     "@stencil/sass": "^1.0.0",
+    "@types/materialize-css": "^1.0.6",
     "@types/tinymce": "^4.5.22",
     "materialize-css": "^1.0.0",
     "rollup-plugin-node-builtins": "^2.1.2",
