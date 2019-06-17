@@ -24,12 +24,14 @@ export class HtmlFieldEditorComponent {
             <div>
                 <div onClick={() => this.modal.open()} class="field" innerHTML={this.field.value}></div>
                 <div ref={el => this.initializeModal(el)} class="modal">
-                    <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn-flat">Agree</button>
+                    <div class="modal-container">
+                        <div class="modal-content">
+                            <alaska-rich-text-editor height="100%" ref={el => this.initializeRichTextEditor(el)}></alaska-rich-text-editor>
+                        </div>
+                        <div class="modal-footer">
+                            <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn-flat">Cancel</button>
+                            <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,6 +39,17 @@ export class HtmlFieldEditorComponent {
     }
 
     private initializeModal(modal: HTMLElement) {
-        this.modal = M.Modal.init(modal, {});
+        this.modal = M.Modal.init(modal, {
+            startingTop: '10%',
+            endingTop: '10%',
+        });
+    }
+
+    private initializeRichTextEditor(editor: HTMLAlaskaRichTextEditorElement) {
+        editor.initialize({
+            baseURL: undefined,
+            options: {
+            }
+        }, this.field.value);
     }
 }
