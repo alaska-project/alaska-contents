@@ -25,7 +25,7 @@ export class HtmlFieldEditorComponent {
         return (
             <div>
                 <div onClick={() => this.modal.open()} class="field" innerHTML={this.field.value}></div>
-                <div ref={el => this.initializeModal(el)} class="modal">
+                <div ref={el => this.initializeModal(el)} class="modal html-editor-modal">
                     <div class="modal-container">
                         <div class="modal-content">
                             <alaska-rich-text-editor onValueChanged={(event: any) => this.valueChanged(event)} height="100%" ref={el => this.initializeRichTextEditor(el)}></alaska-rich-text-editor>

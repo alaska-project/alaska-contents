@@ -9,7 +9,7 @@ import { LinkFieldData, ContentField } from '../../../models/content-models';
 export class LinkFieldEditorComponent {
 
     private innerHtml: string;
-    // private modal: M.Modal;
+    private modal: M.Modal;
 
     @Element()
     element: HTMLElement;
@@ -31,23 +31,23 @@ export class LinkFieldEditorComponent {
         }
         return (
             <div class="link-editor">
-                <a onClick={() => this.edit.emit()} innerHTML={this.innerHtml ? this.innerHtml : this.field.value.text}></a>
-                {/* <div ref={el => this.initializeModal(el)} class="modal">
+                <a onClick={() => this.modal.open()} innerHTML={this.innerHtml ? this.innerHtml : this.field.value.text}></a>
+                <div ref={el => this.initializeModal(el)} class="modal">
                     <div class="modal-content">
                     </div>
                     <div class="modal-footer">
                         <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn-flat">Cancel</button>
-                        <button onClick={() => this.saveValueAndClose()} class="modal-close waves-effect waves-green btn">Save</button>
+                        {/* <button onClick={() => this.saveValueAndClose()} class="modal-close waves-effect waves-green btn">Save</button> */}
                     </div>
-                </div> */}
+                </div>
             </div>
         );
     }
 
-    // private initializeModal(modal: HTMLElement) {
-    //     this.modal = M.Modal.init(modal, {
-    //         startingTop: '10%',
-    //         endingTop: '10%',
-    //     });
-    // }
+    private initializeModal(modal: HTMLElement) {
+        this.modal = M.Modal.init(modal, {
+            startingTop: '10%',
+            endingTop: '10%',
+        });
+    }
 }
