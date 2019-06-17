@@ -44,6 +44,7 @@ export namespace Components {
   interface AlaskaImageFieldEditor {
     'field': ContentField<ImageFieldData>;
   }
+  interface AlaskaLinkEditor {}
   interface AlaskaLinkField {
     'field': ContentField<LinkFieldData>;
     'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
@@ -120,6 +121,12 @@ declare global {
     new (): HTMLAlaskaImageFieldEditorElement;
   };
 
+  interface HTMLAlaskaLinkEditorElement extends Components.AlaskaLinkEditor, HTMLStencilElement {}
+  var HTMLAlaskaLinkEditorElement: {
+    prototype: HTMLAlaskaLinkEditorElement;
+    new (): HTMLAlaskaLinkEditorElement;
+  };
+
   interface HTMLAlaskaLinkFieldElement extends Components.AlaskaLinkField, HTMLStencilElement {}
   var HTMLAlaskaLinkFieldElement: {
     prototype: HTMLAlaskaLinkFieldElement;
@@ -168,6 +175,7 @@ declare global {
     'alaska-image-field': HTMLAlaskaImageFieldElement;
     'alaska-image-field-default': HTMLAlaskaImageFieldDefaultElement;
     'alaska-image-field-editor': HTMLAlaskaImageFieldEditorElement;
+    'alaska-link-editor': HTMLAlaskaLinkEditorElement;
     'alaska-link-field': HTMLAlaskaLinkFieldElement;
     'alaska-link-field-default': HTMLAlaskaLinkFieldDefaultElement;
     'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
@@ -198,6 +206,7 @@ declare namespace LocalJSX {
     'field'?: ContentField<ImageFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
+  interface AlaskaLinkEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkEditorElement> {}
   interface AlaskaLinkField extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldElement> {
     'field'?: ContentField<LinkFieldData>;
   }
@@ -299,6 +308,7 @@ declare namespace LocalJSX {
     'alaska-image-field': AlaskaImageField;
     'alaska-image-field-default': AlaskaImageFieldDefault;
     'alaska-image-field-editor': AlaskaImageFieldEditor;
+    'alaska-link-editor': AlaskaLinkEditor;
     'alaska-link-field': AlaskaLinkField;
     'alaska-link-field-default': AlaskaLinkFieldDefault;
     'alaska-link-field-editor': AlaskaLinkFieldEditor;

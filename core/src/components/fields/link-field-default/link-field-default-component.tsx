@@ -18,8 +18,6 @@ export class LinkFieldDefaultComponent {
         if (!this.field || !this.field.value.url) {
             return;
         }
-        return <a href={this.field.value.url} target={this.field.value.target} innerHTML={this.element.innerHTML}>
-            {this.element.innerHTML ? undefined : this.field.value.text}
-        </a>;
+        return <a href={this.field.value.url} target={this.field.value.target} innerHTML={this.element.innerHTML ? this.element.innerHTML : this.field.value.text}></a>;
     }
 }
