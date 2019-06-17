@@ -10,10 +10,10 @@ export class TextFieldEditorComponent {
 
     @Prop()
     field: ContentField<string>;
-
+    
     render() {
         if (!this.field) {
-            return;
+            return undefined;
         }
         return <div class="text-editor" ref={el => this.configureEditor(el)} contenteditable="true" innerHTML={this.field.value}></div>;
     }

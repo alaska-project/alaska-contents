@@ -1,6 +1,7 @@
 import { Component, Method, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { randomId } from '../../../utils/utils';
 import { TinyMceSettings } from '../../../models/tinymce-models';
+import { EventObj } from './rich-text-editor-models';
 
 @Component({
     tag: 'alaska-rich-text-editor',
@@ -168,74 +169,4 @@ export class RichTextEditorComponent {
         const w = typeof window !== 'undefined' ? (window as any) : undefined;
         return w && w.tinyMCE ? w.tinyMCE : null;
     }
-}
-
-
-export const validEvents: (keyof RichTextEditorComponent)[] = [
-    'onActivate',
-    'onAddUndo',
-    'onBeforeAddUndo',
-    'onBeforeExecCommand',
-    'onBeforeGetContent',
-    'onBeforeRenderUI',
-    'onBeforeSetContent',
-    'onBeforePaste',
-    'onBlur',
-    'onChange',
-    'onClearUndos',
-    'onClick',
-    'onContextMenu',
-    'onCopy',
-    'onCut',
-    'onDblclick',
-    'onDeactivate',
-    'onDirty',
-    'onDrag',
-    'onDragDrop',
-    'onDragEnd',
-    'onDragGesture',
-    'onDragOver',
-    'onDrop',
-    'onExecCommand',
-    'onFocus',
-    'onFocusIn',
-    'onFocusOut',
-    'onGetContent',
-    'onHide',
-    'onInit',
-    'onKeyDown',
-    'onKeyPress',
-    'onKeyUp',
-    'onLoadContent',
-    'onMouseDown',
-    'onMouseEnter',
-    'onMouseLeave',
-    'onMouseMove',
-    'onMouseOut',
-    'onMouseOver',
-    'onMouseUp',
-    'onNodeChange',
-    'onObjectResizeStart',
-    'onObjectResized',
-    'onObjectSelected',
-    'onPaste',
-    'onPostProcess',
-    'onPostRender',
-    'onPreProcess',
-    'onProgressState',
-    'onRedo',
-    'onRemove',
-    'onReset',
-    'onSaveContent',
-    'onSetAttrib',
-    'onSetContent',
-    'onShow',
-    'onSubmit',
-    'onUndo',
-    'onVisualAid'
-];
-
-export interface EventObj<T> {
-    event: T;
-    editor: any;
 }

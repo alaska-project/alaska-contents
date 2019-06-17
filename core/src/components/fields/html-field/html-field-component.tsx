@@ -1,5 +1,6 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
+import { ContentMode } from '../../..';
 
 @Component({
     tag: 'alaska-html-field',
@@ -7,6 +8,9 @@ import { ContentField } from '../../../models/content-models';
     shadow: true
 })
 export class HtmlFieldComponent {
+
+    @State()
+    mode: ContentMode = 'Default';
 
     @Prop()
     field: ContentField<any>;

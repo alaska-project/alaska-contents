@@ -9,14 +9,23 @@
   <script type="module" src="/build/alaska-contents.esm.js"></script>
   <script nomodule src="/build/alaska-contents.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.6/tinymce.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
 
-  <button onclick="toggleMode()">Toggle Mode</button>
+  <button class="waves-effect waves-light btn" onclick="toggleMode()">Toggle Mode</button>
+  <script>
+    var mode = 'Default';
+    function toggleMode() {
+      mode = mode === 'Default' ? 'Editing' : 'Default';
+      document.getElementById('field1').setMode(mode);
+    }
+  </script>
 
   <h4>Text Field</h4>
-  <alaska-content-field id="field1"></alaska-content-field>
+  <alaska-text-field id="field1"></alaska-text-field>
   <script>
     window.addEventListener("load", function (event) {
       document.getElementById('field1').setField({
@@ -25,7 +34,7 @@
       });
     });
   </script>
-
+<!-- 
   <h4>Html Field</h4>
   <alaska-content-field id="field2"></alaska-content-field>
   <script>
@@ -53,7 +62,9 @@
   </script>
 
   <h4>Link Field</h4>
-  <alaska-content-field id="field4"><p>AAA<strong>BB</strong></p></alaska-content-field>
+  <alaska-content-field id="field4">
+    <p>AAA<strong>BB</strong></p>
+  </alaska-content-field>
   <script>
     window.addEventListener("load", function (event) {
       document.getElementById('field4').setField({
@@ -68,23 +79,20 @@
     });
   </script>
 
-  <script>
-    var mode = 'Default';
-    function toggleMode() {
-      mode = mode === 'Default' ? 'Editing' : 'Default';
-      document.querySelectorAll('alaska-content-field').forEach(x => x.setMode(mode));
-    }
-  </script>
+   -->
 
+
+
+<!-- 
   <h4>Rich Text Editor</h4>
   <alaska-rich-text-editor id="editor1"></alaska-rich-text-editor>
   <script>
-    window.addEventListener("load", function (event) { 
+    window.addEventListener("load", function (event) {
       document.getElementById('editor1').initialize({
-        
+
       }, 'Holaa <b>!</b>');
     });
-  </script>
+  </script> -->
 
 </body>
 

@@ -9,7 +9,7 @@ import { ContentField } from '../../../models/content-models';
 export class HtmlFieldEditorComponent {
 
     @Prop()
-    field: ContentField<any>;
+    field: ContentField<string>;
 
     @Event()
     edit: EventEmitter;

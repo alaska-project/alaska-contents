@@ -12,39 +12,38 @@ import {
   LinkFieldData,
 } from './models/content-models';
 import {
-  ContentMode,
-} from './models/component-models';
-import {
   EventObj,
-} from './components/editors/rich-text-editor/rich-text-editor-component';
+} from './components/editors/rich-text-editor/rich-text-editor-models';
 import {
   TinyMceSettings,
 } from './models/tinymce-models';
+import {
+  ContentMode,
+} from './models/component-models';
 
 export namespace Components {
-  interface AlaskaContentField {
-    'setField': (field: ContentField<any>) => Promise<void>;
-    'setMode': (mode: ContentMode) => Promise<void>;
-  }
-  interface AlaskaContentFieldDefault {
-    'field': ContentField<any>;
-  }
-  interface AlaskaContentFieldEditor {
-    'field': ContentField<any>;
-  }
   interface AlaskaHtmlField {
     'field': ContentField<any>;
   }
+  interface AlaskaHtmlFieldDefault {
+    'field': ContentField<string>;
+  }
   interface AlaskaHtmlFieldEditor {
-    'field': ContentField<any>;
+    'field': ContentField<string>;
   }
   interface AlaskaImageField {
+    'field': ContentField<ImageFieldData>;
+  }
+  interface AlaskaImageFieldDefault {
     'field': ContentField<ImageFieldData>;
   }
   interface AlaskaImageFieldEditor {
     'field': ContentField<ImageFieldData>;
   }
   interface AlaskaLinkField {
+    'field': ContentField<LinkFieldData>;
+  }
+  interface AlaskaLinkFieldDefault {
     'field': ContentField<LinkFieldData>;
   }
   interface AlaskaLinkFieldEditor {
@@ -66,6 +65,10 @@ export namespace Components {
   interface AlaskaTextField {
     'field': ContentField<string>;
     'setField': (field: ContentField<string>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+  }
+  interface AlaskaTextFieldDefault {
+    'field': ContentField<string>;
   }
   interface AlaskaTextFieldEditor {
     'field': ContentField<string>;
@@ -75,28 +78,16 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLAlaskaContentFieldElement extends Components.AlaskaContentField, HTMLStencilElement {}
-  var HTMLAlaskaContentFieldElement: {
-    prototype: HTMLAlaskaContentFieldElement;
-    new (): HTMLAlaskaContentFieldElement;
-  };
-
-  interface HTMLAlaskaContentFieldDefaultElement extends Components.AlaskaContentFieldDefault, HTMLStencilElement {}
-  var HTMLAlaskaContentFieldDefaultElement: {
-    prototype: HTMLAlaskaContentFieldDefaultElement;
-    new (): HTMLAlaskaContentFieldDefaultElement;
-  };
-
-  interface HTMLAlaskaContentFieldEditorElement extends Components.AlaskaContentFieldEditor, HTMLStencilElement {}
-  var HTMLAlaskaContentFieldEditorElement: {
-    prototype: HTMLAlaskaContentFieldEditorElement;
-    new (): HTMLAlaskaContentFieldEditorElement;
-  };
-
   interface HTMLAlaskaHtmlFieldElement extends Components.AlaskaHtmlField, HTMLStencilElement {}
   var HTMLAlaskaHtmlFieldElement: {
     prototype: HTMLAlaskaHtmlFieldElement;
     new (): HTMLAlaskaHtmlFieldElement;
+  };
+
+  interface HTMLAlaskaHtmlFieldDefaultElement extends Components.AlaskaHtmlFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaHtmlFieldDefaultElement: {
+    prototype: HTMLAlaskaHtmlFieldDefaultElement;
+    new (): HTMLAlaskaHtmlFieldDefaultElement;
   };
 
   interface HTMLAlaskaHtmlFieldEditorElement extends Components.AlaskaHtmlFieldEditor, HTMLStencilElement {}
@@ -111,6 +102,12 @@ declare global {
     new (): HTMLAlaskaImageFieldElement;
   };
 
+  interface HTMLAlaskaImageFieldDefaultElement extends Components.AlaskaImageFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaImageFieldDefaultElement: {
+    prototype: HTMLAlaskaImageFieldDefaultElement;
+    new (): HTMLAlaskaImageFieldDefaultElement;
+  };
+
   interface HTMLAlaskaImageFieldEditorElement extends Components.AlaskaImageFieldEditor, HTMLStencilElement {}
   var HTMLAlaskaImageFieldEditorElement: {
     prototype: HTMLAlaskaImageFieldEditorElement;
@@ -121,6 +118,12 @@ declare global {
   var HTMLAlaskaLinkFieldElement: {
     prototype: HTMLAlaskaLinkFieldElement;
     new (): HTMLAlaskaLinkFieldElement;
+  };
+
+  interface HTMLAlaskaLinkFieldDefaultElement extends Components.AlaskaLinkFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaLinkFieldDefaultElement: {
+    prototype: HTMLAlaskaLinkFieldDefaultElement;
+    new (): HTMLAlaskaLinkFieldDefaultElement;
   };
 
   interface HTMLAlaskaLinkFieldEditorElement extends Components.AlaskaLinkFieldEditor, HTMLStencilElement {}
@@ -141,43 +144,49 @@ declare global {
     new (): HTMLAlaskaTextFieldElement;
   };
 
+  interface HTMLAlaskaTextFieldDefaultElement extends Components.AlaskaTextFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaTextFieldDefaultElement: {
+    prototype: HTMLAlaskaTextFieldDefaultElement;
+    new (): HTMLAlaskaTextFieldDefaultElement;
+  };
+
   interface HTMLAlaskaTextFieldEditorElement extends Components.AlaskaTextFieldEditor, HTMLStencilElement {}
   var HTMLAlaskaTextFieldEditorElement: {
     prototype: HTMLAlaskaTextFieldEditorElement;
     new (): HTMLAlaskaTextFieldEditorElement;
   };
   interface HTMLElementTagNameMap {
-    'alaska-content-field': HTMLAlaskaContentFieldElement;
-    'alaska-content-field-default': HTMLAlaskaContentFieldDefaultElement;
-    'alaska-content-field-editor': HTMLAlaskaContentFieldEditorElement;
     'alaska-html-field': HTMLAlaskaHtmlFieldElement;
+    'alaska-html-field-default': HTMLAlaskaHtmlFieldDefaultElement;
     'alaska-html-field-editor': HTMLAlaskaHtmlFieldEditorElement;
     'alaska-image-field': HTMLAlaskaImageFieldElement;
+    'alaska-image-field-default': HTMLAlaskaImageFieldDefaultElement;
     'alaska-image-field-editor': HTMLAlaskaImageFieldEditorElement;
     'alaska-link-field': HTMLAlaskaLinkFieldElement;
+    'alaska-link-field-default': HTMLAlaskaLinkFieldDefaultElement;
     'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
     'alaska-rich-text-editor': HTMLAlaskaRichTextEditorElement;
     'alaska-text-field': HTMLAlaskaTextFieldElement;
+    'alaska-text-field-default': HTMLAlaskaTextFieldDefaultElement;
     'alaska-text-field-editor': HTMLAlaskaTextFieldEditorElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface AlaskaContentField extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldElement> {}
-  interface AlaskaContentFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldDefaultElement> {
-    'field'?: ContentField<any>;
-  }
-  interface AlaskaContentFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaContentFieldEditorElement> {
-    'field'?: ContentField<any>;
-  }
   interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {
     'field'?: ContentField<any>;
   }
+  interface AlaskaHtmlFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldDefaultElement> {
+    'field'?: ContentField<string>;
+  }
   interface AlaskaHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldEditorElement> {
-    'field'?: ContentField<any>;
+    'field'?: ContentField<string>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaImageField extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldElement> {
+    'field'?: ContentField<ImageFieldData>;
+  }
+  interface AlaskaImageFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldDefaultElement> {
     'field'?: ContentField<ImageFieldData>;
   }
   interface AlaskaImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldEditorElement> {
@@ -185,6 +194,9 @@ declare namespace LocalJSX {
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaLinkField extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldElement> {
+    'field'?: ContentField<LinkFieldData>;
+  }
+  interface AlaskaLinkFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldDefaultElement> {
     'field'?: ContentField<LinkFieldData>;
   }
   interface AlaskaLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldEditorElement> {
@@ -268,22 +280,26 @@ declare namespace LocalJSX {
   interface AlaskaTextField extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldElement> {
     'field'?: ContentField<string>;
   }
+  interface AlaskaTextFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldDefaultElement> {
+    'field'?: ContentField<string>;
+  }
   interface AlaskaTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldEditorElement> {
     'field'?: ContentField<string>;
   }
 
   interface IntrinsicElements {
-    'alaska-content-field': AlaskaContentField;
-    'alaska-content-field-default': AlaskaContentFieldDefault;
-    'alaska-content-field-editor': AlaskaContentFieldEditor;
     'alaska-html-field': AlaskaHtmlField;
+    'alaska-html-field-default': AlaskaHtmlFieldDefault;
     'alaska-html-field-editor': AlaskaHtmlFieldEditor;
     'alaska-image-field': AlaskaImageField;
+    'alaska-image-field-default': AlaskaImageFieldDefault;
     'alaska-image-field-editor': AlaskaImageFieldEditor;
     'alaska-link-field': AlaskaLinkField;
+    'alaska-link-field-default': AlaskaLinkFieldDefault;
     'alaska-link-field-editor': AlaskaLinkFieldEditor;
     'alaska-rich-text-editor': AlaskaRichTextEditor;
     'alaska-text-field': AlaskaTextField;
+    'alaska-text-field-default': AlaskaTextFieldDefault;
     'alaska-text-field-editor': AlaskaTextFieldEditor;
   }
 }

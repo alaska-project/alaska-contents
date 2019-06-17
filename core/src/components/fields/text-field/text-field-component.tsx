@@ -1,5 +1,6 @@
-import { Component, Prop, h, Method } from '@stencil/core';
+import { Component, Prop, h, Method, State } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
+import { ContentMode } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-text-field',
@@ -7,6 +8,14 @@ import { ContentField } from '../../../models/content-models';
     shadow: true
 })
 export class TextFieldComponent {
+
+    @State()
+    mode: ContentMode = 'Default';
+
+    @Method()
+    async setMode(mode: ContentMode) {
+        this.mode = mode;
+    }
 
     @Prop()
     field: ContentField<string>;
@@ -17,6 +26,13 @@ export class TextFieldComponent {
     }
 
     render() {
-        return this.field ? <div innerHTML={this.field.value}></div> : undefined;
+        switch (this.mode) {
+            case 'Default':
+                return <alaska-text-field-default field={this.field}></alaska-text-field-default>;
+            case 'Editing':
+                return <alaska-text-field-editor field={this.field}></alaska-text-field-editor>;
+            default:
+                undefined;
+        }
     }
 }
