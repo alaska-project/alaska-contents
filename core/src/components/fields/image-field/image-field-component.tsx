@@ -1,5 +1,6 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Method, State } from '@stencil/core';
 import { ImageFieldData, ContentField } from '../../../models/content-models';
+import { ContentMode } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-image-field',
@@ -8,13 +9,30 @@ import { ImageFieldData, ContentField } from '../../../models/content-models';
 })
 export class ImageFieldComponent {
 
+    @State()
+    mode: ContentMode = 'Default';
+
+    @Method()
+    async setMode(mode: ContentMode) {
+        this.mode = mode;
+    }
+
     @Prop()
     field: ContentField<ImageFieldData>;
 
+    @Method()
+    async setField(field: ContentField<ImageFieldData>) {
+        this.field = field;
+    }
+    
     render() {
-        if (!this.field || !this.field.value.url) {
-            return;
+        switch (this.mode) {
+            case 'Default':
+                return <alaska-image-field-default field={this.field}></alaska-image-field-default>;
+            case 'Editing':
+                return <alaska-image-field-editor field={this.field}></alaska-image-field-editor>;
+            default:
+                undefined;
         }
-        return <img class={this.field.value.class} src={this.field.value.url} alt={this.field.value.alt}></img>;
     }
 }

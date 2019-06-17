@@ -35,6 +35,8 @@ export namespace Components {
   }
   interface AlaskaImageField {
     'field': ContentField<ImageFieldData>;
+    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaImageFieldDefault {
     'field': ContentField<ImageFieldData>;

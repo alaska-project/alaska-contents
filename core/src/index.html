@@ -22,6 +22,7 @@
       mode = mode === 'Default' ? 'Editing' : 'Default';
       document.getElementById('field1').setMode(mode);
       document.getElementById('field2').setMode(mode);
+      document.getElementById('field3').setMode(mode);
     }
   </script>
 
@@ -46,9 +47,9 @@
       });
     });
   </script>
-<!--
+
   <h4>Image Field</h4>
-  <alaska-content-field id="field3"></alaska-content-field>
+  <alaska-image-field id="field3"></alaska-image-field>
   <script>
     window.addEventListener("load", function (event) {
       document.getElementById('field3').setField({
@@ -61,7 +62,7 @@
       });
     });
   </script>
-
+<!--
   <h4>Link Field</h4>
   <alaska-content-field id="field4">
     <p>AAA<strong>BB</strong></p>
