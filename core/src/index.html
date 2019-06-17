@@ -21,6 +21,7 @@
     function toggleMode() {
       mode = mode === 'Default' ? 'Editing' : 'Default';
       document.getElementById('field1').setMode(mode);
+      document.getElementById('field2').setMode(mode);
     }
   </script>
 
@@ -34,9 +35,9 @@
       });
     });
   </script>
-<!-- 
+
   <h4>Html Field</h4>
-  <alaska-content-field id="field2"></alaska-content-field>
+  <alaska-html-field id="field2"></alaska-html-field>
   <script>
     window.addEventListener("load", function (event) {
       document.getElementById('field2').setField({
@@ -45,7 +46,7 @@
       });
     });
   </script>
-
+<!--
   <h4>Image Field</h4>
   <alaska-content-field id="field3"></alaska-content-field>
   <script>

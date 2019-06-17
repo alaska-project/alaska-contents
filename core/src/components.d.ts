@@ -12,18 +12,20 @@ import {
   LinkFieldData,
 } from './models/content-models';
 import {
+  ContentMode,
+} from './models/component-models';
+import {
   EventObj,
 } from './components/editors/rich-text-editor/rich-text-editor-models';
 import {
   TinyMceSettings,
 } from './models/tinymce-models';
-import {
-  ContentMode,
-} from './models/component-models';
 
 export namespace Components {
   interface AlaskaHtmlField {
     'field': ContentField<any>;
+    'setField': (field: ContentField<string>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaHtmlFieldDefault {
     'field': ContentField<string>;
