@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { RichTextEditorPopoverComponent } from './components/editors/rich-text-editor-popover/rich-text-editor-popover.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LinkFieldEditorPopoverComponent } from './components/editors/link-field-editor-popover/link-field-editor-popover.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ContentFieldDefaultComponent, 
     ContentFieldEditorComponent, 
     RichTextEditorComponent, 
-    RichTextEditorPopoverComponent
+    RichTextEditorPopoverComponent, LinkFieldEditorPopoverComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [
     RichTextEditorPopoverComponent,
+    LinkFieldEditorPopoverComponent,
     TextFieldComponent,
     TextFieldEditorComponent,
     LinkFieldEditorComponent,
