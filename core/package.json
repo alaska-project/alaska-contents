@@ -21,7 +21,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "devDependencies": {
-    "@stencil/core": "^1.0.4",
+    "@stencil/core": "^1.0.6",
     "@stencil/sass": "^1.0.0",
     "@types/materialize-css": "^1.0.6",
     "@types/tinymce": "^4.5.22",
@@ -31,6 +31,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@ionic/core": "^4.5.0",
     "tinymce": "^5.0.7"
   }
 }
