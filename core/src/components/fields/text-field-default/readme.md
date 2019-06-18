@@ -12,18 +12,18 @@
 | `field`  | --        |             | `ContentField<string>` | `undefined` |
 
 
-## Methods
+## Dependencies
 
-### `setField(field: ContentField<string>) => Promise<void>`
+### Used by
 
+ - [alaska-text-field](..\text-field)
 
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
+### Graph
+```mermaid
+graph TD;
+  alaska-text-field --> alaska-text-field-default
+  style alaska-text-field-default fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

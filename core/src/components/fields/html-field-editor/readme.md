@@ -7,17 +7,28 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                | Default     |
-| -------- | --------- | ----------- | ------------------- | ----------- |
-| `field`  | --        |             | `ContentField<any>` | `undefined` |
+| Property | Attribute | Description | Type                   | Default     |
+| -------- | --------- | ----------- | ---------------------- | ----------- |
+| `field`  | --        |             | `ContentField<string>` | `undefined` |
 
 
-## Events
+## Dependencies
 
-| Event  | Description | Type               |
-| ------ | ----------- | ------------------ |
-| `edit` |             | `CustomEvent<any>` |
+### Used by
 
+ - [alaska-html-field](..\html-field)
+
+### Depends on
+
+- [alaska-rich-text-editor](..\..\editors\rich-text-editor)
+
+### Graph
+```mermaid
+graph TD;
+  alaska-html-field-editor --> alaska-rich-text-editor
+  alaska-html-field --> alaska-html-field-editor
+  style alaska-html-field-editor fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

@@ -61,6 +61,9 @@ export namespace Components {
   interface AlaskaLinkFieldEditor {
     'field': ContentField<LinkFieldData>;
   }
+  interface AlaskaModal {
+    'presentModal': () => Promise<void>;
+  }
   interface AlaskaRichTextEditor {
     'contentCss': string;
     'fontFormats': string;
@@ -153,6 +156,12 @@ declare global {
     new (): HTMLAlaskaLinkFieldEditorElement;
   };
 
+  interface HTMLAlaskaModalElement extends Components.AlaskaModal, HTMLStencilElement {}
+  var HTMLAlaskaModalElement: {
+    prototype: HTMLAlaskaModalElement;
+    new (): HTMLAlaskaModalElement;
+  };
+
   interface HTMLAlaskaRichTextEditorElement extends Components.AlaskaRichTextEditor, HTMLStencilElement {}
   var HTMLAlaskaRichTextEditorElement: {
     prototype: HTMLAlaskaRichTextEditorElement;
@@ -193,6 +202,7 @@ declare global {
     'alaska-link-field': HTMLAlaskaLinkFieldElement;
     'alaska-link-field-default': HTMLAlaskaLinkFieldDefaultElement;
     'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
+    'alaska-modal': HTMLAlaskaModalElement;
     'alaska-rich-text-editor': HTMLAlaskaRichTextEditorElement;
     'alaska-select': HTMLAlaskaSelectElement;
     'alaska-text-field': HTMLAlaskaTextFieldElement;
@@ -234,6 +244,7 @@ declare namespace LocalJSX {
     'field'?: ContentField<LinkFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
+  interface AlaskaModal extends JSXBase.HTMLAttributes<HTMLAlaskaModalElement> {}
   interface AlaskaRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlaskaRichTextEditorElement> {
     'contentCss'?: string;
     'fontFormats'?: string;
@@ -332,6 +343,7 @@ declare namespace LocalJSX {
     'alaska-link-field': AlaskaLinkField;
     'alaska-link-field-default': AlaskaLinkFieldDefault;
     'alaska-link-field-editor': AlaskaLinkFieldEditor;
+    'alaska-modal': AlaskaModal;
     'alaska-rich-text-editor': AlaskaRichTextEditor;
     'alaska-select': AlaskaSelect;
     'alaska-text-field': AlaskaTextField;

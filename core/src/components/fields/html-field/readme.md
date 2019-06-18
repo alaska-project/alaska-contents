@@ -12,6 +12,45 @@
 | `field`  | --        |             | `ContentField<any>` | `undefined` |
 
 
+## Methods
+
+### `setField(field: ContentField<string>) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setMode(mode: ContentMode) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Dependencies
+
+### Depends on
+
+- [alaska-html-field-default](..\html-field-default)
+- [alaska-html-field-editor](..\html-field-editor)
+
+### Graph
+```mermaid
+graph TD;
+  alaska-html-field --> alaska-html-field-default
+  alaska-html-field --> alaska-html-field-editor
+  alaska-html-field-editor --> alaska-rich-text-editor
+  style alaska-html-field fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

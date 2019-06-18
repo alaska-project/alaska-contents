@@ -112,6 +112,19 @@ Type: `Promise<void>`
 
 
 
+## Dependencies
+
+### Used by
+
+ - [alaska-html-field-editor](..\..\fields\html-field-editor)
+
+### Graph
+```mermaid
+graph TD;
+  alaska-html-field-editor --> alaska-rich-text-editor
+  style alaska-rich-text-editor fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
