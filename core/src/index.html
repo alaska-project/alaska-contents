@@ -24,6 +24,19 @@
     }
   </style>
 
+  <alaska-select id="select1"></alaska-select>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('select1').options = [{
+        value: '_self',
+        label: 'Self',
+      }, {
+        value: '_blank',
+        label: 'Blank',
+      }];
+    });
+  </script>
+
   <button class="waves-effect waves-light btn" onclick="toggleMode()">Toggle Mode</button>
   <script>
     var mode = 'Default';

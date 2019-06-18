@@ -9,6 +9,7 @@ import { LinkFieldData, ContentField } from '../../../models/content-models';
 export class LinkFieldEditorComponent {
 
     private innerHtml: string;
+    private linkEditorElement: HTMLAlaskaLinkEditorElement;
     private modal: M.Modal;
 
     @Element()
@@ -34,10 +35,11 @@ export class LinkFieldEditorComponent {
                 <a onClick={() => this.modal.open()} innerHTML={this.innerHtml ? this.innerHtml : this.field.value.text}></a>
                 <div ref={el => this.initializeModal(el)} class="modal">
                     <div class="modal-content">
+                        <alaska-link-editor ref={el => this.linkEditorElement = el} linkData={Object.assign({}, this.field.value)}></alaska-link-editor>
                     </div>
                     <div class="modal-footer">
                         <button onClick={() => this.modal.close()} class="modal-close waves-effect waves-green btn-flat">Cancel</button>
-                        {/* <button onClick={() => this.saveValueAndClose()} class="modal-close waves-effect waves-green btn">Save</button> */}
+                        <button onClick={() => this.saveValueAndClose()} class="modal-close waves-effect waves-green btn">Save</button>
                     </div>
                 </div>
             </div>
@@ -49,5 +51,10 @@ export class LinkFieldEditorComponent {
             startingTop: '10%',
             endingTop: '10%',
         });
+    }
+
+    private saveValueAndClose() {
+        this.field.value = this.linkEditorElement.linkData;
+        this.modal.close();
     }
 }

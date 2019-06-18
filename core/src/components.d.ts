@@ -20,6 +20,9 @@ import {
 import {
   TinyMceSettings,
 } from './models/tinymce-models';
+import {
+  SelectOption,
+} from './components/controls/select/select.model';
 
 export namespace Components {
   interface AlaskaHtmlField {
@@ -44,7 +47,9 @@ export namespace Components {
   interface AlaskaImageFieldEditor {
     'field': ContentField<ImageFieldData>;
   }
-  interface AlaskaLinkEditor {}
+  interface AlaskaLinkEditor {
+    'linkData': LinkFieldData;
+  }
   interface AlaskaLinkField {
     'field': ContentField<LinkFieldData>;
     'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
@@ -68,6 +73,9 @@ export namespace Components {
     'setValue': (value: string) => Promise<void>;
     'skin': string;
     'toolbar': string;
+  }
+  interface AlaskaSelect {
+    'options': SelectOption[];
   }
   interface AlaskaTextField {
     'field': ContentField<string>;
@@ -151,6 +159,12 @@ declare global {
     new (): HTMLAlaskaRichTextEditorElement;
   };
 
+  interface HTMLAlaskaSelectElement extends Components.AlaskaSelect, HTMLStencilElement {}
+  var HTMLAlaskaSelectElement: {
+    prototype: HTMLAlaskaSelectElement;
+    new (): HTMLAlaskaSelectElement;
+  };
+
   interface HTMLAlaskaTextFieldElement extends Components.AlaskaTextField, HTMLStencilElement {}
   var HTMLAlaskaTextFieldElement: {
     prototype: HTMLAlaskaTextFieldElement;
@@ -180,6 +194,7 @@ declare global {
     'alaska-link-field-default': HTMLAlaskaLinkFieldDefaultElement;
     'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
     'alaska-rich-text-editor': HTMLAlaskaRichTextEditorElement;
+    'alaska-select': HTMLAlaskaSelectElement;
     'alaska-text-field': HTMLAlaskaTextFieldElement;
     'alaska-text-field-default': HTMLAlaskaTextFieldDefaultElement;
     'alaska-text-field-editor': HTMLAlaskaTextFieldEditorElement;
@@ -206,7 +221,9 @@ declare namespace LocalJSX {
     'field'?: ContentField<ImageFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
-  interface AlaskaLinkEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkEditorElement> {}
+  interface AlaskaLinkEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkEditorElement> {
+    'linkData'?: LinkFieldData;
+  }
   interface AlaskaLinkField extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldElement> {
     'field'?: ContentField<LinkFieldData>;
   }
@@ -291,6 +308,9 @@ declare namespace LocalJSX {
     'skin'?: string;
     'toolbar'?: string;
   }
+  interface AlaskaSelect extends JSXBase.HTMLAttributes<HTMLAlaskaSelectElement> {
+    'options'?: SelectOption[];
+  }
   interface AlaskaTextField extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldElement> {
     'field'?: ContentField<string>;
   }
@@ -313,6 +333,7 @@ declare namespace LocalJSX {
     'alaska-link-field-default': AlaskaLinkFieldDefault;
     'alaska-link-field-editor': AlaskaLinkFieldEditor;
     'alaska-rich-text-editor': AlaskaRichTextEditor;
+    'alaska-select': AlaskaSelect;
     'alaska-text-field': AlaskaTextField;
     'alaska-text-field-default': AlaskaTextFieldDefault;
     'alaska-text-field-editor': AlaskaTextFieldEditor;
