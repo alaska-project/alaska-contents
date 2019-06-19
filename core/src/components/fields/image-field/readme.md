@@ -12,6 +12,13 @@
 | `field`  | --        |             | `ContentField<ImageFieldData>` | `undefined` |
 
 
+## Events
+
+| Event  | Description | Type               |
+| ------ | ----------- | ------------------ |
+| `edit` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `setField(field: ContentField<ImageFieldData>) => Promise<void>`

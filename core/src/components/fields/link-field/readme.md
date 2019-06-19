@@ -12,6 +12,13 @@
 | `field`  | --        |             | `ContentField<LinkFieldData>` | `undefined` |
 
 
+## Events
+
+| Event  | Description | Type               |
+| ------ | ----------- | ------------------ |
+| `edit` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `setField(field: ContentField<LinkFieldData>) => Promise<void>`
@@ -47,8 +54,6 @@ Type: `Promise<void>`
 graph TD;
   alaska-link-field --> alaska-link-field-default
   alaska-link-field --> alaska-link-field-editor
-  alaska-link-field-editor --> alaska-link-editor
-  alaska-link-editor --> alaska-select
   style alaska-link-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

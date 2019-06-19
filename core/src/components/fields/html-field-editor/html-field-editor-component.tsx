@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({
@@ -8,9 +8,9 @@ import { ContentField } from '../../../models/content-models';
 })
 export class HtmlFieldEditorComponent {
 
-    private modal: M.Modal;
-    private currentValue: string;
-    private editor: HTMLAlaskaRichTextEditorElement;
+    // private modal: M.Modal;
+    // private currentValue: string;
+    // private editor: HTMLAlaskaRichTextEditorElement;
 
     @State()
     n = 0;
@@ -18,14 +18,17 @@ export class HtmlFieldEditorComponent {
     @Prop()
     field: ContentField<string>;
 
+    @Event()
+    edit: EventEmitter;
+
     render() {
         if (!this.field) {
             return;
         }
         return (
             <div>
-                <div onClick={() => this.modal.open()} class="field" innerHTML={this.field.value}></div>
-                <div ref={el => this.initializeModal(el)} class="modal html-editor-modal">
+                <div onClick={() => this.edit.emit()} class="field" innerHTML={this.field.value}></div>
+                {/* <div ref={el => this.initializeModal(el)} class="modal html-editor-modal">
                     <div class="modal-container">
                         <div class="modal-content">
                             <alaska-rich-text-editor onValueChanged={(event: any) => this.valueChanged(event)} height="100%" ref={el => this.initializeRichTextEditor(el)}></alaska-rich-text-editor>
@@ -35,42 +38,42 @@ export class HtmlFieldEditorComponent {
                             <button onClick={() => this.saveValueAndClose()} class="modal-close waves-effect waves-green btn">Save</button>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }
 
-    private initializeModal(modal: HTMLElement) {
-        this.modal = M.Modal.init(modal, {
-            startingTop: '10%',
-            endingTop: '10%',
-        });
-    }
+    // private initializeModal(modal: HTMLElement) {
+    //     this.modal = M.Modal.init(modal, {
+    //         startingTop: '10%',
+    //         endingTop: '10%',
+    //     });
+    // }
 
-    private initializeRichTextEditor(editor: HTMLAlaskaRichTextEditorElement) {
-        this.currentValue = this.field.value;
-        editor.initialize({
-            baseURL: undefined,
-            options: {
-            }
-        }, this.field.value);
-        this.editor = editor;
-    }
+    // private initializeRichTextEditor(editor: HTMLAlaskaRichTextEditorElement) {
+    //     this.currentValue = this.field.value;
+    //     editor.initialize({
+    //         baseURL: undefined,
+    //         options: {
+    //         }
+    //     }, this.field.value);
+    //     this.editor = editor;
+    // }
 
-    private valueChanged(event: any) {
-        this.currentValue = event.detail;
-    }
+    // private valueChanged(event: any) {
+    //     this.currentValue = event.detail;
+    // }
 
-    private cancelAndClose() {
-        this.editor.setValue(this.field.value);
-        this.currentValue = this.field.value;
-        this.modal.close();
-        this.n++;
-    }
+    // private cancelAndClose() {
+    //     this.editor.setValue(this.field.value);
+    //     this.currentValue = this.field.value;
+    //     this.modal.close();
+    //     this.n++;
+    // }
 
-    private saveValueAndClose() {
-        this.field.value = this.currentValue;
-        this.modal.close();
-        this.n++;
-    }
+    // private saveValueAndClose() {
+    //     this.field.value = this.currentValue;
+    //     this.modal.close();
+    //     this.n++;
+    // }
 }

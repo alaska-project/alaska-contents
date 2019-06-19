@@ -14,10 +14,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [alaska-link-field-editor](..\..\fields\link-field-editor)
-
 ### Depends on
 
 - [alaska-select](..\..\controls\select)
@@ -26,7 +22,6 @@
 ```mermaid
 graph TD;
   alaska-link-editor --> alaska-select
-  alaska-link-field-editor --> alaska-link-editor
   style alaska-link-editor fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

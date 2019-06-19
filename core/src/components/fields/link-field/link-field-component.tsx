@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State, Method } from '@stencil/core';
+import { Component, h, Prop, Element, State, Method, EventEmitter, Event } from '@stencil/core';
 import { LinkFieldData, ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 
@@ -30,6 +30,9 @@ export class LinkFieldComponent {
         this.field = field;
     }
 
+    @Event()
+    edit: EventEmitter;
+
     componentWillLoad() {
         this.innerHtml = this.element.innerHTML;
         this.element.innerHTML = '';
@@ -40,7 +43,7 @@ export class LinkFieldComponent {
             case 'Default':
                 return <alaska-link-field-default field={this.field} innerHTML={this.innerHtml}></alaska-link-field-default>;
             case 'Editing':
-                return <alaska-link-field-editor field={this.field} innerHTML={this.innerHtml}></alaska-link-field-editor>;
+                return <alaska-link-field-editor onEdit={() => this.edit.emit()} field={this.field} innerHTML={this.innerHtml}></alaska-link-field-editor>;
             default:
                 undefined;
         }

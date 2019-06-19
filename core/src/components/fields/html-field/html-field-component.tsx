@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method } from '@stencil/core';
+import { Component, h, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 
@@ -25,12 +25,15 @@ export class HtmlFieldComponent {
         this.field = field;
     }
 
+    @Event()
+    edit: EventEmitter;
+
     render() {
         switch (this.mode) {
             case 'Default':
                 return <alaska-html-field-default field={this.field}></alaska-html-field-default>;
             case 'Editing':
-                return <alaska-html-field-editor field={this.field}></alaska-html-field-editor>;
+                return <alaska-html-field-editor field={this.field} onEdit={() => this.edit.emit()}></alaska-html-field-editor>;
             default:
                 undefined;
         }

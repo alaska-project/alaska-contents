@@ -9,13 +9,16 @@ import { defineCustomElements } from '@alaska-project/contents-core/loader';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RichTextEditorModalComponent } from './components/editors/rich-text-editor-modal/rich-text-editor-modal.component';
+import { LinkEditorModalComponent } from './components/editors/link-editor-modal/link-editor-modal.component';
+import { ContentEditingService } from './services/content-editing/content-editing.service';
 
 @NgModule({
   declarations: [
-    TextFieldComponent, 
-    LinkFieldComponent, 
-    ImageFieldComponent, 
-    HtmlFieldComponent, 
+    TextFieldComponent,
+    LinkFieldComponent,
+    ImageFieldComponent,
+    HtmlFieldComponent, RichTextEditorModalComponent, LinkEditorModalComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,7 @@ export class AlaskaContentsModule {
     defineCustomElements(window);
     return {
       ngModule: AlaskaContentsModule,
-      providers: []
+      providers: [ContentEditingService]
     };
   }
 }

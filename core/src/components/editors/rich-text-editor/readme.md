@@ -91,7 +91,7 @@
 
 ## Methods
 
-### `initialize(settings: TinyMceSettings, value: string, callback?: () => void) => Promise<void>`
+### `initialize(settings: any, value: string, callback?: () => void) => Promise<void>`
 
 
 
@@ -111,19 +111,6 @@ Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Used by
-
- - [alaska-html-field-editor](..\..\fields\html-field-editor)
-
-### Graph
-```mermaid
-graph TD;
-  alaska-html-field-editor --> alaska-rich-text-editor
-  style alaska-rich-text-editor fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Method, State } from '@stencil/core';
+import { Component, h, Prop, Method, State, EventEmitter, Event } from '@stencil/core';
 import { ImageFieldData, ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 
@@ -9,6 +9,9 @@ import { ContentMode } from '../../../models/component-models';
 })
 export class ImageFieldComponent {
 
+    @Event()
+    edit: EventEmitter;
+    
     @State()
     mode: ContentMode = 'Default';
 
@@ -30,7 +33,7 @@ export class ImageFieldComponent {
             case 'Default':
                 return <alaska-image-field-default field={this.field}></alaska-image-field-default>;
             case 'Editing':
-                return <alaska-image-field-editor field={this.field}></alaska-image-field-editor>;
+                return <alaska-image-field-editor onEdit={() => this.edit.emit()} field={this.field}></alaska-image-field-editor>;
             default:
                 undefined;
         }

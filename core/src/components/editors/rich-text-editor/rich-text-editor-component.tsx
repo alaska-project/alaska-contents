@@ -1,6 +1,5 @@
 import { Component, Method, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { randomId } from '../../../utils/utils';
-import { TinyMceSettings } from '../../../models/tinymce-models';
 import { EventObj } from './rich-text-editor-models';
 
 @Component({
@@ -10,6 +9,7 @@ import { EventObj } from './rich-text-editor-models';
 })
 export class RichTextEditorComponent {
 
+    private editorElement: HTMLElement;
     private editorId = randomId();
     private editor: any;
     private value: string;
@@ -90,13 +90,13 @@ export class RichTextEditorComponent {
     @Prop() fontFormats = '';
 
     @Method()
-    async initialize(settings: TinyMceSettings, value: string, callback?: () => void) {
+    async initialize(settings: any, value: string, callback?: () => void) {
         this.value = value;
         const tiny = this.getTinymce();
         if (settings.baseURL) {
             tiny.baseURL = settings.baseURL;
         }
-        const options = this.createInitOptions(settings, (editor) => this.setupEditor(editor, callback));
+        const options = this.createInitOptions(settings, this.editorElement, (editor) => this.setupEditor(editor, callback));
         tiny.init(options);
     }
 
@@ -105,8 +105,10 @@ export class RichTextEditorComponent {
         this.value = value;
     }
 
-    private createInitOptions(settings: TinyMceSettings, setup?: (editor: any) => void) {
+    private createInitOptions(settings: any, target: any, setup?: (editor: any) => void) {
+        console.log(target);
         return Object.assign({},
+            { target: target },
             { selector: `#${this.editorId}` },
             { plugins: this.plugins },
             { toolbar: this.toolbar },
@@ -161,7 +163,7 @@ export class RichTextEditorComponent {
     render() {
         return (
             <div class="tinymce-editor-container">
-                <textarea id={this.editorId}></textarea>
+                <textarea ref={el => this.editor = el} id={this.editorId}></textarea>
             </div>);
     }
 

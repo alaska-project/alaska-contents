@@ -18,9 +18,6 @@ import {
   EventObj,
 } from './components/editors/rich-text-editor/rich-text-editor-models';
 import {
-  TinyMceSettings,
-} from './models/tinymce-models';
-import {
   SelectOption,
 } from './components/controls/select/select.model';
 
@@ -68,7 +65,7 @@ export namespace Components {
     'contentCss': string;
     'fontFormats': string;
     'height': string;
-    'initialize': (settings: TinyMceSettings, value: string, callback?: () => void) => Promise<void>;
+    'initialize': (settings: any, value: string, callback?: () => void) => Promise<void>;
     'inline': boolean;
     'mobileTheme': string;
     'plugins': string;
@@ -214,15 +211,18 @@ declare global {
 declare namespace LocalJSX {
   interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {
     'field'?: ContentField<any>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaHtmlFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldDefaultElement> {
     'field'?: ContentField<string>;
   }
   interface AlaskaHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldEditorElement> {
     'field'?: ContentField<string>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaImageField extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldElement> {
     'field'?: ContentField<ImageFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaImageFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldDefaultElement> {
     'field'?: ContentField<ImageFieldData>;
@@ -236,6 +236,7 @@ declare namespace LocalJSX {
   }
   interface AlaskaLinkField extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldElement> {
     'field'?: ContentField<LinkFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaLinkFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldDefaultElement> {
     'field'?: ContentField<LinkFieldData>;

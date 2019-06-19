@@ -12,6 +12,13 @@
 | `field`  | --        |             | `ContentField<any>` | `undefined` |
 
 
+## Events
+
+| Event  | Description | Type               |
+| ------ | ----------- | ------------------ |
+| `edit` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `setField(field: ContentField<string>) => Promise<void>`
@@ -47,7 +54,6 @@ Type: `Promise<void>`
 graph TD;
   alaska-html-field --> alaska-html-field-default
   alaska-html-field --> alaska-html-field-editor
-  alaska-html-field-editor --> alaska-rich-text-editor
   style alaska-html-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
