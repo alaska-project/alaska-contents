@@ -18,7 +18,9 @@ import { ContentEditingService } from './services/content-editing/content-editin
     TextFieldComponent,
     LinkFieldComponent,
     ImageFieldComponent,
-    HtmlFieldComponent, RichTextEditorModalComponent, LinkEditorModalComponent,
+    HtmlFieldComponent, 
+    RichTextEditorModalComponent, 
+    LinkEditorModalComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,12 @@ import { ContentEditingService } from './services/content-editing/content-editin
     LinkFieldComponent,
     ImageFieldComponent,
     HtmlFieldComponent,
+    RichTextEditorModalComponent,
+    LinkEditorModalComponent,
+  ],
+  entryComponents: [
+    RichTextEditorModalComponent,
+    LinkEditorModalComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
