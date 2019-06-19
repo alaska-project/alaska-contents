@@ -1,8 +1,15 @@
 
-<button class="toggleMode" (click)="toggleMode()">Toggle Mode</button>
+<button mat-raised-button color="primary" class="toggleMode" (click)="toggleMode()">Toggle Mode</button>
 
+<h2>Text Field</h2>
 <aly-text-field [field]="item.fields.title"></aly-text-field>
+
+<h2>Html Field</h2>
 <aly-html-field [field]="item.fields.description"></aly-html-field>
+
+<h2>Image Field</h2>
 <aly-image-field [field]="item.fields.image"></aly-image-field>
+
+<h2>Link Field</h2>
 <aly-link-field [field]="item.fields.cta"><p>CLIKKAMI</p></aly-link-field>
 
