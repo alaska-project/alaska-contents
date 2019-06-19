@@ -1,12 +1,15 @@
 {
   "name": "@alaska-project/contents-angular",
   "version": "0.0.1",
+  "scripts": {
+    "link:alaska": "npm link @alaska-project/contents-angular"
+  },
   "peerDependencies": {
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/animations": "^8.0.0",
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
+    "@angular/animations": "^8.0.1",
     "@angular/cdk": "^8.0.1",
-    "@angular/forms": "^8.0.0",
+    "@angular/forms": "^8.0.1",
     "@angular/http": "^7.2.15",
     "@angular/material": "^8.0.1",
     "rxjs": "^6.5.2"
