@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnDestr
 import { LinkFieldData, ContentField } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { LinkEditorModalComponent } from '../../editors/link-editor-modal/link-editor-modal.component';
+import { LinkEditorDialogModel } from '../../editors/link-editor-modal/link-editor-modal.model';
 
 @Component({
   selector: 'aly-link-field',
@@ -11,14 +14,17 @@ import { Subscription } from 'rxjs';
 export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private subscription: Subscription;
-
+  private editorDialog: MatDialogRef<LinkEditorModalComponent>;
+  
   @ViewChild('fieldElement', {static: false}) 
   fieldElement: ElementRef<HTMLAlaskaLinkFieldElement>;
 
   @Input()
   field: ContentField<LinkFieldData>;
   
-  constructor(private contentEditing: ContentEditingService) { }
+  constructor(
+    private contentEditing: ContentEditingService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -31,6 +37,26 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
     this.fieldElement.nativeElement.field = this.field;
     this.subscription = this.contentEditing.editingMode().subscribe(x => {
       this.fieldElement.nativeElement.setMode(x);
+    });
+  }
+
+  openEditor() {
+    if (this.editorDialog) {
+      return;
+    }
+    this.editorDialog = this.dialog.open(LinkEditorModalComponent, {
+      data: <LinkEditorDialogModel>{ linkData: this.field.value }
+    });
+
+    this.editorDialog.afterClosed().subscribe(x => {
+      this.editorDialog = undefined;
+      if (x) {
+        this.field.value = x;
+        this.fieldElement.nativeElement.field.value = x;
+        //TODO: fix forceUpdate
+        this.fieldElement.nativeElement.setMode('Default');
+        setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
+      }
     });
   }
 }

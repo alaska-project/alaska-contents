@@ -1,5 +1,17 @@
 <div class="editor">
-
+  <form>
+    <mat-form-field class="link-url">
+      <input [(ngModel)]="linkData.url" name="url" matInput placeholder="Url">
+    </mat-form-field>
+    <mat-form-field class="link-target">
+      <mat-label>Target</mat-label>
+      <mat-select [(ngModel)]="linkData.target" name="target">
+        <mat-option *ngFor="let target of targets" [value]="target.value">
+          {{target.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>
 <div class="actions">
   <button class="cancel" mat-button (click)="cancel()">Cancel</button>

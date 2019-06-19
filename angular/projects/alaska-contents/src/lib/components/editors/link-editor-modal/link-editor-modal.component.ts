@@ -10,6 +10,14 @@ import { LinkFieldData } from '@alaska-project/contents-core/dist/types/models/c
 })
 export class LinkEditorModalComponent implements OnInit {
 
+  targets = [{
+    value: '_self',
+    label: 'Self'
+  }, {
+    value: '_blank',
+    label: 'New Window'
+  }];
+
   private linkData: LinkFieldData;
 
   constructor(
