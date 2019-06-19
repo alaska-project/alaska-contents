@@ -12,6 +12,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RichTextEditorModalComponent } from './components/editors/rich-text-editor-modal/rich-text-editor-modal.component';
 import { LinkEditorModalComponent } from './components/editors/link-editor-modal/link-editor-modal.component';
 import { ContentEditingService } from './services/content-editing/content-editing.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,12 @@ import { ContentEditingService } from './services/content-editing/content-editin
   ],
   imports: [
     CommonModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   exports: [
     TextFieldComponent,
