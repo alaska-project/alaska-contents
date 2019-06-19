@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContentField } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ import { RichTextEditorDialogModel } from '../../editors/rich-text-editor-modal/
 export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private subscription: Subscription;
+  private editorDialog: MatDialogRef<RichTextEditorModalComponent>;
 
   @ViewChild('fieldElement', {static: false}) 
   fieldElement: ElementRef<HTMLAlaskaHtmlFieldElement>;
@@ -40,11 +41,18 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openEditor() {
-    const dialogRef = this.dialog.open(RichTextEditorModalComponent, {
+    if (this.editorDialog) {
+      return;
+    }
+    this.editorDialog = this.dialog.open(RichTextEditorModalComponent, {
       panelClass: 'no-padding-mat-dialog',
       width: '90%',
       height: '90%',
       data: <RichTextEditorDialogModel>{ value: this.field.value }
+    });
+    
+    this.editorDialog.afterClosed().subscribe(x => {
+      this.editorDialog = undefined;
     });
   }
 }

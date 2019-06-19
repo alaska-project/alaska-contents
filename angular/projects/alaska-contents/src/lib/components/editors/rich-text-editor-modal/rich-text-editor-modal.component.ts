@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RichTextEditorDialogModel } from './rich-text-editor-modal.model';
 
@@ -7,7 +7,12 @@ import { RichTextEditorDialogModel } from './rich-text-editor-modal.model';
   templateUrl: './rich-text-editor-modal.component.html',
   styleUrls: ['./rich-text-editor-modal.component.scss']
 })
-export class RichTextEditorModalComponent implements OnInit {
+export class RichTextEditorModalComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('htmlEditor', {static: false})
+  htmlEditor: ElementRef<HTMLAlaskaRichTextEditorElement>;
+
+  value: string;
 
   constructor(
     private dialogRef: MatDialogRef<RichTextEditorModalComponent>,
@@ -16,4 +21,18 @@ export class RichTextEditorModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit(): void {
+    this.value = this.data.value;
+    this.htmlEditor.nativeElement.initialize({}, this.data.value);
+  }
+
+  cancel() {
+    this.dialogRef.close();
+    return undefined;
+  }
+
+  save() {
+    this.dialogRef.close();
+    return this.value;
+  }
 }

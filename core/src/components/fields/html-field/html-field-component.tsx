@@ -33,9 +33,13 @@ export class HtmlFieldComponent {
             case 'Default':
                 return <alaska-html-field-default field={this.field}></alaska-html-field-default>;
             case 'Editing':
-                return <alaska-html-field-editor field={this.field} onEdit={() => this.edit.emit()}></alaska-html-field-editor>;
+                return <alaska-html-field-editor field={this.field} onEdit={() => this.triggerEditEvent()}></alaska-html-field-editor>;
             default:
                 undefined;
         }
+    }
+
+    private triggerEditEvent() {
+        this.edit.emit();
     }
 }
