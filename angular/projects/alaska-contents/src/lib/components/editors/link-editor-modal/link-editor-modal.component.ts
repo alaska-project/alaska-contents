@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LinkEditorDialogModel } from './link-editor-modal.model';
+import { LinkFieldData } from '@alaska-project/contents-core/dist/types/models/content-models';
 
 @Component({
   selector: 'aly-link-editor-modal',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkEditorModalComponent implements OnInit {
 
-  constructor() { }
+  private linkData: LinkFieldData;
+
+  constructor(
+    private dialogRef: MatDialogRef<LinkEditorModalComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: LinkEditorDialogModel) {
+    this.linkData = Object.assign({}, data.linkData);
+  }
 
   ngOnInit() {
   }
 
+  cancel() {
+    this.dialogRef.close();
+  }
+
+  save() {
+    this.dialogRef.close(this.linkData);
+  }
 }

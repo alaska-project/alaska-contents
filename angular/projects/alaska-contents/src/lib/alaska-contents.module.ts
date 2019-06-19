@@ -18,8 +18,8 @@ import { ContentEditingService } from './services/content-editing/content-editin
     TextFieldComponent,
     LinkFieldComponent,
     ImageFieldComponent,
-    HtmlFieldComponent, 
-    RichTextEditorModalComponent, 
+    HtmlFieldComponent,
+    RichTextEditorModalComponent,
     LinkEditorModalComponent,
   ],
   imports: [
