@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({
@@ -12,14 +12,20 @@ export class HtmlFieldEditorComponent {
     // private currentValue: string;
     // private editor: HTMLAlaskaRichTextEditorElement;
 
-    @State()
-    n = 0;
-
     @Prop()
     field: ContentField<string>;
 
     @Event()
     edit: EventEmitter;
+
+    @Method()
+    async update() {
+        console.log('update inner');
+    }
+
+    componentWillRender() {
+        console.log('render inner');
+    }
 
     render() {
         if (!this.field) {

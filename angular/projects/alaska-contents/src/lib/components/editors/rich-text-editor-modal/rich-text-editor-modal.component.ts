@@ -26,13 +26,15 @@ export class RichTextEditorModalComponent implements OnInit, AfterViewInit {
     this.htmlEditor.nativeElement.initialize({}, this.data.value);
   }
 
+  updateValue(event: any) {
+    this.value = event.detail;
+  }
+
   cancel() {
     this.dialogRef.close();
-    return undefined;
   }
 
   save() {
-    this.dialogRef.close();
-    return this.value;
+    this.dialogRef.close(this.value);
   }
 }

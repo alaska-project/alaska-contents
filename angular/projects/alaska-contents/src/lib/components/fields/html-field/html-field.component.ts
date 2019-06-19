@@ -16,12 +16,12 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription: Subscription;
   private editorDialog: MatDialogRef<RichTextEditorModalComponent>;
 
-  @ViewChild('fieldElement', {static: false}) 
+  @ViewChild('fieldElement', { static: false })
   fieldElement: ElementRef<HTMLAlaskaHtmlFieldElement>;
 
   @Input()
   field: ContentField<string>;
-  
+
   constructor(
     private contentEditing: ContentEditingService,
     private dialog: MatDialog) { }
@@ -50,9 +50,16 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
       height: '90%',
       data: <RichTextEditorDialogModel>{ value: this.field.value }
     });
-    
+
     this.editorDialog.afterClosed().subscribe(x => {
       this.editorDialog = undefined;
+      if (x) {
+        this.field.value = x;
+        this.fieldElement.nativeElement.field.value = x;
+        //TODO: fix forceUpdate
+        this.fieldElement.nativeElement.setMode('Default');
+        setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
+      }
     });
   }
 }

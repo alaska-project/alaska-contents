@@ -32,6 +32,7 @@ export namespace Components {
   }
   interface AlaskaHtmlFieldEditor {
     'field': ContentField<string>;
+    'update': () => Promise<void>;
   }
   interface AlaskaImageField {
     'field': ContentField<ImageFieldData>;

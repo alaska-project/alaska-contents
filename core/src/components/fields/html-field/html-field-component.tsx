@@ -1,6 +1,7 @@
 import { Component, h, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 @Component({
     tag: 'alaska-html-field',
@@ -8,6 +9,8 @@ import { ContentMode } from '../../../models/component-models';
     shadow: false
 })
 export class HtmlFieldComponent {
+
+    private fieldElement: HTMLStencilElement;
 
     @State()
     mode: ContentMode = 'Default';
@@ -28,12 +31,18 @@ export class HtmlFieldComponent {
     @Event()
     edit: EventEmitter;
 
+    componentWillRender() {
+        if (this.fieldElement) {
+            this.fieldElement.forceUpdate();
+        }
+    }
+
     render() {
         switch (this.mode) {
             case 'Default':
-                return <alaska-html-field-default field={this.field}></alaska-html-field-default>;
+                return <alaska-html-field-default ref={el => this.fieldElement = el} field={this.field}></alaska-html-field-default>;
             case 'Editing':
-                return <alaska-html-field-editor field={this.field} onEdit={() => this.triggerEditEvent()}></alaska-html-field-editor>;
+                return <alaska-html-field-editor ref={el => this.fieldElement = el} field={this.field} onEdit={() => this.triggerEditEvent()}></alaska-html-field-editor>;
             default:
                 undefined;
         }

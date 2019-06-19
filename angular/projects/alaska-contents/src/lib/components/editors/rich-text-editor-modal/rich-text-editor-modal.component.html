@@ -1,5 +1,5 @@
 <div class="editor">
-  <alaska-rich-text-editor #htmlEditor (valueChanged)="updateValue()" height="100%"></alaska-rich-text-editor>
+  <alaska-rich-text-editor #htmlEditor (valueChanged)="updateValue($event)" height="100%"></alaska-rich-text-editor>
 </div>
 <div class="actions">
   <button class="cancel" mat-button (click)="cancel()">Cancel</button>
