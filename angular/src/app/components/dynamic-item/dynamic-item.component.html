@@ -1,5 +1,7 @@
-
 <aly-editing-mode-swither class="toggleMode"></aly-editing-mode-swither>
 
-<h2>Text Field</h2>
-<aly-text-field [field]="(item | async).fields.title"></aly-text-field>
+<div *ngIf="item">
+  <aly-image-field [field]="item.fields.wideImage"></aly-image-field>
+  <h2><aly-text-field [field]="item.fields.title"></aly-text-field></h2>
+  <div><aly-html-field [field]="item.fields.description"></aly-html-field></div>
+</div>

@@ -1,19 +1,20 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import { ContentsService } from 'projects/alaska-contents/src/lib/services/contents/contents.service';
 import { ContentItem } from 'projects/alaska-contents/src/public-api';
-import { Observable } from 'rxjs';
+import { Observable, Subscribable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-item',
   templateUrl: './dynamic-item.component.html',
   styleUrls: ['./dynamic-item.component.scss']
 })
-export class DynamicItemComponent implements OnInit, AfterViewInit {
-
-  item: Observable<ContentItem>;
+export class DynamicItemComponent implements OnInit, AfterViewInit, OnDestroy {
+  
+  private itemSubscription: Subscription;
+  item: ContentItem;
 
   @Input()
-  itemId: string;
+  itemId: string = "{1C8EFF20-EFBC-41D2-B56C-784071F52594}";
 
   constructor(private contentService: ContentsService) { }
 
@@ -21,6 +22,10 @@ export class DynamicItemComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.item = this.contentService.getContentItem(this.itemId);
+    this.itemSubscription = this.contentService.getContentItem(this.itemId).subscribe(x => this.item = x);
+  }
+
+  ngOnDestroy(): void {
+    this.itemSubscription.unsubscribe();
   }
 }

@@ -22,6 +22,11 @@ export class ContentsService {
   };
 
   getContent(id: string, depth?: ContentsSearchDepth) {
+    if (!id) {
+      throw new Error('Missing item id');
+      return;
+    }
+
     return this.contextService.currentContext().pipe(
       mergeMap(x => this.searchContent({
         id: id,
