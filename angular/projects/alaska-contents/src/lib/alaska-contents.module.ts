@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextFieldComponent } from './components/fields/text-field/text-field.component';
 import { LinkFieldComponent } from './components/fields/link-field/link-field.component';
@@ -31,6 +32,7 @@ import { SettingsService } from './services/settings/settings.service';
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatDialogModule,
     MatInputModule,

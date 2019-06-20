@@ -6,7 +6,9 @@
 export const environment = {
   production: false,
   contentEditing: {
-    contentsApiEndpoint: '/'
+    contentsApiEndpoint: '/',
+    defaultLanguage: 'it-IT',
+    defaultPublishingTarget: 'web',
   }
 };
 
