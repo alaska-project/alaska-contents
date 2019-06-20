@@ -8,12 +8,14 @@ import { AlaskaContentsModule } from 'projects/alaska-contents/src/public-api';
 import { environment } from 'src/environments/environment';
 import { StaticItemComponent } from './components/static-item/static-item.component';
 import { DynamicItemComponent } from './components/dynamic-item/dynamic-item.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StaticItemComponent,
-    DynamicItemComponent
+    DynamicItemComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

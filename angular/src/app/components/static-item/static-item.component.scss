@@ -1,0 +1,15 @@
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .field {
+        margin: 1rem 0;
+    }
+
+    .toggleMode {
+        margin: 1rem 0;
+    }
+}

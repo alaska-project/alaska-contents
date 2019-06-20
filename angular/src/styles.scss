@@ -3,4 +3,9 @@
 
 body {
     font-family: Roboto,"Helvetica Neue",sans-serif;
+    margin: 0;
+}
+
+app-navbar .docs-navbar, app-navbar .docs-navbar-header {
+    background: #3f51b5;
 }
