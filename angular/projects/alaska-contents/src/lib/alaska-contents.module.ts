@@ -15,6 +15,8 @@ import { ContentEditingService } from './services/content-editing/content-editin
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { AlaskaContentsSettings } from './models/settings';
+import { SettingsService } from './services/settings/settings.service';
 
 @NgModule({
   declarations: [
@@ -49,8 +51,9 @@ import { FormsModule } from '@angular/forms';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AlaskaContentsModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(settings: AlaskaContentsSettings): ModuleWithProviders {
     defineCustomElements(window);
+    SettingsService.setSettingsInstance(settings);
     return {
       ngModule: AlaskaContentsModule,
       providers: [ContentEditingService]

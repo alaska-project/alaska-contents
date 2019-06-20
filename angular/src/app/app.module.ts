@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlaskaContentsModule } from 'projects/alaska-contents/src/public-api';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { AlaskaContentsModule } from 'projects/alaska-contents/src/public-api';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    AlaskaContentsModule.forRoot()
+    AlaskaContentsModule.forRoot(environment.contentEditing)
   ],
   providers: [],
   bootstrap: [AppComponent],

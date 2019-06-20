@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
-import { ContentField } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { Subscription } from 'rxjs';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
+import { ContentField } from '../../../models/content-models';
 
 @Component({
   selector: 'aly-text-field',

@@ -18,13 +18,8 @@ export class HtmlFieldEditorComponent {
     @Event()
     edit: EventEmitter;
 
-    @Method()
-    async update() {
-        console.log('update inner');
-    }
-
     componentWillRender() {
-        console.log('render inner');
+        // console.log('render inner');
     }
 
     render() {

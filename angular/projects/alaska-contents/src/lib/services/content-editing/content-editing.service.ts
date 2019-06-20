@@ -1,7 +1,6 @@
 import { Injectable, ɵAPP_ID_RANDOM_PROVIDER } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ContentMode } from '@alaska-project/contents-core/dist/types/models/component-models';
-import { randomId } from '../../utils/utils';
 
 @Injectable({
   providedIn: 'root'

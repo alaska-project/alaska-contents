@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnDestroy } from '@angular/core';
-import { LinkFieldData, ContentField } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { LinkEditorModalComponent } from '../../editors/link-editor-modal/link-editor-modal.component';
 import { LinkEditorDialogModel } from '../../editors/link-editor-modal/link-editor-modal.model';
+import { ContentField, LinkFieldData } from '../../../models/content-models';
 
 @Component({
   selector: 'aly-link-field',
