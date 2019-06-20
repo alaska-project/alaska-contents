@@ -21,7 +21,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    AlaskaContentsModule.forRoot(environment.contentEditing)
+    AlaskaContentsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

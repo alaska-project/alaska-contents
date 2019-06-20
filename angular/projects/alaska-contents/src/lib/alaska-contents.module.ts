@@ -15,6 +15,7 @@ import { LinkEditorModalComponent } from './components/editors/link-editor-modal
 import { ContentEditingService } from './services/content-editing/content-editing.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { AlaskaContentsSettings } from './models/settings';
 import { SettingsService } from './services/settings/settings.service';
@@ -39,6 +40,7 @@ import { EditingModeSwitherComponent } from './components/controls/editing-mode-
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    MatSlideToggleModule,
   ],
   exports: [
     TextFieldComponent,
@@ -56,9 +58,7 @@ import { EditingModeSwitherComponent } from './components/controls/editing-mode-
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AlaskaContentsModule {
-  static forRoot(settings: AlaskaContentsSettings): ModuleWithProviders {
-    defineCustomElements(window);
-    SettingsService.setSettingsInstance(settings);
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: AlaskaContentsModule,
       providers: [ContentEditingService]
@@ -66,3 +66,7 @@ export class AlaskaContentsModule {
   }
 }
 
+export function initializeAlaskaContents(settings: AlaskaContentsSettings) {
+  defineCustomElements(window);
+  SettingsService.setSettingsInstance(settings);
+}

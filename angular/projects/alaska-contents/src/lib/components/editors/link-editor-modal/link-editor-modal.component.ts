@@ -18,7 +18,7 @@ export class LinkEditorModalComponent implements OnInit {
     label: 'New Window'
   }];
 
-  private linkData: LinkFieldData;
+  linkData: LinkFieldData;
 
   constructor(
     private dialogRef: MatDialogRef<LinkEditorModalComponent>,
