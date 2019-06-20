@@ -15,9 +15,15 @@ export class ContentsService {
     private contentsClient: ContentsClient,
     private contextService: ContextService) { }
 
+  getContentItem(id: string, depth?: ContentsSearchDepth) { 
+    return this.getContent(id, depth).pipe(
+      map(x => x.item)
+    );
+  };
+
   getContent(id: string, depth?: ContentsSearchDepth) {
-    this.contextService.currentContext().pipe(
-      map(x => this.getContentItem({
+    return this.contextService.currentContext().pipe(
+      mergeMap(x => this.searchContent({
         id: id,
         depth: depth ? depth : this.defaultDepth,
         language: x.language,
@@ -26,7 +32,7 @@ export class ContentsService {
     );
   }
 
-  private getContentItem(request: ContentsSearchRequest) {
+  private searchContent(request: ContentsSearchRequest) {
     return this.contentsClient.getContents(request);
   }
 }
