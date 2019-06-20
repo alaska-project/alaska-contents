@@ -4,7 +4,7 @@ import { ImageFieldData, ContentField } from '../../../models/content-models';
 @Component({
     tag: 'alaska-image-field-default',
     styleUrl: 'image-field-default-component.scss',
-    shadow: true
+    shadow: false
 })
 export class ImageFieldDefaultComponent {
 

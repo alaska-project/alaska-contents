@@ -17,6 +17,12 @@ export class ImageFieldComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input()
   field: ContentField<ImageFieldData>;
+
+  @Input()
+  width: string;
+
+  @Input()
+  height: string;
   
   constructor(private contentEditing: ContentEditingService) { }
 

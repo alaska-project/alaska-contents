@@ -11,7 +11,7 @@ export class ImageFieldComponent {
 
     @Event()
     edit: EventEmitter;
-    
+
     @State()
     mode: ContentMode = 'Default';
 
@@ -27,7 +27,7 @@ export class ImageFieldComponent {
     async setField(field: ContentField<ImageFieldData>) {
         this.field = field;
     }
-    
+
     render() {
         switch (this.mode) {
             case 'Default':

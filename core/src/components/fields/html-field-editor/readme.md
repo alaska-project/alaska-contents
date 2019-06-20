@@ -19,19 +19,6 @@
 | `edit` |             | `CustomEvent<any>` |
 
 
-## Methods
-
-### `update() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-
 ## Dependencies
 
 ### Used by

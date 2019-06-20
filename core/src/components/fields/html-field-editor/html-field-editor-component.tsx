@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({

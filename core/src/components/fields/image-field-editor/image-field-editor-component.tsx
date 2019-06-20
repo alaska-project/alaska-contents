@@ -4,7 +4,7 @@ import { ImageFieldData, ContentField } from '../../../models/content-models';
 @Component({
     tag: 'alaska-image-field-editor',
     styleUrl: 'image-field-editor-component.scss',
-    shadow: true
+    shadow: false
 })
 export class ImageFieldEditorComponent {
 
