@@ -1,6 +1,7 @@
 import { Injectable, ɵAPP_ID_RANDOM_PROVIDER } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ContentMode } from '@alaska-project/contents-core/dist/types/models/component-models';
+import { SettingsService } from '../settings/settings.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,7 @@ import { ContentMode } from '@alaska-project/contents-core/dist/types/models/com
 export class ContentEditingService {
 
   private readonly contentEditingSingleton = ContentEditingService.getContentEditingService();
-
-  constructor() { 
+  constructor(private settingsService: SettingsService) { 
   }
   
   editingMode() {
@@ -17,7 +17,25 @@ export class ContentEditingService {
   }
 
   setMode(mode: ContentMode) {
-    this.contentEditingSingleton.editingMode.next(mode);
+    if (mode === 'Editing' && !this.isTinyMceLoaded()) {
+      this.ensureTinyMce().then(x => this.contentEditingSingleton.editingMode.next(mode));
+    }
+    else {
+      this.contentEditingSingleton.editingMode.next(mode);
+    }
+  }
+
+  private isTinyMceLoaded() {
+    return (<any>window).tinyMCE !== undefined;
+  }
+
+  private ensureTinyMce() {
+    return new Promise(resolve => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = this.settingsService.getSettings().tinyMcelocation;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    });
   }
 
   private static getContentEditingService(): ContentEditingSingleton {
