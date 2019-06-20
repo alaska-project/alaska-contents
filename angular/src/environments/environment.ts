@@ -6,9 +6,9 @@
 export const environment = {
   production: false,
   contentEditing: {
-    contentsApiEndpoint: '/',
+    contentsApiEndpoint: 'http://swilca01/',
     defaultLanguage: 'it-IT',
-    defaultPublishingTarget: 'web',
+    defaultPublishingTarget: 'master',
   }
 };
 

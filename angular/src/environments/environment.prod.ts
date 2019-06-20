@@ -3,6 +3,6 @@ export const environment = {
   contentEditing: {
     contentsApiEndpoint: '/',
     defaultLanguage: 'it-IT',
-    defaultPublishingTarget: 'web',
+    defaultPublishingTarget: 'master',
   }
 };

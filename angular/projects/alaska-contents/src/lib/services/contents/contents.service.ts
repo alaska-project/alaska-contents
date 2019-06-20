@@ -17,7 +17,7 @@ export class ContentsService {
 
   getContentItem(id: string, depth?: ContentsSearchDepth) { 
     return this.getContent(id, depth).pipe(
-      map(x => x.item)
+      map(x => x.item.value)
     );
   };
 
