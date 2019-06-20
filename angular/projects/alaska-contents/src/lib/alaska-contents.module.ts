@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { AlaskaContentsSettings } from './models/settings';
 import { SettingsService } from './services/settings/settings.service';
+import { EditingModeSwitherComponent } from './components/controls/editing-mode-swither/editing-mode-swither.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SettingsService } from './services/settings/settings.service';
     HtmlFieldComponent,
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
+    EditingModeSwitherComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { SettingsService } from './services/settings/settings.service';
     HtmlFieldComponent,
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
+    EditingModeSwitherComponent,
   ],
   entryComponents: [
     RichTextEditorModalComponent,
