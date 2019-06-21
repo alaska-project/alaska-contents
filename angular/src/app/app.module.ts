@@ -9,13 +9,17 @@ import { environment } from 'src/environments/environment';
 import { StaticItemComponent } from './components/static-item/static-item.component';
 import { DynamicItemComponent } from './components/dynamic-item/dynamic-item.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { StaticItemPageComponent } from './pages/static-item-page/static-item-page.component';
+import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StaticItemComponent,
     DynamicItemComponent,
-    NavbarComponent
+    NavbarComponent,
+    StaticItemPageComponent,
+    DynamicItemPageComponent
   ],
   imports: [
     BrowserModule,

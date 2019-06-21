@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { StaticItemComponent } from './components/static-item/static-item.component';
-import { DynamicItemComponent } from './components/dynamic-item/dynamic-item.component';
+import { StaticItemPageComponent } from './pages/static-item-page/static-item-page.component';
+import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item-page.component';
 
 const routes: Routes = [{
   path: '',
-  component: StaticItemComponent
+  component: StaticItemPageComponent
 }, {
   path: 'dynamic-item',
-  component: DynamicItemComponent
+  component: DynamicItemPageComponent
 }];
 
 @NgModule({

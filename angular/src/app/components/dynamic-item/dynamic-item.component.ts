@@ -14,7 +14,7 @@ export class DynamicItemComponent implements OnInit, AfterViewInit, OnDestroy {
   item: ContentItem;
 
   @Input()
-  itemId: string = "{1C8EFF20-EFBC-41D2-B56C-784071F52594}";
+  itemId: string;
 
   constructor(private contentService: ContentsService) { }
 
