@@ -42,40 +42,41 @@
     var mode = 'Default';
     function toggleMode() {
       mode = mode === 'Default' ? 'Editing' : 'Default';
-      document.getElementById('field1').setMode(mode);
-      document.getElementById('field2').setMode(mode);
-      document.getElementById('field3').setMode(mode);
-      document.getElementById('field4').setMode(mode);
+      document.getElementById('txtField').setMode(mode);
+      document.getElementById('htmlField').setMode(mode);
+      document.getElementById('imgField').setMode(mode);
+      document.getElementById('bckImgField').setMode(mode);
+      document.getElementById('linkField').setMode(mode);
     }
   </script>
 
   <h4>Text Field</h4>
-  <alaska-text-field id="field1"></alaska-text-field>
+  <alaska-text-field id="txtField"></alaska-text-field>
   <script>
     window.addEventListener("load", function (event) {
-      document.getElementById('field1').setField({
+      document.getElementById('txtField').setField({
         type: 'string',
-        value: 'Holaaa field1 '
+        value: 'Holaaa txtField '
       });
     });
   </script>
 
   <h4>Html Field</h4>
-  <alaska-html-field id="field2"></alaska-html-field>
+  <alaska-html-field id="htmlField"></alaska-html-field>
   <script>
     window.addEventListener("load", function (event) {
-      document.getElementById('field2').setField({
+      document.getElementById('htmlField').setField({
         type: 'html',
-        value: 'Holaaa field2 '
+        value: 'Holaaa htmlField '
       });
     });
   </script>
 
   <h4>Image Field</h4>
-  <alaska-image-field id="field3"></alaska-image-field>
+  <alaska-image-field id="imgField"></alaska-image-field>
   <script>
     window.addEventListener("load", function (event) {
-      document.getElementById('field3').setField({
+      document.getElementById('imgField').setField({
         type: 'image',
         value: {
           url: 'https://source.unsplash.com/random/300x200',
@@ -86,13 +87,29 @@
     });
   </script>
 
+  
+<h4>Background Image Field</h4>
+<alaska-background-image-field id="bckImgField"></alaska-background-image-field>
+<script>
+  window.addEventListener("load", function (event) {
+    document.getElementById('bckImgField').setField({
+      type: 'image',
+      value: {
+        url: 'https://source.unsplash.com/random/300x200',
+        class: 'my-img',
+        alt: 'My Img'
+      }
+    });
+  });
+</script>
+
   <h4>Link Field</h4>
-  <alaska-link-field id="field4">
+  <alaska-link-field id="linkField">
     <p>AAA<strong>BB</strong></p>
   </alaska-link-field>
   <script>
     window.addEventListener("load", function (event) {
-      document.getElementById('field4').setField({
+      document.getElementById('linkField').setField({
         type: 'link',
         value: {
           linkType: '',

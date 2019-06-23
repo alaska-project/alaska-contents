@@ -22,6 +22,21 @@ import {
 } from './components/controls/select/select.model';
 
 export namespace Components {
+  interface AlaskaBackgroundImageField {
+    'field': ContentField<ImageFieldData>;
+    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+  }
+  interface AlaskaBackgroundImageFieldDefault {
+    'field': ContentField<ImageFieldData>;
+    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+  }
+  interface AlaskaBackgroundImageFieldEditor {
+    'field': ContentField<ImageFieldData>;
+    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+  }
   interface AlaskaHtmlField {
     'field': ContentField<any>;
     'setField': (field: ContentField<string>) => Promise<void>;
@@ -92,6 +107,24 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLAlaskaBackgroundImageFieldElement extends Components.AlaskaBackgroundImageField, HTMLStencilElement {}
+  var HTMLAlaskaBackgroundImageFieldElement: {
+    prototype: HTMLAlaskaBackgroundImageFieldElement;
+    new (): HTMLAlaskaBackgroundImageFieldElement;
+  };
+
+  interface HTMLAlaskaBackgroundImageFieldDefaultElement extends Components.AlaskaBackgroundImageFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaBackgroundImageFieldDefaultElement: {
+    prototype: HTMLAlaskaBackgroundImageFieldDefaultElement;
+    new (): HTMLAlaskaBackgroundImageFieldDefaultElement;
+  };
+
+  interface HTMLAlaskaBackgroundImageFieldEditorElement extends Components.AlaskaBackgroundImageFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaBackgroundImageFieldEditorElement: {
+    prototype: HTMLAlaskaBackgroundImageFieldEditorElement;
+    new (): HTMLAlaskaBackgroundImageFieldEditorElement;
+  };
 
   interface HTMLAlaskaHtmlFieldElement extends Components.AlaskaHtmlField, HTMLStencilElement {}
   var HTMLAlaskaHtmlFieldElement: {
@@ -189,6 +222,9 @@ declare global {
     new (): HTMLAlaskaTextFieldEditorElement;
   };
   interface HTMLElementTagNameMap {
+    'alaska-background-image-field': HTMLAlaskaBackgroundImageFieldElement;
+    'alaska-background-image-field-default': HTMLAlaskaBackgroundImageFieldDefaultElement;
+    'alaska-background-image-field-editor': HTMLAlaskaBackgroundImageFieldEditorElement;
     'alaska-html-field': HTMLAlaskaHtmlFieldElement;
     'alaska-html-field-default': HTMLAlaskaHtmlFieldDefaultElement;
     'alaska-html-field-editor': HTMLAlaskaHtmlFieldEditorElement;
@@ -209,6 +245,18 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface AlaskaBackgroundImageField extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldElement> {
+    'field'?: ContentField<ImageFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
+  }
+  interface AlaskaBackgroundImageFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldDefaultElement> {
+    'field'?: ContentField<ImageFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
+  }
+  interface AlaskaBackgroundImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldEditorElement> {
+    'field'?: ContentField<ImageFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
+  }
   interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {
     'field'?: ContentField<any>;
     'onEdit'?: (event: CustomEvent<any>) => void;
@@ -334,6 +382,9 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'alaska-background-image-field': AlaskaBackgroundImageField;
+    'alaska-background-image-field-default': AlaskaBackgroundImageFieldDefault;
+    'alaska-background-image-field-editor': AlaskaBackgroundImageFieldEditor;
     'alaska-html-field': AlaskaHtmlField;
     'alaska-html-field-default': AlaskaHtmlFieldDefault;
     'alaska-html-field-editor': AlaskaHtmlFieldEditor;
