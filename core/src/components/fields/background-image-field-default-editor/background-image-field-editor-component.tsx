@@ -4,7 +4,7 @@ import { ContentMode } from '../../../models/component-models';
 
 @Component({
     tag: 'alaska-background-image-field-editor',
-    styleUrl: 'background-image-field-component-editor.scss',
+    styleUrl: 'background-image-field-editor-component.scss',
     shadow: true
 })
 export class BackgroundImageFieldEditorComponent {

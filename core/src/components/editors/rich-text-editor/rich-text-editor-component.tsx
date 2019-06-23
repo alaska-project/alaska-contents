@@ -106,7 +106,6 @@ export class RichTextEditorComponent {
     }
 
     private createInitOptions(settings: any, target: any, setup?: (editor: any) => void) {
-        console.log(target);
         return Object.assign({},
             { target: target },
             { selector: `#${this.editorId}` },
@@ -143,7 +142,7 @@ export class RichTextEditorComponent {
         editor.on('setcontent', (content: string) => {
             this.valueChanged.emit(content);
         });
-        console.log('Init event', initEvent);
+        console.log('Initializing Editor', initEvent);
         // this.bindHandlers(editor, initEvent);
     }
 

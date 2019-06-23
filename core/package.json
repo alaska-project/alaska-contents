@@ -22,7 +22,7 @@
     "link": "npm link"
   },
   "devDependencies": {
-    "@stencil/core": "^1.0.6",
+    "@stencil/core": "^1.0.7",
     "@stencil/sass": "^1.0.0",
     "@types/materialize-css": "^1.0.6",
     "@types/tinymce": "^4.5.22",
