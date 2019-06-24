@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { AlaskaContentsSettings } from './models/settings';
 import { SettingsService } from './services/settings/settings.service';
 import { EditingModeSwitherComponent } from './components/controls/editing-mode-swither/editing-mode-swither.component';
+import { BackgroundImageFieldComponent } from './components/fields/background-image-field/background-image-field.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EditingModeSwitherComponent } from './components/controls/editing-mode-
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
     EditingModeSwitherComponent,
+    BackgroundImageFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { EditingModeSwitherComponent } from './components/controls/editing-mode-
     LinkFieldComponent,
     ImageFieldComponent,
     HtmlFieldComponent,
+    BackgroundImageFieldComponent,
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
     EditingModeSwitherComponent,
