@@ -1,6 +1,6 @@
 {
   "name": "@alaska-project/contents-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Alaska Contents Core",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,6 +10,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/alaska-contents/alaska-contents.js",
+  "private": false,
   "files": [
     "dist/",
     "loader/"
@@ -19,7 +20,8 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "link": "npm link"
+    "link": "npm link",
+    "publish": "npm publish"
   },
   "devDependencies": {
     "@stencil/core": "^1.0.7",
