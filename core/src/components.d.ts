@@ -24,18 +24,23 @@ import {
 export namespace Components {
   interface AlaskaBackgroundImageField {
     'field': ContentField<ImageFieldData>;
+    'height': string;
+    'position': string;
+    'repeat': boolean;
     'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
+    'size': string;
+    'width': string;
   }
   interface AlaskaBackgroundImageFieldDefault {
+    'backgroundStyle': { [key: string]: string };
     'field': ContentField<ImageFieldData>;
-    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
-    'setMode': (mode: ContentMode) => Promise<void>;
+    'innerContent': string;
   }
   interface AlaskaBackgroundImageFieldEditor {
+    'backgroundStyle': { [key: string]: string };
     'field': ContentField<ImageFieldData>;
-    'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
-    'setMode': (mode: ContentMode) => Promise<void>;
+    'innerContent': string;
   }
   interface AlaskaHtmlField {
     'field': ContentField<any>;
@@ -247,14 +252,22 @@ declare global {
 declare namespace LocalJSX {
   interface AlaskaBackgroundImageField extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldElement> {
     'field'?: ContentField<ImageFieldData>;
+    'height'?: string;
     'onEdit'?: (event: CustomEvent<any>) => void;
+    'position'?: string;
+    'repeat'?: boolean;
+    'size'?: string;
+    'width'?: string;
   }
   interface AlaskaBackgroundImageFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldDefaultElement> {
+    'backgroundStyle'?: { [key: string]: string };
     'field'?: ContentField<ImageFieldData>;
-    'onEdit'?: (event: CustomEvent<any>) => void;
+    'innerContent'?: string;
   }
   interface AlaskaBackgroundImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldEditorElement> {
+    'backgroundStyle'?: { [key: string]: string };
     'field'?: ContentField<ImageFieldData>;
+    'innerContent'?: string;
     'onEdit'?: (event: CustomEvent<any>) => void;
   }
   interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {

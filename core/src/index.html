@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <title>Alaska Core</title>
 
   <script type="module" src="/build/alaska-contents.esm.js"></script>
   <script nomodule src="/build/alaska-contents.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.6/tinymce.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
@@ -89,7 +90,7 @@
 
   
 <h4>Background Image Field</h4>
-<alaska-background-image-field id="bckImgField"></alaska-background-image-field>
+<alaska-background-image-field id="bckImgField" width="50vw" height="10vh">HOOLA</alaska-background-image-field>
 <script>
   window.addEventListener("load", function (event) {
     document.getElementById('bckImgField').setField({
