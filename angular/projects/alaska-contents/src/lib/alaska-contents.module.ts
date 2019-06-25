@@ -73,3 +73,7 @@ export function initializeAlaskaContents(settings: AlaskaContentsSettings) {
   defineCustomElements(window);
   SettingsService.setSettingsInstance(settings);
 }
+
+export function loadAlaskaWebComponents() {
+  defineCustomElements(window);
+}

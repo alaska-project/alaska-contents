@@ -1,4 +1,3 @@
-import { validEvents } from '@alaska-project/contents-core/dist/types/components/editors/rich-text-editor/rich-text-editor-models';
 
 export function formatUrl(endpoint: string, path: string, parameters?: any) {
     let url = `${trimEnd(endpoint, '/')}/${trimStart(path, '/')}`;

@@ -1,6 +1,6 @@
 {
   "name": "@alaska-project/contents-angular",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "scripts": {
     "link:alaska": "npm link @alaska-project/contents-angular"
   },
