@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SettingsService } from '../services/settings/settings.service';
 import { HttpClient } from '@angular/common/http';
 import { formatUrl } from '../utils/url-utils';
-import { ContentsSearchRequest, ContentSearchResult } from '../models/content-models';
+import { ContentsSearchRequest, ContentSearchResult } from '../models/content-search-models';
 
 @Injectable({
     providedIn: 'root'

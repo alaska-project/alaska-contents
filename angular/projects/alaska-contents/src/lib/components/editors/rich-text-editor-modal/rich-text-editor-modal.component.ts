@@ -10,7 +10,7 @@ import { RichTextEditorDialogModel } from './rich-text-editor-modal.model';
 export class RichTextEditorModalComponent implements OnInit, AfterViewInit {
 
   @ViewChild('htmlEditor', {static: false})
-  htmlEditor: ElementRef<HTMLAlaskaRichTextEditorElement>;
+  htmlEditor: ElementRef<any>;
 
   value: string;
 

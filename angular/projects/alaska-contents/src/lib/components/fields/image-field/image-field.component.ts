@@ -13,7 +13,7 @@ export class ImageFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription: Subscription;
   
   @ViewChild('fieldElement', {static: false}) 
-  fieldElement: ElementRef<HTMLAlaskaImageFieldElement>;
+  fieldElement: ElementRef<any>;
 
   @Input()
   field: ContentField<ImageFieldData>;

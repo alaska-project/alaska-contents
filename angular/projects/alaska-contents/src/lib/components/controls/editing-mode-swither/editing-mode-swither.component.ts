@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ContentMode } from '@alaska-project/contents-core/dist/types/models/component-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
+import { ContentMode } from '../../../models/context-models';
 
 @Component({
   selector: 'aly-editing-mode-swither',

@@ -17,7 +17,7 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   private editorDialog: MatDialogRef<RichTextEditorModalComponent>;
 
   @ViewChild('fieldElement', { static: false })
-  fieldElement: ElementRef<HTMLAlaskaHtmlFieldElement>;
+  fieldElement: ElementRef<any>;
 
   @Input()
   field: ContentField<string>;

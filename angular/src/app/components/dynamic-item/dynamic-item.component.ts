@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit, OnDestroy } from '@angular/core';
-import { ContentsService } from 'projects/alaska-contents/src/lib/services/contents/contents.service';
-import { ContentItem } from 'projects/alaska-contents/src/public-api';
-import { Observable, Subscribable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { ContentItem, ContentsService } from 'projects/alaska-contents/src/public-api';
 
 @Component({
   selector: 'app-dynamic-item',

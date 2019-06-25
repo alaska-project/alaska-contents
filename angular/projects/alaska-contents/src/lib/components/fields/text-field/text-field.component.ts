@@ -13,7 +13,7 @@ export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription: Subscription;
   
   @ViewChild('fieldElement', {static: false}) 
-  fieldElement: ElementRef<HTMLAlaskaTextFieldElement>;
+  fieldElement: ElementRef<any>;
 
   @Input()
   field: ContentField<string>;

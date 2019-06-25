@@ -17,7 +17,7 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   private editorDialog: MatDialogRef<LinkEditorModalComponent>;
   
   @ViewChild('fieldElement', {static: false}) 
-  fieldElement: ElementRef<HTMLAlaskaLinkFieldElement>;
+  fieldElement: ElementRef<any>;
 
   @Input()
   field: ContentField<LinkFieldData>;

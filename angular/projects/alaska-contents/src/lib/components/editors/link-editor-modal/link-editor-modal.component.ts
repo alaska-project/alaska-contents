@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LinkEditorDialogModel } from './link-editor-modal.model';
-import { LinkFieldData } from '@alaska-project/contents-core/dist/types/models/content-models';
+import { LinkFieldData } from '../../../models/content-models';
 
 @Component({
   selector: 'aly-link-editor-modal',

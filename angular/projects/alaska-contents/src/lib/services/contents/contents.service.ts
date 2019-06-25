@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ContentsClient } from '../../clients/contents.client';
-import { ContentsSearchDepth, ContentsSearchRequest } from '../../models/content-models';
 import { ContextService } from '../context/context.service';
 import { mergeMap, map } from 'rxjs/operators';
+import { ContentsSearchDepth, ContentsSearchRequest } from '../../models/content-search-models';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class ContentsService {
 
   getContentItem(id: string, depth?: ContentsSearchDepth) { 
     return this.getContent(id, depth).pipe(
-      map(x => x.item.value)
+      map(x => x.value)
     );
   };
 
@@ -38,6 +38,8 @@ export class ContentsService {
   }
 
   private searchContent(request: ContentsSearchRequest) {
-    return this.contentsClient.getContents(request);
+    return this.contentsClient.getContents(request).pipe(
+      map(x => x.item)
+    );;
   }
 }

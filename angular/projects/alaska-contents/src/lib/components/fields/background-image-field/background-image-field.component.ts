@@ -13,7 +13,7 @@ export class BackgroundImageFieldComponent implements OnInit {
   private subscription: Subscription;
 
   @ViewChild('fieldElement', { static: false })
-  fieldElement: ElementRef<HTMLAlaskaBackgroundImageFieldElement>;
+  fieldElement: ElementRef<any>;
 
   @Input()
   field: ContentField<ImageFieldData>;

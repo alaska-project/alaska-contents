@@ -1,7 +1,7 @@
 import { Injectable, ɵAPP_ID_RANDOM_PROVIDER } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ContentMode } from '@alaska-project/contents-core/dist/types/models/component-models';
 import { SettingsService } from '../settings/settings.service';
+import { ContentMode } from '../../models/context-models';
 
 @Injectable({
   providedIn: 'root'
