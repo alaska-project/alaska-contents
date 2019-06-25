@@ -21,7 +21,7 @@ export class DynamicItemComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.itemSubscription = this.contentService.getContentItem(this.itemId).subscribe(x => this.item = x);
+    this.itemSubscription = this.contentService.getContent(this.itemId).subscribe(x => this.item = x.value);
   }
 
   ngOnDestroy(): void {

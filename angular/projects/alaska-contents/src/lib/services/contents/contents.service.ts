@@ -24,7 +24,6 @@ export class ContentsService {
   getContent(id: string, depth?: ContentsSearchDepth) {
     if (!id) {
       throw new Error('Missing item id');
-      return;
     }
 
     return this.contextService.currentContext().pipe(
@@ -38,6 +37,7 @@ export class ContentsService {
   }
 
   private searchContent(request: ContentsSearchRequest) {
+    console.log('Searching content', request);
     return this.contentsClient.getContents(request).pipe(
       map(x => x.item)
     );;
