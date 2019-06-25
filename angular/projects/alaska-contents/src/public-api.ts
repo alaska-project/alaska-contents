@@ -11,6 +11,4 @@ export * from './lib/services/contents/contents.service';
 export * from './lib/services/context/context.service';
 export * from './lib/models/content-models';
 export * from './lib/models/context-models';
-//export * from '@alaska-project/contents-core/src/models/content-models';
-//export * from '@alaska-project/contents-core/src/models/content-search-models';
-//export * from '@alaska-project/contents-core/src/models/component-models';
+export * from './lib/models/content-search-models';
