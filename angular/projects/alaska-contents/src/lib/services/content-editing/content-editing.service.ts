@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SettingsService } from '../settings/settings.service';
 import { ContentMode } from '../../models/context-models';
+import { PandingChangesService } from '../pending-changes/panding-changes.service';
+import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,13 @@ import { ContentMode } from '../../models/context-models';
 export class ContentEditingService {
 
   private readonly contentEditingSingleton = ContentEditingService.getContentEditingService();
-  constructor(private settingsService: SettingsService) { 
+  constructor(
+    private pandingChangesService: PandingChangesService,
+    private settingsService: SettingsService) { 
+  }
+
+  trackItem(item: ContentItem) {
+    this.pandingChangesService.add(item);
   }
   
   editingMode() {

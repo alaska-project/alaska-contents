@@ -35,6 +35,7 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.fieldElement.nativeElement.field = this.getField();
     this.subscription = this.contentEditing.editingMode().subscribe(x => {
+      this.contentEditing.trackItem(this.item);
       this.fieldElement.nativeElement.setMode(x);
     });
   }
