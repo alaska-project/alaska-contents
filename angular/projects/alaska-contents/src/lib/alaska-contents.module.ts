@@ -16,11 +16,13 @@ import { ContentEditingService } from './services/content-editing/content-editin
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { AlaskaContentsSettings } from './models/settings';
 import { SettingsService } from './services/settings/settings.service';
 import { EditingModeSwitherComponent } from './components/controls/editing-mode-swither/editing-mode-swither.component';
 import { BackgroundImageFieldComponent } from './components/fields/background-image-field/background-image-field.component';
+import { ChangesSaveButtonComponent } from './components/controls/changes-save-button/changes-save-button.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { BackgroundImageFieldComponent } from './components/fields/background-im
     LinkEditorModalComponent,
     EditingModeSwitherComponent,
     BackgroundImageFieldComponent,
+    ChangesSaveButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { BackgroundImageFieldComponent } from './components/fields/background-im
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatIconModule,
   ],
   exports: [
     TextFieldComponent,
@@ -53,6 +57,7 @@ import { BackgroundImageFieldComponent } from './components/fields/background-im
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
     EditingModeSwitherComponent,
+    ChangesSaveButtonComponent,
   ],
   entryComponents: [
     RichTextEditorModalComponent,
