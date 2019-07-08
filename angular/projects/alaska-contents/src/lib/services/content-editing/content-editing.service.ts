@@ -1,4 +1,4 @@
-import { Injectable, ɵAPP_ID_RANDOM_PROVIDER } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SettingsService } from '../settings/settings.service';
 import { ContentMode } from '../../models/context-models';

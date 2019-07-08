@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { LinkEditorModalComponent } from '../../editors/link-editor-modal/link-editor-modal.component';
 import { LinkEditorDialogModel } from '../../editors/link-editor-modal/link-editor-modal.model';
-import { ContentField, LinkFieldData } from '../../../models/content-models';
+import { ContentItem } from '../../../models/content-models';
 
 @Component({
   selector: 'aly-link-field',
@@ -20,7 +20,10 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   fieldElement: ElementRef<any>;
 
   @Input()
-  field: ContentField<LinkFieldData>;
+  field: string;
+
+  @Input()
+  item: ContentItem;
   
   constructor(
     private contentEditing: ContentEditingService,
@@ -34,7 +37,7 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.fieldElement.nativeElement.field = this.field;
+    this.fieldElement.nativeElement.field = this.getField();
     this.subscription = this.contentEditing.editingMode().subscribe(x => {
       this.fieldElement.nativeElement.setMode(x);
     });
@@ -45,18 +48,22 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     this.editorDialog = this.dialog.open(LinkEditorModalComponent, {
-      data: <LinkEditorDialogModel>{ linkData: this.field.value }
+      data: <LinkEditorDialogModel>{ linkData: this.getField().value }
     });
 
     this.editorDialog.afterClosed().subscribe(x => {
       this.editorDialog = undefined;
       if (x) {
-        this.field.value = x;
+        this.getField().value = x;
         this.fieldElement.nativeElement.field.value = x;
         //TODO: fix forceUpdate
         this.fieldElement.nativeElement.setMode('Default');
         setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
       }
     });
+  }
+
+  private getField() {
+    return this.item.fields[this.field];
   }
 }

@@ -4,7 +4,7 @@ import { ContentEditingService } from '../../../services/content-editing/content
 import { Subscription } from 'rxjs';
 import { RichTextEditorModalComponent } from '../../editors/rich-text-editor-modal/rich-text-editor-modal.component';
 import { RichTextEditorDialogModel } from '../../editors/rich-text-editor-modal/rich-text-editor-modal.model';
-import { ContentField } from '../../../models/content-models';
+import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
 
 @Component({
   selector: 'aly-html-field',
@@ -20,7 +20,10 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   fieldElement: ElementRef<any>;
 
   @Input()
-  field: ContentField<string>;
+  field: string;
+
+  @Input()
+  item: ContentItem;
 
   constructor(
     private contentEditing: ContentEditingService,
@@ -30,7 +33,7 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.fieldElement.nativeElement.field = this.field;
+    this.fieldElement.nativeElement.field = this.getField();
     this.subscription = this.contentEditing.editingMode().subscribe(x => {
       this.fieldElement.nativeElement.setMode(x);
     });
@@ -48,18 +51,22 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
       panelClass: 'no-padding-mat-dialog',
       width: '90%',
       height: '90%',
-      data: <RichTextEditorDialogModel>{ value: this.field.value }
+      data: <RichTextEditorDialogModel>{ value: this.getField().value }
     });
 
     this.editorDialog.afterClosed().subscribe(x => {
       this.editorDialog = undefined;
       if (x) {
-        this.field.value = x;
+        this.getField().value = x;
         this.fieldElement.nativeElement.field.value = x;
         //TODO: fix forceUpdate
         this.fieldElement.nativeElement.setMode('Default');
         setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
       }
     });
+  }
+
+  private getField() {
+    return this.item.fields[this.field];
   }
 }

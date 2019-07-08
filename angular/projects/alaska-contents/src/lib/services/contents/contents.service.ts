@@ -40,6 +40,6 @@ export class ContentsService {
     console.log('Searching content', request);
     return this.contentsClient.getContents(request).pipe(
       map(x => x.item)
-    );;
+    );
   }
 }

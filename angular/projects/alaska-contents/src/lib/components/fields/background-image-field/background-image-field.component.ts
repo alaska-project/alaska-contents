@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ContentField, ImageFieldData } from '../../../models/content-models';
+import { ContentItem } from '../../../models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 
 @Component({
@@ -16,7 +16,10 @@ export class BackgroundImageFieldComponent implements OnInit {
   fieldElement: ElementRef<any>;
 
   @Input()
-  field: ContentField<ImageFieldData>;
+  field: string;
+
+  @Input()
+  item: ContentItem;
 
   @Input()
   width: string;
@@ -43,9 +46,13 @@ export class BackgroundImageFieldComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.fieldElement.nativeElement.field = this.field;
+    this.fieldElement.nativeElement.field = this.getField();
     this.subscription = this.contentEditing.editingMode().subscribe(x => {
       this.fieldElement.nativeElement.setMode(x);
     });
+  }
+
+  private getField() {
+    return this.item.fields[this.field];
   }
 }
