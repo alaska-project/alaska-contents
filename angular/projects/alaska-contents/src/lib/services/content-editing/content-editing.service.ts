@@ -16,8 +16,10 @@ export class ContentEditingService {
     private settingsService: SettingsService) { 
   }
 
-  trackItem(item: ContentItem) {
-    this.pandingChangesService.add(item);
+  trackItem(item: ContentItem, mode: ContentMode) {
+    if (mode === 'Editing') {
+      this.pandingChangesService.add(item);
+    }
   }
   
   editingMode() {

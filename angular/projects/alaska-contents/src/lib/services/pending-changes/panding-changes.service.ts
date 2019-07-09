@@ -11,14 +11,18 @@ export class PandingChangesService {
   constructor() { }
 
   add(item: ContentItem) {
-    if (this.pendingItems[item.info.id]) {
+    if (this.pendingItems.has(item.info.id)) {
       return;
     }
-    this.pendingItems[item.info.id] = {
+    this.pendingItems.set(item.info.id, {
       itemId: item.info.id,
-      originalItem: Object.assign({}, item),
+      originalItem: this.jsonClone(item),
       currentItem: item,
-    }
+    });
+  }
+
+  remove(itemId: string) {
+    this.pendingItems.delete(itemId);
   }
 
   clear() {
@@ -27,16 +31,22 @@ export class PandingChangesService {
 
   getItemsWithChanges() {
     let itemWithChanges: ContentItem[] = [];
-    this.pendingItems.forEach(element => {
-      if (this.hasPendingChanges(element)) {
-        itemWithChanges.push(element.currentItem);
+    const keys = this.pendingItems.keys();
+    for (let key of keys) {
+      const item = this.pendingItems.get(key);
+      if (this.hasPendingChanges(item)) {
+        itemWithChanges.push(item.currentItem);
       }
-    });
+    }
     return itemWithChanges;
   }
 
   private hasPendingChanges(item: ItemChanges) {
     return JSON.stringify(item.currentItem) !== JSON.stringify(item.originalItem);
+  }
+
+  private jsonClone(item: ContentItem) {
+    return JSON.parse(JSON.stringify(item));
   }
 }
 

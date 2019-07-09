@@ -3,6 +3,7 @@ import { SettingsService } from '../services/settings/settings.service';
 import { HttpClient } from '@angular/common/http';
 import { formatUrl } from '../utils/url-utils';
 import { ContentsSearchRequest, ContentSearchResult } from '../models/content-search-models';
+import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,9 @@ export class ContentsClient {
         return this.http.get<ContentSearchResult>(url);
     }
 
-    updateContent() {
+    updateContent(content: ContentItem) {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/updateContent');
+        return this.http.post<ContentItem>(url, content);
     }
 
     private contentsApiEndpoint() {
