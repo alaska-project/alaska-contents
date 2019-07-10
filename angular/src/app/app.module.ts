@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlaskaContentsModule, ContentsService, ContextService, ContentEditingService } from 'projects/alaska-contents/src/public-api';
+import { AlaskaContentsModule, ContentsService, ContextService, ContentEditingService, AlaskaContentEditingModule } from 'projects/alaska-contents/src/public-api';
 import { StaticItemComponent } from './components/static-item/static-item.component';
 import { DynamicItemComponent } from './components/dynamic-item/dynamic-item.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
@@ -24,7 +24,8 @@ import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    AlaskaContentsModule.forRoot()
+    AlaskaContentsModule.forRoot(),
+    AlaskaContentEditingModule,
   ],
   providers: [
     ContentsService,

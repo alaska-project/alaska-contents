@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PandingChangesService } from '../../../services/pending-changes/panding-changes.service';
-import { ContentsClient } from '../../../clients/contents.client';
 import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
+import { ContentsClient } from '../../../../contents/clients/contents.client';
+import { PandingChangesService } from '../../../../contents/services/pending-changes/panding-changes.service';
 
 @Component({
   selector: 'aly-changes-save-button',

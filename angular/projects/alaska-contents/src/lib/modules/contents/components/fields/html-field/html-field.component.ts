@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit, OnDestr
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
+import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { RichTextEditorModalComponent } from '../../editors/rich-text-editor-modal/rich-text-editor-modal.component';
 import { RichTextEditorDialogModel } from '../../editors/rich-text-editor-modal/rich-text-editor-modal.model';
-import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
 
 @Component({
   selector: 'aly-html-field',

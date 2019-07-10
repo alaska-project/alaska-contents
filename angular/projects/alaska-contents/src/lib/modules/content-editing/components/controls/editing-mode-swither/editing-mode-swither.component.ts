@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
-import { ContentMode } from '../../../models/context-models';
+import { ContentMode } from '../../../../contents/models/context-models';
+import { ContentEditingService } from '../../../../contents/services/content-editing/content-editing.service';
 
 @Component({
   selector: 'aly-editing-mode-swither',

@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnDestr
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { LinkEditorModalComponent } from '../../editors/link-editor-modal/link-editor-modal.component';
 import { LinkEditorDialogModel } from '../../editors/link-editor-modal/link-editor-modal.model';
 import { ContentItem } from '../../../models/content-models';
+import { LinkEditorModalComponent } from '../../editors/link-editor-modal/link-editor-modal.component';
 
 @Component({
   selector: 'aly-link-field',
