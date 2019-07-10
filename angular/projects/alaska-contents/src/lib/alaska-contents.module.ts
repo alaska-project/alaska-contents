@@ -23,6 +23,7 @@ import { SettingsService } from './services/settings/settings.service';
 import { EditingModeSwitherComponent } from './components/controls/editing-mode-swither/editing-mode-swither.component';
 import { BackgroundImageFieldComponent } from './components/fields/background-image-field/background-image-field.component';
 import { ChangesSaveButtonComponent } from './components/controls/changes-save-button/changes-save-button.component';
+import { NotificationsSnackbarComponent } from './components/widgets/notifications-snackbar/notifications-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ChangesSaveButtonComponent } from './components/controls/changes-save-b
     EditingModeSwitherComponent,
     BackgroundImageFieldComponent,
     ChangesSaveButtonComponent,
+    NotificationsSnackbarComponent,
   ],
   imports: [
     CommonModule,
