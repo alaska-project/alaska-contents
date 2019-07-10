@@ -88,21 +88,23 @@
     });
   </script>
 
-  
-<h4>Background Image Field</h4>
-<alaska-background-image-field id="bckImgField" width="300px" height="200px"><div style="text-align: center; color: white">HOOOLA</div></alaska-background-image-field>
-<script>
-  window.addEventListener("load", function (event) {
-    document.getElementById('bckImgField').setField({
-      type: 'image',
-      value: {
-        url: 'https://source.unsplash.com/random/300x200',
-        class: 'my-img',
-        alt: 'My Img'
-      }
+
+  <h4>Background Image Field</h4>
+  <alaska-background-image-field id="bckImgField" width="300px" height="200px">
+    <div style="text-align: center; color: white">HOOOLA</div>
+  </alaska-background-image-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('bckImgField').setField({
+        type: 'image',
+        value: {
+          url: 'https://source.unsplash.com/random/300x200',
+          class: 'my-img',
+          alt: 'My Img'
+        }
+      });
     });
-  });
-</script>
+  </script>
 
   <h4>Link Field</h4>
   <alaska-link-field id="linkField">

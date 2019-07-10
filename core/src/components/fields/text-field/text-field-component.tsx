@@ -1,4 +1,4 @@
-import { Component, Prop, h, Method, State } from '@stencil/core';
+import { Component, Prop, h, Method, State, Event, EventEmitter, Listen } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 
@@ -12,6 +12,9 @@ export class TextFieldComponent {
     @State()
     mode: ContentMode = 'Default';
 
+    @Event()
+    valueChanged: EventEmitter<string>;
+
     @Method()
     async setMode(mode: ContentMode) {
         this.mode = mode;
@@ -23,6 +26,11 @@ export class TextFieldComponent {
     @Method()
     async setField(field: ContentField<string>) {
         this.field = field;
+    }
+
+    @Listen('inputChanged')
+    onValueChanged() {
+        this.valueChanged.emit(this.field.value);
     }
 
     render() {

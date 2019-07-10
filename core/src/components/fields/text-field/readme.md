@@ -12,6 +12,13 @@
 | `field`  | --        |             | `ContentField<string>` | `undefined` |
 
 
+## Events
+
+| Event          | Description | Type                  |
+| -------------- | ----------- | --------------------- |
+| `valueChanged` |             | `CustomEvent<string>` |
+
+
 ## Methods
 
 ### `setField(field: ContentField<string>) => Promise<void>`

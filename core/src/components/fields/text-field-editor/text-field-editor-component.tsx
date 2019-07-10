@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ContentField } from '../../../models/content-models';
 
 @Component({
@@ -10,6 +10,9 @@ export class TextFieldEditorComponent {
 
     @Prop()
     field: ContentField<string>;
+
+    @Event()
+    inputChanged: EventEmitter<string>;
     
     render() {
         if (!this.field) {
@@ -19,7 +22,10 @@ export class TextFieldEditorComponent {
     }
 
     configureEditor(editorElement: HTMLElement) {
-        editorElement.addEventListener('input', () => this.setValue(editorElement.innerHTML));
+        editorElement.addEventListener('input', () => { 
+            this.setValue(editorElement.innerHTML);
+            this.inputChanged.emit(editorElement.innerHTML);
+        });
     }
 
     private setValue(value: string) {

@@ -12,6 +12,13 @@
 | `field`  | --        |             | `ContentField<string>` | `undefined` |
 
 
+## Events
+
+| Event          | Description | Type                  |
+| -------------- | ----------- | --------------------- |
+| `inputChanged` |             | `CustomEvent<string>` |
+
+
 ## Dependencies
 
 ### Used by

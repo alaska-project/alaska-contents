@@ -55,14 +55,14 @@ export class BackgroundImageFieldComponent {
     }
 
     componentWillRender() {
-        this.style = {
+        this.style = this.field ? {
             'background-image': `url('${this.field.value.url}')`,
             'background-repeat': this.repeat ? 'repeat' : 'no-repeat',
             'background-size': this.size,
             'background-position': this.position,
             'width': this.width,
             'height': this.height,
-        };
+        } : {};
     }
 
     render() {

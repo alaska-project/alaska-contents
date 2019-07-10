@@ -386,12 +386,14 @@ declare namespace LocalJSX {
   }
   interface AlaskaTextField extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldElement> {
     'field'?: ContentField<string>;
+    'onValueChanged'?: (event: CustomEvent<string>) => void;
   }
   interface AlaskaTextFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldDefaultElement> {
     'field'?: ContentField<string>;
   }
   interface AlaskaTextFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaTextFieldEditorElement> {
     'field'?: ContentField<string>;
+    'onInputChanged'?: (event: CustomEvent<string>) => void;
   }
 
   interface IntrinsicElements {
