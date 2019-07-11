@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
-import { ContentField, ContentItem } from '../../../models/content-models';
+import { ContentItem } from '../../../models/content-models';
 
 @Component({
   selector: 'aly-text-field',
@@ -33,9 +33,12 @@ export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.fieldElement.nativeElement.field = this.getField();
     this.subscription = this.contentEditing.editingMode().subscribe(x => {
-      this.contentEditing.trackItem(this.item, x);
       this.fieldElement.nativeElement.setMode(x);
     });
+  }
+
+  valueChanged() {
+    this.contentEditing.trackChanges(this.item);
   }
 
   private getField() {

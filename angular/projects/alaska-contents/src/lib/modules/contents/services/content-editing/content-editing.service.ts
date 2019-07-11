@@ -13,15 +13,13 @@ export class ContentEditingService {
   private readonly contentEditingSingleton = ContentEditingService.getContentEditingService();
   constructor(
     private pandingChangesService: PandingChangesService,
-    private settingsService: SettingsService) { 
+    private settingsService: SettingsService) {
   }
 
-  trackItem(item: ContentItem, mode: ContentMode) {
-    if (mode === 'Editing') {
-      this.pandingChangesService.add(item);
-    }
+  trackChanges(item: ContentItem) {
+    this.pandingChangesService.addItem(item);
   }
-  
+
   editingMode() {
     return this.contentEditingSingleton.editingMode.asObservable();
   }

@@ -6,47 +6,27 @@ import { ContentItem } from 'alaska-contents/public-api';
 })
 export class PandingChangesService {
 
-  private pendingItems = new Map<string, ItemChanges>();
+  private pendingItems = new Map<string, ContentItem>();
 
   constructor() { }
 
-  add(item: ContentItem) {
+  addItem(item: ContentItem) {
     if (this.pendingItems.has(item.info.id)) {
       return;
     }
-    this.pendingItems.set(item.info.id, {
-      itemId: item.info.id,
-      originalItem: this.jsonClone(item),
-      currentItem: item,
-    });
+    this.pendingItems.set(item.info.id, item);
   }
 
-  remove(itemId: string) {
+  removeItem(itemId: string) {
     this.pendingItems.delete(itemId);
   }
 
-  clear() {
+  clearItems() {
     this.pendingItems.clear();
   }
 
-  getItemsWithChanges() {
-    let itemWithChanges: ContentItem[] = [];
-    const keys = this.pendingItems.keys();
-    for (let key of keys) {
-      const item = this.pendingItems.get(key);
-      if (this.hasPendingChanges(item)) {
-        itemWithChanges.push(item.currentItem);
-      }
-    }
-    return itemWithChanges;
-  }
-
-  private hasPendingChanges(item: ItemChanges) {
-    return JSON.stringify(item.currentItem) !== JSON.stringify(item.originalItem);
-  }
-
-  private jsonClone(item: ContentItem) {
-    return JSON.parse(JSON.stringify(item));
+  getItems() {
+    return Array.from(this.pendingItems.values());
   }
 }
 
