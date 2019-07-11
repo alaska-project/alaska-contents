@@ -12,12 +12,16 @@ export class EditingModeSwitherComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
+  switchState = false;
   mode: ContentMode;
-  
+
   constructor(private contentEditing: ContentEditingService) { }
 
   ngOnInit() {
-    this.subscription = this.contentEditing.editingMode().subscribe(x => this.mode = x);
+    this.subscription = this.contentEditing.editingMode().subscribe(x => {
+      this.mode = x;
+      this.switchState = this.getState(x);
+    });
   }
 
   toggle() {
@@ -27,5 +31,9 @@ export class EditingModeSwitherComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private getState(mode: ContentMode) {
+    return mode === 'Editing';
   }
 }

@@ -2,8 +2,9 @@ import { Injectable, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SettingsService } from '../settings/settings.service';
 import { ContentMode } from '../../models/context-models';
-import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
 import { ItemTrackerService } from '../item-tracker/item-tracker.service';
+import { ContextService } from '../context/context.service';
+import { ContentItem } from '../../models/content-models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,24 @@ import { ItemTrackerService } from '../item-tracker/item-tracker.service';
 export class ContentEditingService {
 
   private readonly contentEditingSingleton = ContentEditingService.getContentEditingService();
+  private currentMode: ContentMode;
+
   constructor(
     private itemTracker: ItemTrackerService,
+    private context: ContextService,
     private settingsService: SettingsService) {
+    this.context.publishingTarget().subscribe(x => this.onPublishingTargetChanged(x));
+    this.contentEditingSingleton.editingMode.subscribe(x => this.currentMode = x);
   }
 
   initializeField(item: ContentItem, field: string, fieldElement: ElementRef<any>) {
     const fieldValue = item.fields[field];
     fieldElement.nativeElement.field = fieldValue;
     return this.editingMode().subscribe(x => {
-      fieldElement.nativeElement.setMode(x); 
+      fieldElement.nativeElement.setMode(x);
       if (x === 'Editing') {
         this.itemTracker.addItem(item);
+        this.context.setPublishingTarget(this.settingsService.getSettings().previewContentsTarget);
       } else {
         this.itemTracker.removeItem(item);
       }
@@ -34,11 +41,21 @@ export class ContentEditingService {
   }
 
   setMode(mode: ContentMode) {
+    if (this.currentMode === mode) {
+      return;
+    }
+
     if (mode === 'Editing' && !this.isTinyMceLoaded()) {
       this.ensureTinyMce().then(x => this.contentEditingSingleton.editingMode.next(mode));
     }
     else {
       this.contentEditingSingleton.editingMode.next(mode);
+    }
+  }
+
+  private onPublishingTargetChanged(target: string) {
+    if (target === this.settingsService.getSettings().webContentsTarget) {
+      this.setMode('Default');
     }
   }
 
