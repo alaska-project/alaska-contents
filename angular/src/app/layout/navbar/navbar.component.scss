@@ -42,6 +42,12 @@
   display: none;
 }
 
+.editor-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /**
     * Rules for when the device is detected to be a small screen.
     * Moves content two rows instead of one.

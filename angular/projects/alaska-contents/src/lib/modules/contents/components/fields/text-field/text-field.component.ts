@@ -31,7 +31,6 @@ export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnC
   }
 
   ngAfterViewInit(): void {
-    console.log('init');
     this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
   }
 
