@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    MatIconModule,
     AlaskaContentsModule.forRoot(),
     AlaskaContentEditingModule,
   ],
