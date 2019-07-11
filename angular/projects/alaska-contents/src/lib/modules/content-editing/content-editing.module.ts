@@ -13,6 +13,7 @@ import { AlaskaContentsModule } from '../contents/contents.module';
 import { LoaderDialogContentComponent } from './components/widgets/loader-dialog-content/loader-dialog-content.component';
 import { EscaladeLoaderComponent } from './components/loaders/escalade-loader/escalade-loader.component';
 import { BoxesLoaderComponent } from './components/loaders/boxes-loader/boxes-loader.component';
+import { ChangesPublishButtonComponent } from './components/controls/changes-publish-button/changes-publish-button.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { BoxesLoaderComponent } from './components/loaders/boxes-loader/boxes-lo
         LoaderDialogContentComponent,
         EscaladeLoaderComponent,
         BoxesLoaderComponent,
+        ChangesPublishButtonComponent,
     ],
     imports: [
         CommonModule,

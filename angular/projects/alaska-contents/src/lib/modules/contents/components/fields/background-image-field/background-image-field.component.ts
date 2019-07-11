@@ -46,13 +46,6 @@ export class BackgroundImageFieldComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.fieldElement.nativeElement.field = this.getField();
-    this.subscription = this.contentEditing.editingMode().subscribe(x => {
-      this.fieldElement.nativeElement.setMode(x);
-    });
-  }
-
-  private getField() {
-    return this.item.fields[this.field];
+    this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
   }
 }

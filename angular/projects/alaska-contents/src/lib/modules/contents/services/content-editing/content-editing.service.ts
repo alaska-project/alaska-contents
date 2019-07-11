@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SettingsService } from '../settings/settings.service';
 import { ContentMode } from '../../models/context-models';
@@ -16,7 +16,13 @@ export class ContentEditingService {
     private settingsService: SettingsService) {
   }
 
-  trackChanges(item: ContentItem) {
+  initializeField(item: ContentItem, field: string, fieldElement: ElementRef<any>) {
+    const fieldValue = item.fields[field];
+    fieldElement.nativeElement.field = fieldValue;
+    return this.editingMode().subscribe(x => fieldElement.nativeElement.setMode(x));
+  }
+
+  trackItem(item: ContentItem) {
     this.pandingChangesService.addItem(item);
   }
 

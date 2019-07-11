@@ -37,10 +37,7 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.fieldElement.nativeElement.field = this.getField();
-    this.subscription = this.contentEditing.editingMode().subscribe(x => {
-      this.fieldElement.nativeElement.setMode(x);
-    });
+    this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
   }
 
   openEditor() {
@@ -59,7 +56,6 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
         //TODO: fix forceUpdate
         this.fieldElement.nativeElement.setMode('Default');
         setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
-        this.contentEditing.trackChanges(this.item);
       }
     });
   }

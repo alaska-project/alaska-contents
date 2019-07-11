@@ -31,17 +31,6 @@ export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.fieldElement.nativeElement.field = this.getField();
-    this.subscription = this.contentEditing.editingMode().subscribe(x => {
-      this.fieldElement.nativeElement.setMode(x);
-    });
-  }
-
-  valueChanged() {
-    this.contentEditing.trackChanges(this.item);
-  }
-
-  private getField() {
-    return this.item.fields[this.field];
+    this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
   }
 }
