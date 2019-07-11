@@ -2,8 +2,8 @@ import { Injectable, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SettingsService } from '../settings/settings.service';
 import { ContentMode } from '../../models/context-models';
-import { PandingChangesService } from '../pending-changes/panding-changes.service';
 import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
+import { ItemTrackerService } from '../item-tracker/item-tracker.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +12,21 @@ export class ContentEditingService {
 
   private readonly contentEditingSingleton = ContentEditingService.getContentEditingService();
   constructor(
-    private pandingChangesService: PandingChangesService,
+    private itemTracker: ItemTrackerService,
     private settingsService: SettingsService) {
   }
 
   initializeField(item: ContentItem, field: string, fieldElement: ElementRef<any>) {
     const fieldValue = item.fields[field];
     fieldElement.nativeElement.field = fieldValue;
-    return this.editingMode().subscribe(x => fieldElement.nativeElement.setMode(x));
-  }
-
-  trackItem(item: ContentItem) {
-    this.pandingChangesService.addItem(item);
+    return this.editingMode().subscribe(x => {
+      fieldElement.nativeElement.setMode(x); 
+      if (x === 'Editing') {
+        this.itemTracker.addItem(item);
+      } else {
+        this.itemTracker.removeItem(item);
+      }
+    });
   }
 
   editingMode() {

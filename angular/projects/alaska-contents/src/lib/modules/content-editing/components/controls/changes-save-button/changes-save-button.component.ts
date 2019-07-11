@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentItem } from '@alaska-project/contents-core/dist/types/models/content-models';
-import { PandingChangesService } from '../../../../contents/services/pending-changes/panding-changes.service';
 import { ContentsUpdateClient } from '../../../clients/contents-update.client';
 import { OperationsService } from '../../../services/operations/operations.service';
+import { ItemTrackerService } from '../../../../contents/services/item-tracker/item-tracker.service';
 
 @Component({
   selector: 'aly-changes-save-button',
@@ -13,14 +13,14 @@ export class ChangesSaveButtonComponent implements OnInit {
 
   constructor(
     private contentsUpdateClient: ContentsUpdateClient,
-    private pandingChangesService: PandingChangesService,
+    private itemTracker: ItemTrackerService,
     private operation: OperationsService) { }
 
   ngOnInit() {
   }
 
   save() {
-    const itemsToSave = this.pandingChangesService.getItems();
+    const itemsToSave = this.itemTracker.getItemWithPendingChanges();
     if (itemsToSave.length === 0) {
       return;
     }
@@ -39,6 +39,6 @@ export class ChangesSaveButtonComponent implements OnInit {
 
   private async saveItem(item: ContentItem) {
     await this.contentsUpdateClient.updateContent(item).toPromise();
-    this.pandingChangesService.removeItem(item.info.id);
+    this.itemTracker.updateItem(item);
   }
 }

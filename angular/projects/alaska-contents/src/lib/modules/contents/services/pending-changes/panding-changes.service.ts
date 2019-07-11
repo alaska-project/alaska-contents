@@ -1,37 +1,43 @@
-import { Injectable } from '@angular/core';
-import { ContentItem } from 'alaska-contents/public-api';
+// import { Injectable } from '@angular/core';
+// import { ContentItem } from 'alaska-contents/public-api';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PandingChangesService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class PandingChangesService {
 
-  private pendingItems = new Map<string, ContentItem>();
+//   private pendingItems = new Map<string, ItemChanges>();
 
-  constructor() { }
+//   constructor() { }
 
-  addItem(item: ContentItem) {
-    if (this.pendingItems.has(item.info.id)) {
-      return;
-    }
-    this.pendingItems.set(item.info.id, item);
-  }
+//   addItem(item: ContentItem) {
+//     if (this.pendingItems.has(item.info.id)) {
+//       return;
+//     }
+//     this.pendingItems.set(item.info.id, item);
+//   }
 
-  removeItem(itemId: string) {
-    this.pendingItems.delete(itemId);
-  }
+//   updateItem(item: ContentItem) {
+//     this.pendingItems.set(item.info.id, item);
+//   }
 
-  clearItems() {
-    this.pendingItems.clear();
-  }
+//   removeItem(item: ContentItem) {
+//     if (this.pendingItems.has(item.info.id)) {
+//       this.pendingItems.delete(item.info.id);
+//     }
+//   }
 
-  getItems() {
-    return Array.from(this.pendingItems.values());
-  }
-}
+//   clearItems() {
+//     this.pendingItems.clear();
+//   }
 
-export interface ItemChanges {
-  itemId: string;
-  originalItem: ContentItem;
-  currentItem: ContentItem;
-}
+//   getItems() {
+//     return Array.from(this.pendingItems.values());
+//   }
+// }
+
+// export interface ItemChanges {
+//   itemId: string;
+//   originalItem: ContentItem;
+//   currentItem: ContentItem;
+// }
