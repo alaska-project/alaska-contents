@@ -2,6 +2,7 @@
 export interface AlaskaContentsSettings {
     contentsApiEndpoint: string;
     defaultLanguage: string;
-    defaultPublishingTarget: string;
+    previewContentsTarget: string;
+    webContentsTarget: string;
     tinyMcelocation: string;
 }

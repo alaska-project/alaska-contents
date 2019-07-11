@@ -18,8 +18,30 @@ export class ContentsUpdateClient {
         return this.http.post<ContentItem>(url, content);
     }
 
+    publishContent(content: ContentItem) {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/publishContent', this.createPublishItemRequest(content));
+        return this.http.post(url, content);
+    }
+
+    private createPublishItemRequest(content: ContentItem): PublishContentRequest {
+        return {
+            itemId: content.info.id,
+            target: this.settingsService.getSettings().webContentsTarget,
+            language: [content.info.language],
+            scope: 'Item',
+        }
+    }
+
     private contentsApiEndpoint() {
         return this.settingsService.getSettings().contentsApiEndpoint;
     }
 }
 
+export type PublishScope = 'Item' | 'ItemAndDescendants';
+
+export interface PublishContentRequest {
+    itemId: string;
+    target: string;
+    language: string[];
+    scope: PublishScope;
+}

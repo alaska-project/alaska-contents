@@ -47,7 +47,7 @@ export class ContextService {
   private getDefaultContext() {
     return {
       language: this.settingsService.getSettings().defaultLanguage,
-      publishingTarget: this.settingsService.getSettings().defaultPublishingTarget,
+      publishingTarget: this.settingsService.getSettings().webContentsTarget,
     };
   }
 }
