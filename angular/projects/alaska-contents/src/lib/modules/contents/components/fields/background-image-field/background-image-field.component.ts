@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentItem } from '../../../models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
@@ -8,7 +8,7 @@ import { ContentEditingService } from '../../../services/content-editing/content
   templateUrl: './background-image-field.component.html',
   styleUrls: ['./background-image-field.component.scss']
 })
-export class BackgroundImageFieldComponent implements OnInit {
+export class BackgroundImageFieldComponent implements OnInit, OnChanges {
 
   private subscription: Subscription;
 
@@ -47,5 +47,12 @@ export class BackgroundImageFieldComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+  }
+
+  ngOnChanges(changes: any): void {
+    if (changes.item && changes.item.firstChange === false) {
+      this.subscription.unsubscribe();
+      this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+    }
   }
 }

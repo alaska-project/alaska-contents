@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit, OnDestroy, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { RichTextEditorDialogModel } from '../../editors/rich-text-editor-modal/
   templateUrl: './html-field.component.html',
   styleUrls: ['./html-field.component.scss']
 })
-export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 
   private subscription: Subscription;
   private editorDialog: MatDialogRef<RichTextEditorModalComponent>;
@@ -34,6 +34,13 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+  }
+
+  ngOnChanges(changes: any): void {
+    if (changes.item && changes.item.firstChange === false) {
+      this.subscription.unsubscribe();
+      this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+    }
   }
 
   ngOnDestroy(): void {

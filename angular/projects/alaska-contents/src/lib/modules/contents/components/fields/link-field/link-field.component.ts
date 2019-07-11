@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { Subscription } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { LinkEditorModalComponent } from '../../editors/link-editor-modal/link-e
   templateUrl: './link-field.component.html',
   styleUrls: ['./link-field.component.scss']
 })
-export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 
   private subscription: Subscription;
   private editorDialog: MatDialogRef<LinkEditorModalComponent>;
@@ -38,6 +38,13 @@ export class LinkFieldComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+  }
+
+  ngOnChanges(changes: any): void {
+    if (changes.item && changes.item.firstChange === false) {
+      this.subscription.unsubscribe();
+      this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+    }
   }
 
   openEditor() {

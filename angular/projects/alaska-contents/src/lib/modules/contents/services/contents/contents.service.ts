@@ -3,6 +3,8 @@ import { ContentsClient } from '../../clients/contents.client';
 import { ContextService } from '../context/context.service';
 import { mergeMap, map } from 'rxjs/operators';
 import { ContentsSearchDepth, ContentsSearchRequest } from '../../models/content-search-models';
+import { Subject } from 'rxjs';
+import { ContentItemResult } from 'alaska-contents/public-api';
 
 @Injectable({
   providedIn: 'root'

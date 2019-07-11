@@ -23,6 +23,10 @@ export class ContentEditingService {
   }
 
   initializeField(item: ContentItem, field: string, fieldElement: ElementRef<any>) {
+    if (!item || !field) {
+      return;
+    }
+
     const fieldValue = item.fields[field];
     fieldElement.nativeElement.field = fieldValue;
     return this.editingMode().subscribe(x => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef, OnDestroy, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { ContentItem } from '../../../models/content-models';
@@ -8,7 +8,7 @@ import { ContentItem } from '../../../models/content-models';
   templateUrl: './text-field.component.html',
   styleUrls: ['./text-field.component.scss']
 })
-export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 
   private subscription: Subscription;
   
@@ -31,6 +31,14 @@ export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    console.log('init');
     this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+  }
+
+  ngOnChanges(changes: any): void {
+    if (changes.item && changes.item.firstChange === false) {
+      this.subscription.unsubscribe();
+      this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+    }
   }
 }
