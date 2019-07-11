@@ -31,6 +31,14 @@ export class PublishingTargetSwitcherComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  setPreview() {
+    this.contextService.setPublishingTarget(this.settings.getSettings().previewContentsTarget);
+  }
+
+  setWeb() {
+    this.contextService.setPublishingTarget(this.settings.getSettings().webContentsTarget);
+  }
+
   toggle() {
     const newTarget = this.getTarget(this.switchState);
     this.contextService.setPublishingTarget(newTarget);

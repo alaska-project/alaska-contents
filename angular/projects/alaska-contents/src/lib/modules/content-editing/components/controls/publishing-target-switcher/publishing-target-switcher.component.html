@@ -1,1 +1,8 @@
-<mat-slide-toggle class="toggle" (change)="toggle()" [(ngModel)]="switchState">{{target}}</mat-slide-toggle>
+<!-- <mat-slide-toggle class="toggle" (change)="toggle()" [(ngModel)]="switchState">{{target}}</mat-slide-toggle> -->
+<span class="toggle">
+    <button class="toggle-menu" mat-button [matMenuTriggerFor]="menu">{{target}} <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="setPreview()">Preview</button>
+        <button mat-menu-item (click)="setWeb()">Web</button>
+    </mat-menu>
+</span>
