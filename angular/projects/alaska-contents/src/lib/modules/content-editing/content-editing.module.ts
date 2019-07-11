@@ -14,6 +14,7 @@ import { LoaderDialogContentComponent } from './components/widgets/loader-dialog
 import { EscaladeLoaderComponent } from './components/loaders/escalade-loader/escalade-loader.component';
 import { BoxesLoaderComponent } from './components/loaders/boxes-loader/boxes-loader.component';
 import { ChangesPublishButtonComponent } from './components/controls/changes-publish-button/changes-publish-button.component';
+import { PublishingTargetSwitcherComponent } from './components/controls/publishing-target-switcher/publishing-target-switcher.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { ChangesPublishButtonComponent } from './components/controls/changes-pub
         EscaladeLoaderComponent,
         BoxesLoaderComponent,
         ChangesPublishButtonComponent,
+        PublishingTargetSwitcherComponent,
     ],
     imports: [
         CommonModule,
@@ -43,6 +45,7 @@ import { ChangesPublishButtonComponent } from './components/controls/changes-pub
     exports: [
         EditingModeSwitherComponent,
         ChangesSaveButtonComponent,
+        PublishingTargetSwitcherComponent,
     ],
     entryComponents: [
         NotificationsSnackbarComponent,
