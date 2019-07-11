@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentMode } from '../../../../contents/models/context-models';
 import { ContentEditingService } from '../../../../contents/services/content-editing/content-editing.service';
+import { ContextService } from '../../../../contents/services/context/context.service';
+import { SettingsService } from '../../../../contents/services/settings/settings.service';
 
 @Component({
   selector: 'aly-editing-mode-swither',
@@ -10,17 +12,25 @@ import { ContentEditingService } from '../../../../contents/services/content-edi
 })
 export class EditingModeSwitherComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
+  private contentModeSub: Subscription;
+  private pubTargetSub: Subscription;
 
   switchState = false;
   mode: ContentMode;
+  target: string;
 
-  constructor(private contentEditing: ContentEditingService) { }
+  constructor(
+    private settings: SettingsService,
+    private contextService: ContextService,
+    private contentEditing: ContentEditingService) { }
 
   ngOnInit() {
-    this.subscription = this.contentEditing.editingMode().subscribe(x => {
+    this.contentModeSub = this.contentEditing.editingMode().subscribe(x => {
       this.mode = x;
       this.switchState = this.getState(x);
+    });
+    this.pubTargetSub = this.contextService.publishingTarget().subscribe(x => {
+      this.target = x;
     });
   }
 
@@ -30,7 +40,12 @@ export class EditingModeSwitherComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.contentModeSub.unsubscribe();
+    this.pubTargetSub.unsubscribe();
+  }
+
+  isDisabled() {
+    return this.target === this.settings.getSettings().webContentsTarget;
   }
 
   private getState(mode: ContentMode) {

@@ -50,11 +50,15 @@ export class ContentEditingService {
     }
 
     if (mode === 'Editing' && !this.isTinyMceLoaded()) {
-      this.ensureTinyMce().then(x => this.contentEditingSingleton.editingMode.next(mode));
+      this.ensureTinyMce().then(x => this.emitMode(mode));
     }
     else {
-      this.contentEditingSingleton.editingMode.next(mode);
+      this.emitMode(mode);
     }
+  }
+
+  private emitMode(mode: ContentMode) {
+    this.contentEditingSingleton.editingMode.next(mode);
   }
 
   private onPublishingTargetChanged(target: string) {
