@@ -19,8 +19,8 @@ export class ContentsUpdateClient {
     }
 
     publishContent(content: ContentItem) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/publishContent', this.createPublishItemRequest(content));
-        return this.http.post(url, content);
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/publishContent');
+        return this.http.post(url, this.createPublishItemRequest(content));
     }
 
     private createPublishItemRequest(content: ContentItem): PublishContentRequest {

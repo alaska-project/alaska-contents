@@ -1,1 +1,10 @@
-<button mat-button (click)="save()" [disabled]="isDisabled()"><ng-content></ng-content></button>
+<!-- <button mat-button (click)="save()" [disabled]="isDisabled()"><ng-content></ng-content></button> -->
+<span class="toggle">
+    <button class="toggle-menu" mat-button [matMenuTriggerFor]="menu" [disabled]="isDisabled()">
+        <ng-content></ng-content>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="save()">Save</button>
+        <button mat-menu-item (click)="saveAndPublish()">Save & Publish</button>
+    </mat-menu>
+</span>
