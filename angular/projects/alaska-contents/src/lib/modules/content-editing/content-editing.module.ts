@@ -7,6 +7,7 @@ import { MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatS
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { EditingModeSwitherComponent } from './components/controls/editing-mode-swither/editing-mode-swither.component';
 import { ChangesSaveButtonComponent } from './components/controls/changes-save-button/changes-save-button.component';
 import { NotificationsSnackbarComponent } from './components/widgets/notifications-snackbar/notifications-snackbar.component';
@@ -53,6 +54,7 @@ import { MediaFoldersTreeComponent } from './components/editors/media/media-fold
         MatSnackBarModule,
         MatProgressSpinnerModule,
         MatTreeModule,
+        MatSidenavModule,
         AlaskaContentsModule,
     ],
     exports: [

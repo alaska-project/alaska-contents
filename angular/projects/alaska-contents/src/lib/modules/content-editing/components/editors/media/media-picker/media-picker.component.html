@@ -1,4 +1,8 @@
-<div class="media-picker-container">
-  <aly-media-folders-tree clas="tree"></aly-media-folders-tree>
-  <aly-media-folder-explorer clas="folder"></aly-media-folder-explorer>
-</div>
+<mat-drawer-container autosize>
+  <mat-drawer class="sidenav" #drawer mode="side" opened>
+    <aly-media-folders-tree clas="tree"></aly-media-folders-tree>
+  </mat-drawer>
+  <mat-drawer-content class="sidenav-content">
+    <aly-media-folder-explorer clas="folder"></aly-media-folder-explorer>
+  </mat-drawer-content>
+</mat-drawer-container>
