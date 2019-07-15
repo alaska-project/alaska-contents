@@ -17,6 +17,8 @@ import { ChangesPublishButtonComponent } from './components/controls/changes-pub
 import { PublishingTargetSwitcherComponent } from './components/controls/publishing-target-switcher/publishing-target-switcher.component';
 import { DefaultMediaEditorService } from './services/media-editor/default-media-editor.service';
 import { MediaEditor } from '../contents/abstractions/media-editing.interfaces';
+import { MediaPickerDialogComponent } from './components/editors/media/media-picker-dialog/media-picker-dialog.component';
+import { MediaPickerComponent } from './components/editors/media/media-picker/media-picker.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,8 @@ import { MediaEditor } from '../contents/abstractions/media-editing.interfaces';
         BoxesLoaderComponent,
         ChangesPublishButtonComponent,
         PublishingTargetSwitcherComponent,
+        MediaPickerComponent,
+        MediaPickerDialogComponent,
     ],
     imports: [
         CommonModule,
@@ -53,6 +57,7 @@ import { MediaEditor } from '../contents/abstractions/media-editing.interfaces';
     entryComponents: [
         NotificationsSnackbarComponent,
         LoaderDialogContentComponent,
+        MediaPickerDialogComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

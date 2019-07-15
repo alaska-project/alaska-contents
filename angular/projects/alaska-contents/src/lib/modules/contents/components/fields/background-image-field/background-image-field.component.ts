@@ -12,6 +12,7 @@ import { MediaEditor } from '../../../abstractions/media-editing.interfaces';
 export class BackgroundImageFieldComponent implements OnInit, OnChanges {
 
   private subscription: Subscription;
+  private isEditing = false;
 
   @ViewChild('fieldElement', { static: false })
   fieldElement: ElementRef<any>;
@@ -60,6 +61,12 @@ export class BackgroundImageFieldComponent implements OnInit, OnChanges {
   }
 
   edit() {
-    this.mediaEditor.editImage(this.item.fields[this.field]);
+    if (this.isEditing) {
+      return;
+    }
+    this.isEditing = true;
+    this.mediaEditor.editImage(this.item.fields[this.field]).subscribe(x => {
+      this.isEditing = false;
+    });
   }
 }
