@@ -16,6 +16,8 @@ export class DefaultMediaEditorService extends MediaEditor {
 
   editImage(imageField: ContentField<ImageFieldData>): Observable<ImageFieldData> {
     const dialog = this.dialog.open(MediaPickerDialogComponent, {
+      maxWidth: '90vw',
+      width: '90vw',
       data: {
         field: imageField
       }
