@@ -10,7 +10,7 @@ import { MediaPickerData } from './media-picker-dialog.models';
 export class MediaPickerDialogComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<MediaPickerDialogComponent>,
+    private dialogRef: MatDialogRef<MediaPickerDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MediaPickerData
   ) { }
 

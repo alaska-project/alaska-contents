@@ -1,0 +1,11 @@
+<div class="editor">
+  <form>
+    <mat-form-field class="name">
+      <input [(ngModel)]="folderName" name="folderName" matInput placeholder="Name">
+    </mat-form-field>
+  </form>
+</div>
+<div class="actions">
+  <button class="cancel" mat-button (click)="cancel()">Cancel</button>
+  <button class="ok" mat-raised-button color="primary" (click)="ok()" cdkFocusInitial>Ok</button>
+</div>

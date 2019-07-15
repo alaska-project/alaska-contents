@@ -18,21 +18,21 @@ export class MediaLibraryClient {
     }
 
     getChildrenFolders(folderId: string) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/getChildrenFolders', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/getChildrenFolders', {
             folderId: folderId,
         });
         return this.http.get<MediaFolder[]>(url);
     }
 
     getFolderContents(folderId: string) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/getFolderContents', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/getFolderContents', {
             folderId: folderId,
         });
         return this.http.get<MediaContent[]>(url);
     }
 
     createFolder(folderName: string, parentFolderId: string) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/createFolder', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/createFolder', {
             folderName: folderName,
             parentFolderId: parentFolderId,
         });
@@ -40,21 +40,21 @@ export class MediaLibraryClient {
     }
 
     createRootFolder(folderName: string) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/createRootFolder', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/createRootFolder', {
             folderName: folderName,
         });
         return this.http.post<MediaFolder>(url, undefined);
     }
 
     deleteFolder(folderId: string) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/deleteFolder', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/deleteFolder', {
             folderId: folderId,
         });
         return this.http.post<MediaFolder>(url, undefined);
     }
 
     addMedia(media: MediaContentFile) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/addMedia', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/addMedia', {
             name: media.name,
             contentType: media.contentType,
             folderId: media.folderId,
@@ -63,7 +63,7 @@ export class MediaLibraryClient {
     }
 
     deleteMedia(mediaId: string) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/contents/deleteMedia', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/deleteMedia', {
             mediaId: mediaId,
         });
         return this.http.post(url, undefined);

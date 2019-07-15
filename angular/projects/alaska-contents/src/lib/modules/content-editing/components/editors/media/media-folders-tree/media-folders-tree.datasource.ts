@@ -5,6 +5,7 @@ import { MediaLibraryClient, MediaFolder } from '../../../../clients/media-libra
 import { CollectionViewer, SelectionChange } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { MediaFolderTreeNode } from './media-folders-tree.models';
+import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 
 @Injectable()
 export class MediaFoldersDataSource {
@@ -19,7 +20,7 @@ export class MediaFoldersDataSource {
 
     constructor(
         private _treeControl: FlatTreeControl<MediaFolderTreeNode>,
-        private mediaClient: MediaLibraryClient) { }
+        private mediaFolderService: MediaFolderService) { }
 
     connect(collectionViewer: CollectionViewer): Observable<MediaFolderTreeNode[]> {
         this._treeControl.expansionModel.onChange.subscribe(change => {
@@ -33,10 +34,9 @@ export class MediaFoldersDataSource {
     }
 
     loadRootFolders() {
-        this.mediaClient.getRootFolders().subscribe(x => this.data = x.map(folder => this.convertToNode(folder, undefined)));
+        this.mediaFolderService.getRootFolders().subscribe(x => this.data = x.map(folder => this.convertToNode(folder, undefined)));
     }
 
-    /** Handle expand/collapse behaviors */
     handleTreeControl(change: SelectionChange<MediaFolderTreeNode>) {
         if (change.added) {
             change.added.forEach(node => this.toggleNode(node, true));
@@ -58,7 +58,7 @@ export class MediaFoldersDataSource {
 
         if (expand) {
             node.isLoading = true;
-            this.mediaClient.getChildrenFolders(node.value.id).subscribe(folders => {
+            this.mediaFolderService.getChildrenFolders(node.value.id).subscribe(folders => {
                 const nodes = folders.map(x => this.convertToNode(x, node));
                 this.data.splice(index + 1, 0, ...nodes);
                 node.isLoading = false;

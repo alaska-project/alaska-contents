@@ -18,6 +18,7 @@ export class DefaultMediaEditorService extends MediaEditor {
     const dialog = this.dialog.open(MediaPickerDialogComponent, {
       maxWidth: '90vw',
       width: '90vw',
+      height: '90vh',
       data: {
         field: imageField
       }

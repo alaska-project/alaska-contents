@@ -23,6 +23,8 @@ import { MediaPickerDialogComponent } from './components/editors/media/media-pic
 import { MediaPickerComponent } from './components/editors/media/media-picker/media-picker.component';
 import { MediaFolderExplorerComponent } from './components/editors/media/media-folder-explorer/media-folder-explorer.component';
 import { MediaFoldersTreeComponent } from './components/editors/media/media-folders-tree/media-folders-tree.component';
+import { CreateFolderButtonComponent } from './components/editors/media/create-folder-button/create-folder-button.component';
+import { CreateFolderDialogComponent } from './components/editors/media/create-folder-dialog/create-folder-dialog.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +40,8 @@ import { MediaFoldersTreeComponent } from './components/editors/media/media-fold
         MediaPickerDialogComponent,
         MediaFolderExplorerComponent,
         MediaFoldersTreeComponent,
+        CreateFolderButtonComponent,
+        CreateFolderDialogComponent,
     ],
     imports: [
         CommonModule,
@@ -66,6 +70,7 @@ import { MediaFoldersTreeComponent } from './components/editors/media/media-fold
         NotificationsSnackbarComponent,
         LoaderDialogContentComponent,
         MediaPickerDialogComponent,
+        CreateFolderDialogComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
