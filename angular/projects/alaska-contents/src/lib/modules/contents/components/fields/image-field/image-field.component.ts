@@ -1,7 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, OnDestroy, OnChanges, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
 import { ContentItem } from '../../../models/content-models';
+import { MediaEditor } from '../../../abstractions/media-editing.interfaces';
 
 @Component({
   selector: 'aly-image-field',
@@ -27,7 +28,9 @@ export class ImageFieldComponent implements OnInit, AfterViewInit, OnDestroy, On
   @Input()
   height: string;
   
-  constructor(private contentEditing: ContentEditingService) { }
+  constructor(
+    private contentEditing: ContentEditingService,
+    @Optional() private mediaEditor: MediaEditor) { }
 
   ngOnInit() {
   }
@@ -45,5 +48,9 @@ export class ImageFieldComponent implements OnInit, AfterViewInit, OnDestroy, On
       this.subscription.unsubscribe();
       this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
     }
+  }
+
+  edit() {
+    this.mediaEditor.editImage(this.item.fields[this.field]);
   }
 }

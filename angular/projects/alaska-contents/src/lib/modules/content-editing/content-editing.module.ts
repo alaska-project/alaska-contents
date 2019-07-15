@@ -15,6 +15,8 @@ import { EscaladeLoaderComponent } from './components/loaders/escalade-loader/es
 import { BoxesLoaderComponent } from './components/loaders/boxes-loader/boxes-loader.component';
 import { ChangesPublishButtonComponent } from './components/controls/changes-publish-button/changes-publish-button.component';
 import { PublishingTargetSwitcherComponent } from './components/controls/publishing-target-switcher/publishing-target-switcher.component';
+import { DefaultMediaEditorService } from './services/media-editor/default-media-editor.service';
+import { MediaEditor } from '../contents/abstractions/media-editing.interfaces';
 
 @NgModule({
     declarations: [
@@ -58,7 +60,9 @@ export class AlaskaContentEditingModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: AlaskaContentEditingModule,
-            providers: []
+            providers: [
+                { provide: MediaEditor, useClass: DefaultMediaEditorService }
+            ]
         };
     }
 }

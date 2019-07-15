@@ -2,6 +2,7 @@
  * Public API Surface of alaska-contents
  */
 
+export * from './lib/modules/contents/abstractions/media-editing.interfaces';
 export * from './lib/modules/contents/contents.module';
 export * from './lib/modules/contents/models/settings';
 export * from './lib/modules/contents/services/content-editing/content-editing.service';

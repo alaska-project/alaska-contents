@@ -26,7 +26,7 @@ import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item
     MatButtonModule,
     MatIconModule,
     AlaskaContentsModule.forRoot(),
-    AlaskaContentEditingModule,
+    AlaskaContentEditingModule.forRoot(),
   ],
   providers: [
     ContentsService,

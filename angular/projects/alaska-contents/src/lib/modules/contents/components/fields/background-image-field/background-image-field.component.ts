@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentItem } from '../../../models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
+import { MediaEditor } from '../../../abstractions/media-editing.interfaces';
 
 @Component({
   selector: 'aly-background-image-field',
@@ -36,7 +37,9 @@ export class BackgroundImageFieldComponent implements OnInit, OnChanges {
   @Input()
   size: string;
 
-  constructor(private contentEditing: ContentEditingService) { }
+  constructor(
+    private contentEditing: ContentEditingService,
+    @Optional() private mediaEditor: MediaEditor) { }
 
   ngOnInit() {
   }
@@ -54,5 +57,9 @@ export class BackgroundImageFieldComponent implements OnInit, OnChanges {
       this.subscription.unsubscribe();
       this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
     }
+  }
+
+  edit() {
+    this.mediaEditor.editImage(this.item.fields[this.field]);
   }
 }
