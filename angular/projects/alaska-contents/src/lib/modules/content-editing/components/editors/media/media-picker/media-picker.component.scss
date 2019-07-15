@@ -1,0 +1,12 @@
+.media-picker-container {
+    display: flex;
+    flex-direction: row;
+
+    .tree {
+        flex: 3;
+    }
+
+    .folder {
+        flex: 7;
+    }
+}

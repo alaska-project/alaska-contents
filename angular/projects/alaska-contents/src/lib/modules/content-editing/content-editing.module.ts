@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatIconModule, MatMenuModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EditingModeSwitherComponent } from './components/controls/editing-mode-swither/editing-mode-swither.component';
 import { ChangesSaveButtonComponent } from './components/controls/changes-save-button/changes-save-button.component';
@@ -19,6 +20,8 @@ import { DefaultMediaEditorService } from './services/media-editor/default-media
 import { MediaEditor } from '../contents/abstractions/media-editing.interfaces';
 import { MediaPickerDialogComponent } from './components/editors/media/media-picker-dialog/media-picker-dialog.component';
 import { MediaPickerComponent } from './components/editors/media/media-picker/media-picker.component';
+import { MediaFolderExplorerComponent } from './components/editors/media/media-folder-explorer/media-folder-explorer.component';
+import { MediaFoldersTreeComponent } from './components/editors/media/media-folders-tree/media-folders-tree.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +35,8 @@ import { MediaPickerComponent } from './components/editors/media/media-picker/me
         PublishingTargetSwitcherComponent,
         MediaPickerComponent,
         MediaPickerDialogComponent,
+        MediaFolderExplorerComponent,
+        MediaFoldersTreeComponent,
     ],
     imports: [
         CommonModule,
@@ -47,6 +52,7 @@ import { MediaPickerComponent } from './components/editors/media/media-picker/me
         MatIconModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
+        MatTreeModule,
         AlaskaContentsModule,
     ],
     exports: [

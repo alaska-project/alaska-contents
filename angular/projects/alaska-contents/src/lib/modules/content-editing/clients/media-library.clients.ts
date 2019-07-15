@@ -6,7 +6,7 @@ import { formatUrl } from '../../contents/utils/url-utils';
 @Injectable({
     providedIn: 'root'
 })
-export class ContentsUpdateClient {
+export class MediaLibraryClient {
 
     constructor(
         private http: HttpClient,
