@@ -6,6 +6,7 @@ import { CollectionViewer, SelectionChange } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { MediaFolderTreeNode } from './media-folders-tree.models';
 import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
+import { FolderDeletedEvent, FolderCreatedEvent } from '../../../../services/media-folders/media-folder.models';
 
 @Injectable()
 export class MediaFoldersDataSource {
@@ -35,6 +36,8 @@ export class MediaFoldersDataSource {
 
     loadRootFolders() {
         this.mediaFolderService.getRootFolders().subscribe(x => this.data = x.map(folder => this.convertToNode(folder, undefined)));
+        this.mediaFolderService.folderCreated().subscribe(x => this.hendleFolderCreated(x));
+        this.mediaFolderService.folderDeleted().subscribe(x => this.handleFolderDelete(x));
     }
 
     handleTreeControl(change: SelectionChange<MediaFolderTreeNode>) {
@@ -46,11 +49,7 @@ export class MediaFoldersDataSource {
         }
     }
 
-    /**
-     * Toggle the node, remove from display list
-     */
     toggleNode(node: MediaFolderTreeNode, expand: boolean) {
-
         const index = this.data.indexOf(node);
         if (index < 0) {
             return;
@@ -60,15 +59,53 @@ export class MediaFoldersDataSource {
             node.isLoading = true;
             this.mediaFolderService.getChildrenFolders(node.value.id).subscribe(folders => {
                 const nodes = folders.map(x => this.convertToNode(x, node));
-                this.data.splice(index + 1, 0, ...nodes);
+                const newNodes = this.data.filter(x => true);
+                newNodes.splice(index + 1, 0, ...nodes);
+                //this.data.splice(index + 1, 0, ...nodes);
+                this.data = newNodes;
                 node.isLoading = false;
             });
         } else {
-            let count = 0;
-            for (let i = index + 1; i < this.data.length
-                && this.data[i].level > node.level; i++ , count++) { }
-            this.data.splice(index + 1, count);
+            this.removeChildNodes(node, false);
         }
+    }
+
+    private handleFolderDelete(event: FolderDeletedEvent) {
+        const nodeToRemove = this.data.find(x => x.value.id === event.folder.id);
+        if (nodeToRemove) {
+            this.removeChildNodes(nodeToRemove, true);
+        }
+    }
+
+    private hendleFolderCreated(event: FolderCreatedEvent) {
+        if (event.parent) {
+            const currentParentNode = this.data.find(x => x.value.id === event.parent.id);
+            if (currentParentNode) {
+                if (this._treeControl.isExpanded(currentParentNode)) {
+                    this._treeControl.collapse(currentParentNode);
+                }
+                this._treeControl.expand(currentParentNode);
+            }
+        } else {
+            const newNodes = this.cloneData();
+            newNodes.unshift(this.convertToNode(event.folder, undefined));
+            this.data = newNodes;
+        }
+    }
+
+    private removeChildNodes(node: MediaFolderTreeNode, removeSelf: boolean) {
+        const index = this.data.indexOf(node);
+        let count = 0;
+        for (let i = index + 1; i < this.data.length
+            && this.data[i].level > node.level; i++ , count++) { }
+        //this.data.splice(index + 1, count);
+        const newNodes = this.cloneData();
+        if (removeSelf) {
+            newNodes.splice(index, count + 1);
+        } else {
+            newNodes.splice(index + 1, count);
+        }
+        this.data = newNodes;
     }
 
     private convertToNode(folder: MediaFolder, parent: MediaFolderTreeNode): MediaFolderTreeNode {
@@ -79,5 +116,9 @@ export class MediaFoldersDataSource {
             expandable: true,
             level: parent ? parent.level + 1 : 0,
         }
+    }
+
+    private cloneData() {
+        return this.data.filter(x => true);
     }
 }

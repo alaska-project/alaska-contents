@@ -13,6 +13,14 @@ export class MediaFolderService {
 
   constructor(private mediaLibraryClient: MediaLibraryClient) { }
 
+  folderCreated() {
+    return this.folderCreated$.asObservable();
+  }
+
+  folderDeleted() {
+    return this.folderDeleted$.asObservable();
+  }
+
   getRootFolders() {
     return this.mediaLibraryClient.getRootFolders();
   }
