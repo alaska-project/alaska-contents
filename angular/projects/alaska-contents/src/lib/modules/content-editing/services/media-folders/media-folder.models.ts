@@ -12,3 +12,7 @@ export interface FolderDeletedEvent {
 export interface FolderSelectedEvent {
     folder: MediaFolder;
 }
+
+export interface FolderReloadEvent {
+    folder: MediaFolder;
+}

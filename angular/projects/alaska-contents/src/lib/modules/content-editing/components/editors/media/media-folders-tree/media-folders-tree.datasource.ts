@@ -6,7 +6,7 @@ import { CollectionViewer, SelectionChange } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { MediaFolderTreeNode } from './media-folders-tree.models';
 import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
-import { FolderDeletedEvent, FolderCreatedEvent } from '../../../../services/media-folders/media-folder.models';
+import { FolderDeletedEvent, FolderCreatedEvent, FolderReloadEvent } from '../../../../services/media-folders/media-folder.models';
 
 @Injectable()
 export class MediaFoldersDataSource {
@@ -38,6 +38,7 @@ export class MediaFoldersDataSource {
         this.mediaFolderService.getRootFolders().subscribe(x => this.data = x.map(folder => this.convertToNode(folder, undefined)));
         this.mediaFolderService.folderCreated().subscribe(x => this.hendleFolderCreated(x));
         this.mediaFolderService.folderDeleted().subscribe(x => this.handleFolderDelete(x));
+        this.mediaFolderService.folderReloaded().subscribe(x => this.handleFolderReload(x));
     }
 
     handleTreeControl(change: SelectionChange<MediaFolderTreeNode>) {
@@ -70,6 +71,13 @@ export class MediaFoldersDataSource {
         }
     }
 
+    private handleFolderReload(event: FolderReloadEvent) {
+        const nodeToReload = this.data.find(x => x.value.id === event.folder.id);
+        if (nodeToReload) {
+            this.reloadTreeNode(nodeToReload);
+        }
+    }
+
     private handleFolderDelete(event: FolderDeletedEvent) {
         const nodeToRemove = this.data.find(x => x.value.id === event.folder.id);
         if (nodeToRemove) {
@@ -81,16 +89,20 @@ export class MediaFoldersDataSource {
         if (event.parent) {
             const currentParentNode = this.data.find(x => x.value.id === event.parent.id);
             if (currentParentNode) {
-                if (this._treeControl.isExpanded(currentParentNode)) {
-                    this._treeControl.collapse(currentParentNode);
-                }
-                this._treeControl.expand(currentParentNode);
+                this.reloadTreeNode(currentParentNode);
             }
         } else {
             const newNodes = this.cloneData();
             newNodes.unshift(this.convertToNode(event.folder, undefined));
             this.data = newNodes;
         }
+    }
+
+    private reloadTreeNode(node: MediaFolderTreeNode) {
+        if (this._treeControl.isExpanded(node)) {
+            this._treeControl.collapse(node);
+        }
+        this._treeControl.expand(node);
     }
 
     private removeChildNodes(node: MediaFolderTreeNode, removeSelf: boolean) {

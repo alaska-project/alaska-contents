@@ -2,12 +2,16 @@
   <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+    <span>Ricarica</span>
+  </button>
   <button mat-menu-item (click)="createSubfolder()">
     <mat-icon>create_new_folder</mat-icon>
-    <span>New Subfolder</span>
+    <span>Nuova sottocartella</span>
   </button>
   <button mat-menu-item (click)="delete()">
     <mat-icon>delete</mat-icon>
-    <span>Delete</span>
+    <span>Elimina</span>
   </button>
 </mat-menu>
