@@ -8,6 +8,8 @@ import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderRelo
 })
 export class MediaFolderService {
 
+  private currentSelectedFolder: MediaFolder;
+
   private folderCreated$ = new Subject<FolderCreatedEvent>();
   private folderDeleted$ = new Subject<FolderDeletedEvent>();
   private folderSelected$ = new BehaviorSubject<FolderSelectedEvent>(undefined);
@@ -40,6 +42,7 @@ export class MediaFolderService {
   }
 
   selectFolder(folder: MediaFolder) {
+    this.currentSelectedFolder = folder;
     this.folderSelected$.next({
       folder: folder
     });
@@ -56,6 +59,9 @@ export class MediaFolderService {
     this.folderDeleted$.next({
       folder: folder
     });
+    if (this.currentSelectedFolder.id === folder.id) {
+      this.selectFolder(undefined);
+    }
   }
 
   async createFolder(name: string, parent: MediaFolder) {
@@ -72,6 +78,7 @@ export class MediaFolderService {
       folder: folder,
       parent: undefined,
     });
+    this.selectFolder(folder);
   }
 
   private async createChildFolder(name: string, parent: MediaFolder) {
@@ -80,5 +87,6 @@ export class MediaFolderService {
       folder: folder,
       parent: parent,
     });
+    this.selectFolder(folder);
   }
 }
