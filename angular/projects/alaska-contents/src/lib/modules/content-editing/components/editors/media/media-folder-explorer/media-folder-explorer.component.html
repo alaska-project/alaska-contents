@@ -1,1 +1,7 @@
-folder
+<div *ngIf="!selectedFolder">
+
+</div>
+
+<div *ngIf="selectedFolder">
+    {{selectedFolder.name}}
+</div>
