@@ -16,4 +16,7 @@ export class MediaFoldersTreeNodeComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectFolder() {
+    
+  }
 }

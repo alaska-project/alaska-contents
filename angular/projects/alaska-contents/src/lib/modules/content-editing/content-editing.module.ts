@@ -27,6 +27,7 @@ import { CreateFolderButtonComponent } from './components/editors/media/create-f
 import { CreateFolderDialogComponent } from './components/editors/media/create-folder-dialog/create-folder-dialog.component';
 import { MediaFoldersPanelComponent } from './components/editors/media/media-folders-panel/media-folders-panel.component';
 import { MediaFoldersTreeNodeComponent } from './components/editors/media/media-folders-tree-node/media-folders-tree-node.component';
+import { MediaFoldersTreeNodeMenuComponent } from './components/editors/media/media-folders-tree-node-menu/media-folders-tree-node-menu.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { MediaFoldersTreeNodeComponent } from './components/editors/media/media-
         CreateFolderDialogComponent,
         MediaFoldersPanelComponent,
         MediaFoldersTreeNodeComponent,
+        MediaFoldersTreeNodeMenuComponent,
     ],
     imports: [
         CommonModule,
