@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MediaFolderTreeNode } from '../media-folders-tree/media-folders-tree.models';
+import { MediaFoldersEditorService } from '../../../../services/media-folders-editor/media-folders-editor.service';
 
 @Component({
   selector: 'aly-media-folders-tree-node-menu',
@@ -11,16 +12,16 @@ export class MediaFoldersTreeNodeMenuComponent implements OnInit {
   @Input()
   node: MediaFolderTreeNode;
   
-  constructor() { }
+  constructor(private mediaFoldersEditorService: MediaFoldersEditorService) { }
 
   ngOnInit() {
   }
 
   createSubfolder() {
-
+    this.mediaFoldersEditorService.createFolder(this.node.value);
   }
 
   delete() {
-    
+    this.mediaFoldersEditorService.deleteFolder(this.node.value);
   }
 }
