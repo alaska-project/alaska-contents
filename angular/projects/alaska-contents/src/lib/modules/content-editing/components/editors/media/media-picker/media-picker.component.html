@@ -1,6 +1,8 @@
 <mat-drawer-container class="drawer-container" autosize>
   <mat-drawer class="sidenav" #drawer mode="side" opened>
-    <aly-media-folders-tree clas="tree"></aly-media-folders-tree>
+    <div class="tree">
+      <aly-media-folders-panel></aly-media-folders-panel>
+    </div>
   </mat-drawer>
   <mat-drawer-content class="sidenav-content">
     <aly-media-folder-explorer class="folder"></aly-media-folder-explorer>

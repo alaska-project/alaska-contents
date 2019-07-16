@@ -1,9 +1,14 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../projects/alaska-contents/src/lib/modules/content-editing/themes/default-theme.scss";
 
 body {
     font-family: Roboto,"Helvetica Neue",sans-serif;
     margin: 0;
+}
+
+.padding-0 {
+    padding: 0 !important;
 }
 
 app-navbar .docs-navbar, app-navbar .docs-navbar-header {

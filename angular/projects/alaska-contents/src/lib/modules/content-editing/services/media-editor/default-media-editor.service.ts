@@ -19,6 +19,7 @@ export class DefaultMediaEditorService extends MediaEditor {
       maxWidth: '90vw',
       width: '90vw',
       height: '90vh',
+      panelClass: 'dialog-no-padding',
       data: {
         field: imageField
       }
