@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MediaLibraryClient, MediaFolder } from '../../clients/media-library.clients';
-import { Subject } from 'rxjs';
-import { FolderCreatedEvent, FolderDeletedEvent } from './media-folder.models';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent } from './media-folder.models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ export class MediaFolderService {
 
   private folderCreated$ = new Subject<FolderCreatedEvent>();
   private folderDeleted$ = new Subject<FolderDeletedEvent>();
+  private folderSelected$ = new BehaviorSubject<FolderSelectedEvent>(undefined);
 
   constructor(private mediaLibraryClient: MediaLibraryClient) { }
 
@@ -21,12 +22,22 @@ export class MediaFolderService {
     return this.folderDeleted$.asObservable();
   }
 
+  folderSelected() {
+    return this.folderSelected$.asObservable();
+  }
+
   getRootFolders() {
     return this.mediaLibraryClient.getRootFolders();
   }
 
   getChildrenFolders(folderId: string) {
     return this.mediaLibraryClient.getChildrenFolders(folderId);
+  }
+
+  selectFolder(folder: MediaFolder) {
+    this.folderSelected$.next({
+      folder: folder
+    });
   }
 
   async deleteFolder(folder: MediaFolder) {

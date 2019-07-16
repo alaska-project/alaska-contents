@@ -8,3 +8,7 @@ export interface FolderCreatedEvent {
 export interface FolderDeletedEvent {
     folder: MediaFolder;
 }
+
+export interface FolderSelectedEvent {
+    folder: MediaFolder;
+}

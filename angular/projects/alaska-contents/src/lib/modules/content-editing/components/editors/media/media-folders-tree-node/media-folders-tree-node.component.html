@@ -1,5 +1,5 @@
 <div class="folder" *ngIf="node">
-  <mat-icon class="folder-icon">folder</mat-icon> 
+  <mat-icon class="folder-icon">{{ isSelected ? 'folder_open' : 'folder' }}</mat-icon> 
   <button mat-button (click)="selectFolder()">{{node.value.name}}</button>
   <aly-media-folders-tree-node-menu [node]="node"></aly-media-folders-tree-node-menu>
 </div>
