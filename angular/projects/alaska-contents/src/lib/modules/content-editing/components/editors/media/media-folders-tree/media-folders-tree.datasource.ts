@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, merge } from 'rxjs';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { MediaLibraryClient, MediaFolder } from '../../../../clients/media-library.clients';
+import { MediaFolder } from '../../../../clients/media-library.clients';
 import { CollectionViewer, SelectionChange } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { MediaFolderTreeNode } from './media-folders-tree.models';
@@ -69,32 +69,6 @@ export class MediaFoldersDataSource {
                 && this.data[i].level > node.level; i++ , count++) { }
             this.data.splice(index + 1, count);
         }
-
-
-        // const children = this._database.getChildren(node.item);
-        // const index = this.data.indexOf(node);
-        // if (!children || index < 0) { // If no children, or cannot find the node, no op
-        //     return;
-        // }
-
-        // node.isLoading = true;
-
-        // setTimeout(() => {
-        //     if (expand) {
-        //         const nodes = children.map(name =>
-        //             new MediaFolderTreeNode(name, node.level + 1, this._database.isExpandable(name)));
-        //         this.data.splice(index + 1, 0, ...nodes);
-        //     } else {
-        //         let count = 0;
-        //         for (let i = index + 1; i < this.data.length
-        //             && this.data[i].level > node.level; i++ , count++) { }
-        //         this.data.splice(index + 1, count);
-        //     }
-
-        //     // notify the change
-        //     this.dataChange.next(this.data);
-        //     node.isLoading = false;
-        // }, 1000);
     }
 
     private convertToNode(folder: MediaFolder, parent: MediaFolderTreeNode): MediaFolderTreeNode {
@@ -102,7 +76,7 @@ export class MediaFoldersDataSource {
             value: folder,
             children: [],
             isLoading: false,
-            expandable: false,
+            expandable: true,
             level: parent ? parent.level + 1 : 0,
         }
     }
