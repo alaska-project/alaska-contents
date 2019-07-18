@@ -29,6 +29,8 @@ import { MediaFoldersPanelComponent } from './components/editors/media/media-fol
 import { MediaFoldersTreeNodeComponent } from './components/editors/media/media-folders-tree-node/media-folders-tree-node.component';
 import { MediaFoldersTreeNodeMenuComponent } from './components/editors/media/media-folders-tree-node-menu/media-folders-tree-node-menu.component';
 import { DeleteFolderDialogComponent } from './components/editors/media/delete-folder-dialog/delete-folder-dialog.component';
+import { ImagesUploadControlComponent } from './components/editors/media/images-upload-control/images-upload-control.component';
+import { FileSelectorControlComponent } from './components/editors/media/file-selector-control/file-selector-control.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +52,8 @@ import { DeleteFolderDialogComponent } from './components/editors/media/delete-f
         MediaFoldersTreeNodeComponent,
         MediaFoldersTreeNodeMenuComponent,
         DeleteFolderDialogComponent,
+        ImagesUploadControlComponent,
+        FileSelectorControlComponent,
     ],
     imports: [
         CommonModule,

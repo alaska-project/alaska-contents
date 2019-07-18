@@ -1,7 +1,10 @@
-<div *ngIf="!selectedFolder">
+<div class="folder-explorer-container">
+    <div *ngIf="!selectedFolder">
 
-</div>
+    </div>
 
-<div *ngIf="selectedFolder">
-    {{selectedFolder.name}}
+    <div *ngIf="selectedFolder">
+        <h2 class="title">{{selectedFolder.name}}</h2>
+        <aly-images-upload-control></aly-images-upload-control>
+    </div>
 </div>
