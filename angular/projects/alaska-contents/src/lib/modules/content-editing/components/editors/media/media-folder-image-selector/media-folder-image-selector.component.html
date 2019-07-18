@@ -1,0 +1,10 @@
+<div *ngIf="isLoading">
+
+</div>
+<div *ngIf="!isLoading">
+  <mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let media of contents">
+      <aly-media-folder-image-item [media]="media"></aly-media-folder-image-item>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

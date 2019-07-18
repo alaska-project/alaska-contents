@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatIconModule, MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -31,6 +33,8 @@ import { MediaFoldersTreeNodeMenuComponent } from './components/editors/media/me
 import { DeleteFolderDialogComponent } from './components/editors/media/delete-folder-dialog/delete-folder-dialog.component';
 import { ImagesUploadControlComponent } from './components/editors/media/images-upload-control/images-upload-control.component';
 import { FileSelectorControlComponent } from './components/editors/media/file-selector-control/file-selector-control.component';
+import { MediaFolderImageSelectorComponent } from './components/editors/media/media-folder-image-selector/media-folder-image-selector.component';
+import { MediaFolderImageItemComponent } from './components/editors/media/media-folder-image-item/media-folder-image-item.component';
 
 @NgModule({
     declarations: [
@@ -54,6 +58,8 @@ import { FileSelectorControlComponent } from './components/editors/media/file-se
         DeleteFolderDialogComponent,
         ImagesUploadControlComponent,
         FileSelectorControlComponent,
+        MediaFolderImageSelectorComponent,
+        MediaFolderImageItemComponent,
     ],
     imports: [
         CommonModule,
@@ -69,6 +75,8 @@ import { FileSelectorControlComponent } from './components/editors/media/file-se
         MatIconModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
+        MatGridListModule, 
+        MatCardModule,
         MatTreeModule,
         MatSidenavModule,
         AlaskaContentsModule,

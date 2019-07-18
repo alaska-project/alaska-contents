@@ -47,6 +47,10 @@ export class MediaFolderService {
     }).toPromise();
   }
 
+  getFolderMedia(folder: MediaFolder) {
+    return this.mediaLibraryClient.getFolderContents(folder.id).toPromise();
+  }
+
   getRootFolders() {
     return this.mediaLibraryClient.getRootFolders();
   }
