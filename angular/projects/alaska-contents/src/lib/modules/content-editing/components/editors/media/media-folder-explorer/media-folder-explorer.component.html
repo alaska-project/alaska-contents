@@ -5,7 +5,11 @@
 
     <div *ngIf="selectedFolder">
         <h2 class="title">{{selectedFolder.name}}</h2>
-        <aly-images-upload-control [folder]="selectedFolder"></aly-images-upload-control>
-        <aly-media-folder-image-selector [folder]="selectedFolder"></aly-media-folder-image-selector>
+        <div class="img-upload">
+            <aly-images-upload-control [folder]="selectedFolder"></aly-images-upload-control>
+        </div>
+        <div class="img-grid">
+            <aly-media-folder-image-selector [folder]="selectedFolder"></aly-media-folder-image-selector>
+        </div>
     </div>
 </div>

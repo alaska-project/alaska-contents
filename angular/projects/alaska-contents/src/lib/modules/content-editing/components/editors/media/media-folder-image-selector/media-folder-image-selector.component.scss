@@ -1,0 +1,24 @@
+.thumb-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  .item-col {
+    flex: 0 19%;
+    margin: 1%;
+
+    .item {
+      position: relative;
+      width: 100%;
+      padding-bottom: 66%;
+      cursor: pointer;
+
+      .item-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}
