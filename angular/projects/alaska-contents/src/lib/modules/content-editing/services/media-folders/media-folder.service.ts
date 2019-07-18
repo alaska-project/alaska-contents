@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { MediaLibraryClient, MediaFolder } from '../../clients/media-library.clients';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderReloadEvent } from './media-folder.models';
+import { FileData } from '../../components/editors/media/file-selector-control/file-selector-control.models';
+import { FileConverterService } from '../file-converter/file-converter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class MediaFolderService {
   private folderSelected$ = new BehaviorSubject<FolderSelectedEvent>(undefined);
   private folderReload$ = new Subject<FolderReloadEvent>();
 
-  constructor(private mediaLibraryClient: MediaLibraryClient) { }
+  constructor(
+    private fileConverter: FileConverterService,
+    private mediaLibraryClient: MediaLibraryClient) { }
 
   folderCreated() {
     return this.folderCreated$.asObservable();
@@ -31,6 +35,16 @@ export class MediaFolderService {
 
   folderReloaded() {
     return this.folderReload$.asObservable();
+  }
+
+  async uploadMedia(content: FileData, folder: MediaFolder) {
+    const fileContent = await this.fileConverter.getEncodedContent(content);
+    await this.mediaLibraryClient.addMedia({
+      folderId: folder.id,
+      name: content.name,
+      contentType: this.fileConverter.getContentType(content),
+      mediaContent: fileContent,
+    }).toPromise();
   }
 
   getRootFolders() {

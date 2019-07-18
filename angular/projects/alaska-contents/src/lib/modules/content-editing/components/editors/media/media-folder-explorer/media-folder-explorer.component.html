@@ -5,6 +5,6 @@
 
     <div *ngIf="selectedFolder">
         <h2 class="title">{{selectedFolder.name}}</h2>
-        <aly-images-upload-control></aly-images-upload-control>
+        <aly-images-upload-control [folder]="selectedFolder"></aly-images-upload-control>
     </div>
 </div>

@@ -5,6 +5,7 @@ import { OperationsService } from '../operations/operations.service';
 import { CreateFolderDialogComponent } from '../../components/editors/media/create-folder-dialog/create-folder-dialog.component';
 import { MediaFolder } from '../../clients/media-library.clients';
 import { DeleteFolderDialogComponent } from '../../components/editors/media/delete-folder-dialog/delete-folder-dialog.component';
+import { FileData } from '../../components/editors/media/file-selector-control/file-selector-control.models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,13 @@ export class MediaFoldersEditorService {
   constructor(private dialog: MatDialog,
     private mediaFolder: MediaFolderService,
     private operation: OperationsService) { }
+
+  uploadMedia(content: FileData, folder: MediaFolder) {
+    this.operation.run({
+      operation: this.mediaFolder.uploadMedia(content, folder),
+      errorMessage: `Error uploading media ${content.name}`,
+    })
+  }
 
   createFolder(parentFolder: MediaFolder) {
     const dialog = this.dialog.open(CreateFolderDialogComponent, {

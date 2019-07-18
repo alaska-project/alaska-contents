@@ -54,12 +54,13 @@ export class MediaLibraryClient {
     }
 
     addMedia(media: MediaContentFile) {
-        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/addMedia', {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/addMedia');
+        return this.http.post<MediaContent>(url, <MediaCreationRequest>{
             name: media.name,
             contentType: media.contentType,
             folderId: media.folderId,
+            mediaContent: media.mediaContent,
         });
-        return this.http.post<MediaContent>(url, media.mediaContent);
     }
 
     deleteMedia(mediaId: string) {
@@ -93,4 +94,11 @@ export interface MediaContent {
     url: string;
     thumbnailUrl: string;
     contentType: string;
+}
+
+export interface MediaCreationRequest {
+    name: string;
+    contentType: string;
+    folderId: string;
+    mediaContent: string;
 }
