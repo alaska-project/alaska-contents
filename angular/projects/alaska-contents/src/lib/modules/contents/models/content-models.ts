@@ -23,6 +23,7 @@ export interface ContentField<T> {
 }
 
 export interface ImageFieldData {
+    id: string;
     url: string;
     alt: string;
     class: string;

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MediaPickerData } from './media-picker-dialog.models';
+import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 
 @Component({
   selector: 'aly-media-picker-dialog',
@@ -11,9 +12,11 @@ export class MediaPickerDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<MediaPickerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: MediaPickerData
+    private mediaFolderService: MediaFolderService,
+    @Inject(MAT_DIALOG_DATA) private data: MediaPickerData
   ) { }
 
   ngOnInit() {
+    this.mediaFolderService.selectMedia(this.data.field.value.id);
   }
 }

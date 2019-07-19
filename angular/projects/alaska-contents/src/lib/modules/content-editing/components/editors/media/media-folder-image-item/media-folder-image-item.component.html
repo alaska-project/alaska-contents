@@ -1,4 +1,4 @@
-<div class="thumb-container">
+<div class="thumb-container" [class.selected]="isSelected()" (click)="selectImage()">
   <div class="img" [style.background-image]="getImageBackgroundUrl()"></div>
 </div>
 <div class="img-controls">
