@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { MediaFolderService } from '../media-folders/media-folder.service';
 import { OperationsService } from '../operations/operations.service';
 import { CreateFolderDialogComponent } from '../../components/editors/media/create-folder-dialog/create-folder-dialog.component';
-import { MediaFolder } from '../../clients/media-library.clients';
+import { MediaFolder, MediaContent } from '../../clients/media-library.clients';
 import { DeleteFolderDialogComponent } from '../../components/editors/media/delete-folder-dialog/delete-folder-dialog.component';
 import { FileData } from '../../components/editors/media/file-selector-control/file-selector-control.models';
 
@@ -16,11 +16,18 @@ export class MediaFoldersEditorService {
     private mediaFolder: MediaFolderService,
     private operation: OperationsService) { }
 
+  deleteMedia(media: MediaContent) {
+    this.operation.run({
+      operation: this.mediaFolder.deleteMedia(media),
+      errorMessage: `Error deleting media ${media.name}`,
+    });
+  }
+
   uploadMedia(content: FileData, folder: MediaFolder) {
     this.operation.run({
       operation: this.mediaFolder.uploadMedia(content, folder),
       errorMessage: `Error uploading media ${content.name}`,
-    })
+    });
   }
 
   createFolder(parentFolder: MediaFolder) {

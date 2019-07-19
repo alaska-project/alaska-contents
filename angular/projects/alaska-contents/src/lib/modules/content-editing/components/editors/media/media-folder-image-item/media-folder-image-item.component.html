@@ -1,3 +1,17 @@
 <div class="thumb-container">
   <div class="img" [style.background-image]="getImageBackgroundUrl()"></div>
 </div>
+<div class="img-controls">
+  <div class="img-name">{{media.name}}</div>
+  <div class="img-menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Media Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="delete()">
+        <mat-icon>delete</mat-icon>
+        <span>Elimina</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

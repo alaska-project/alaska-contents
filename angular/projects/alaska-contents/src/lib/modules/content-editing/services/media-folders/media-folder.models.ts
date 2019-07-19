@@ -1,4 +1,4 @@
-import { MediaFolder } from '../../clients/media-library.clients';
+import { MediaFolder, MediaContent } from '../../clients/media-library.clients';
 
 export interface FolderCreatedEvent {
     folder: MediaFolder;
@@ -15,4 +15,13 @@ export interface FolderSelectedEvent {
 
 export interface FolderReloadEvent {
     folder: MediaFolder;
+}
+
+export interface MediaCreatedEvent {
+    media: MediaContent;
+    folder: MediaFolder;
+}
+
+export interface MediaDeletedEvent {
+    media: MediaContent;
 }

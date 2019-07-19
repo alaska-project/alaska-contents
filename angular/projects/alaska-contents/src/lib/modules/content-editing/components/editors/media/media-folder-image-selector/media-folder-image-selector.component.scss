@@ -10,7 +10,12 @@
       position: relative;
       width: 100%;
       padding-bottom: 66%;
+      border-radius: 5px;
       cursor: pointer;
+
+      &.selected {
+        box-shadow: 0 0 0 0.3rem rgba(23,162,184,.5);
+      }
 
       .item-content {
         position: absolute;

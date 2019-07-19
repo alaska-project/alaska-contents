@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FileData } from '../file-selector-control/file-selector-control.models';
-import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 import { MediaFolder } from '../../../../clients/media-library.clients';
+import { MediaFoldersEditorService } from '../../../../services/media-folders-editor/media-folders-editor.service';
 
 @Component({
   selector: 'aly-images-upload-control',
@@ -13,7 +13,7 @@ export class ImagesUploadControlComponent implements OnInit {
   @Input()
   folder: MediaFolder;
   
-  constructor(private mediaFolderService: MediaFolderService) { }
+  constructor(private mediaFolderService: MediaFoldersEditorService) { }
 
   ngOnInit() {
   }
