@@ -53,6 +53,13 @@ export class MediaLibraryClient {
         return this.http.post<MediaFolder>(url, undefined);
     }
 
+    getMedia(mediaId: string) {
+        const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/getMedia', {
+            mediaId: mediaId,
+        });
+        return this.http.get<MediaContent>(url);
+    }
+
     addMedia(media: MediaContentFile) {
         const url = formatUrl(this.contentsApiEndpoint(), '/alaska/api/media/addMedia');
         return this.http.post<MediaContent>(url, <MediaCreationRequest>{

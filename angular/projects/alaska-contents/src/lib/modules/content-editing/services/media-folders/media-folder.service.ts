@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MediaLibraryClient, MediaFolder, MediaContent } from '../../clients/media-library.clients';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderReloadEvent, MediaCreatedEvent, MediaDeletedEvent, MediaSelectedEvent } from './media-folder.models';
+import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderReloadEvent, MediaCreatedEvent, MediaDeletedEvent, MediaSelectedEvent, MediaConfirmedEvent } from './media-folder.models';
 import { FileData } from '../../components/editors/media/file-selector-control/file-selector-control.models';
 import { FileConverterService } from '../file-converter/file-converter.service';
 
@@ -20,6 +20,8 @@ export class MediaFolderService {
   private mediaCreated$ = new Subject<MediaCreatedEvent>();
   private mediaDeleted$ = new Subject<MediaDeletedEvent>();
   private mediaSelected$ = new BehaviorSubject<MediaSelectedEvent>(undefined);
+  private mediaConfirmed$ = new Subject<MediaConfirmedEvent>();
+  private mediaDiscarded$ = new Subject();
 
   constructor(
     private fileConverter: FileConverterService,
@@ -53,10 +55,28 @@ export class MediaFolderService {
     return this.mediaSelected$.asObservable();
   }
 
+  mediaConfirmed() {
+    return this.mediaConfirmed$.asObservable();
+  }
+
+  mediaDiscarded() {
+    return this.mediaDiscarded$.asObservable();
+  }
+
   selectMedia(mediaId: string) {
     this.mediaSelected$.next({
       mediaId: mediaId
     });
+  }
+
+  confirmMedia(media: MediaContent) {
+    this.mediaConfirmed$.next({
+      media: media
+    });
+  }
+
+  discardMedia() {
+    this.mediaDiscarded$.next();
   }
 
   async deleteMedia(media: MediaContent) {
