@@ -1,4 +1,4 @@
-<div class="folder-explorer-container">
+<div class="folder-explorer-container aly-scroll">
     <div *ngIf="!selectedFolder">
 
     </div>
@@ -12,4 +12,8 @@
             <aly-media-folder-image-selector [folder]="selectedFolder"></aly-media-folder-image-selector>
         </div>
     </div>
+</div>
+<div class="image-controls">
+    <button class="cancel-btn" mat-raised-button>Annulla</button>
+    <button class="ok-btn" mat-raised-button color="primary">Ok</button>
 </div>
