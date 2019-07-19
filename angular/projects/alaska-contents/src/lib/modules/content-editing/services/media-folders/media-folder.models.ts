@@ -27,8 +27,7 @@ export interface MediaDeletedEvent {
 }
 
 export interface MediaSelectedEvent {
-    mediaId: string;
-    media?: MediaContent;
+    media: MediaContent;
 }
 
 export interface MediaConfirmedEvent {

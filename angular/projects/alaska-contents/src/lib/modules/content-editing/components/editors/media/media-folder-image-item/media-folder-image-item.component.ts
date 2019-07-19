@@ -24,7 +24,7 @@ export class MediaFolderImageItemComponent implements OnInit, OnDestroy {
     private mediaFoldersEditorService: MediaFoldersEditorService) { }
 
   ngOnInit() {
-    this.selectedMediaSub = this.mediaFoldersService.mediaSelected().subscribe(x => this.selectedMediaId = x.mediaId);
+    this.selectedMediaSub = this.mediaFoldersService.mediaSelected().subscribe(x => this.selectedMediaId = x ? x.media.id : undefined);
   }
 
   ngOnDestroy(): void {
@@ -42,7 +42,7 @@ export class MediaFolderImageItemComponent implements OnInit, OnDestroy {
   }
 
   selectImage() {
-    this.mediaFoldersService.selectMedia(this.media.id);
+    this.mediaFoldersService.selectMedia(this.media);
   }
 
   delete() {

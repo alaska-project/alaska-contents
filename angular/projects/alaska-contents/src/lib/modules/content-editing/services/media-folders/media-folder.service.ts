@@ -63,9 +63,9 @@ export class MediaFolderService {
     return this.mediaDiscarded$.asObservable();
   }
 
-  selectMedia(mediaId: string) {
+  selectMedia(media: MediaContent) {
     this.mediaSelected$.next({
-      mediaId: mediaId
+      media: media
     });
   }
 

@@ -22,7 +22,6 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.mediaFolderService.selectMedia(this.data.field.value.id);
     this.mediaConfirmedSub = this.mediaFolderService.mediaConfirmed().subscribe(x => this.confirm(x.media));
     this.mediaDiscardedSub = this.mediaFolderService.mediaDiscarded().subscribe(x => this.dialogRef.close());
   }
