@@ -22,7 +22,7 @@ export class ContentEditingService {
     this.contentEditingSingleton.editingMode.subscribe(x => this.currentMode = x);
   }
 
-  initializeField(item: ContentItem, field: string, fieldElement: ElementRef<any>) {
+  updateField(item: ContentItem, field: string, fieldElement: ElementRef<any>) {
     if (!item || !field) {
       return;
     }

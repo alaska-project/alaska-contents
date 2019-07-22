@@ -91,6 +91,7 @@ export class ChangesSaveButtonComponent implements OnInit, OnDestroy {
   }
 
   private async saveItem(item: ContentItem) {
+    debugger;
     await this.contentsUpdateClient.updateContent(item).toPromise();
     this.itemTracker.updateItem(item);
   }

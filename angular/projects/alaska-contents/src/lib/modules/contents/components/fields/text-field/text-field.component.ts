@@ -31,13 +31,13 @@ export class TextFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnC
   }
 
   ngAfterViewInit(): void {
-    this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+    this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
   }
 
   ngOnChanges(changes: any): void {
     if (changes.item && changes.item.firstChange === false) {
       this.subscription.unsubscribe();
-      this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+      this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
     }
   }
 }

@@ -50,13 +50,13 @@ export class BackgroundImageFieldComponent implements OnInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+    this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
   }
 
   ngOnChanges(changes: any): void {
     if (changes.item && changes.item.firstChange === false) {
       this.subscription.unsubscribe();
-      this.subscription = this.contentEditing.initializeField(this.item, this.field, this.fieldElement);
+      this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
     }
   }
 
@@ -65,8 +65,20 @@ export class BackgroundImageFieldComponent implements OnInit, OnChanges {
       return;
     }
     this.isEditing = true;
-    this.mediaEditor.editImage(this.item.fields[this.field]).subscribe(x => {
+    this.mediaEditor.editImage(this.item.fields[this.field]).subscribe(image => {
+      if (image) {
+        this.getField().value = image;
+        this.subscription.unsubscribe();
+        this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
+        //TODO: fix forceUpdate
+        this.fieldElement.nativeElement.setMode('Default');
+        setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
+      }
       this.isEditing = false;
     });
+  }
+
+  private getField() {
+    return this.item.fields[this.field];
   }
 }
