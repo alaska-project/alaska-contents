@@ -1,6 +1,7 @@
 import { Component, h, Prop, Method, State, EventEmitter, Event, Element } from '@stencil/core';
 import { ImageFieldData, ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
+import { Assets } from '../../assets/assets';
 
 @Component({
     tag: 'alaska-background-image-field',
@@ -56,13 +57,16 @@ export class BackgroundImageFieldComponent {
 
     componentWillRender() {
         this.style = this.field ? {
-            'background-image': `url('${this.field.value.url}')`,
+            'background-image': `url('${this.getImageUrl()}')`,
             'background-repeat': this.repeat ? 'repeat' : 'no-repeat',
             'background-size': this.size,
             'background-position': this.position,
             'width': this.width,
             'height': this.height,
         } : {};
+        if (this.field) {
+            console.log(`${this.field.value.url}`, this.style);
+        }
     }
 
     render() {
@@ -73,6 +77,17 @@ export class BackgroundImageFieldComponent {
                 return <alaska-background-image-field-editor onEdit={() => this.edit.emit()} field={this.field} backgroundStyle={this.style} innerContent={this.innerHtml}></alaska-background-image-field-editor>;
             default:
                 undefined;
+        }
+    }
+    
+    private getImageUrl() {
+        switch (this.mode) {
+            case 'Default':
+                return this.field.value.url;
+            case 'Editing':
+                return this.field.value.url ?
+                    this.field.value.url :
+                    Assets.noImageContent;
         }
     }
 }

@@ -21,7 +21,7 @@ export class BackgroundImageFieldEditorComponent {
     edit: EventEmitter;
 
     render() {
-        if (!this.field || !this.field.value.url) {
+        if (!this.field) {
             return;
         }
         return <div onClick={() => this.edit.emit()} class={'image-editor ' + this.field.value.class} innerHTML={this.innerContent} style={this.backgroundStyle}></div>;

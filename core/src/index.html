@@ -45,8 +45,10 @@
       mode = mode === 'Default' ? 'Editing' : 'Default';
       document.getElementById('txtField').setMode(mode);
       document.getElementById('htmlField').setMode(mode);
+      document.getElementById('emptyImgField').setMode(mode);
       document.getElementById('imgField').setMode(mode);
       document.getElementById('bckImgField').setMode(mode);
+      document.getElementById('emptyBckImgField').setMode(mode);
       document.getElementById('linkField').setMode(mode);
     }
   </script>
@@ -88,6 +90,20 @@
     });
   </script>
 
+  <h4>Empty Image Field</h4>
+  <alaska-image-field id="emptyImgField"></alaska-image-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('emptyImgField').setField({
+        type: 'image',
+        value: {
+          url: '',
+          class: 'my-img',
+          alt: 'My Img'
+        }
+      });
+    });
+  </script>
 
   <h4>Background Image Field</h4>
   <alaska-background-image-field id="bckImgField" width="300px" height="200px">
@@ -99,6 +115,23 @@
         type: 'image',
         value: {
           url: 'https://source.unsplash.com/random/300x200',
+          class: 'my-img',
+          alt: 'My Img'
+        }
+      });
+    });
+  </script>
+
+  <h4>Empty Background Image Field</h4>
+  <alaska-background-image-field id="emptyBckImgField" width="300px" height="200px">
+    <div style="text-align: center; color: white">HOOOLA</div>
+  </alaska-background-image-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('emptyBckImgField').setField({
+        type: 'image',
+        value: {
+          url: '',
           class: 'my-img',
           alt: 'My Img'
         }

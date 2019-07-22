@@ -1,5 +1,6 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ImageFieldData, ContentField } from '../../../models/content-models';
+import { Assets } from '../../assets/assets';
 
 @Component({
     tag: 'alaska-image-field-editor',
@@ -15,9 +16,15 @@ export class ImageFieldEditorComponent {
     edit: EventEmitter;
 
     render() {
-        if (!this.field || !this.field.value.url) {
+        if (!this.field) {
             return;
         }
-        return <img onClick={() => this.edit.emit()} class={'image-editor ' + this.field.value.class} src={this.field.value.url} alt={this.field.value.alt}></img>;
+        return <img onClick={() => this.edit.emit()} class={'image-editor ' + this.field.value.class} src={this.getImageUrl()} alt={this.field.value.alt}></img>;
+    }
+
+    private getImageUrl() {
+        return this.field.value.url ?
+            this.field.value.url :
+            Assets.noImageContent;
     }
 }
