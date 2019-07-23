@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { SettingsService } from '../settings/settings.service';
 import { BehaviorSubject } from 'rxjs';
 import { ContextData } from '../../models/context-models';
@@ -16,7 +16,9 @@ export class ContextService {
   private currentTarget: string;
   private currentLanguage: string;
 
-  constructor(private settingsService: SettingsService) {
+  constructor(
+    private ngZone: NgZone,
+    private settingsService: SettingsService) {
     this.context = this.getDefaultContext();
     this.contextSubject = new BehaviorSubject<ContextData>(this.getDefaultContext());
     this.languageSubject = new BehaviorSubject<string>(this.getDefaultContext().language);
@@ -25,7 +27,7 @@ export class ContextService {
     this.publishingTargetSubject.subscribe(x => this.currentTarget = x);
   }
 
-  setLanguage(language: string) {
+  setLanguage(language: string, callback?: () => void) {
     if (this.currentLanguage === language) {
       return;
     }
@@ -33,9 +35,13 @@ export class ContextService {
     this.languageSubject.next(language);
     this.context.language = language;
     this.contextSubject.next(this.context);
+
+    if (callback) {
+      this.ngZone.run(callback);
+    }
   }
 
-  setPublishingTarget(publishingTarget: string) {
+  setPublishingTarget(publishingTarget: string, callback?: () => void) {
     if (this.currentTarget === publishingTarget) {
       return;
     }
@@ -43,6 +49,10 @@ export class ContextService {
     this.publishingTargetSubject.next(publishingTarget);
     this.context.publishingTarget = publishingTarget;
     this.contextSubject.next(this.context);
+
+    if (callback) {
+      this.ngZone.run(callback);
+    }
   }
 
   currentContext() {

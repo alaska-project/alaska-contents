@@ -35,8 +35,13 @@ export class EditingModeSwitherComponent implements OnInit, OnDestroy {
   }
 
   toggle() {
-    const mode = this.mode === 'Default' ? 'Editing' : 'Default';
-    this.contentEditing.setMode(mode);
+    if (this.target === this.settings.getSettings().webContentsTarget) {
+      this.contextService.setPublishingTarget(this.settings.getSettings().previewContentsTarget, () => {
+        this.changeMode();  
+      });
+    } else {
+      this.changeMode();
+    }
   }
 
   ngOnDestroy(): void {
@@ -44,8 +49,9 @@ export class EditingModeSwitherComponent implements OnInit, OnDestroy {
     this.pubTargetSub.unsubscribe();
   }
 
-  isDisabled() {
-    return this.target === this.settings.getSettings().webContentsTarget;
+  private changeMode() {
+    const mode = this.mode === 'Default' ? 'Editing' : 'Default';
+    this.contentEditing.setMode(mode);
   }
 
   private getState(mode: ContentMode) {
