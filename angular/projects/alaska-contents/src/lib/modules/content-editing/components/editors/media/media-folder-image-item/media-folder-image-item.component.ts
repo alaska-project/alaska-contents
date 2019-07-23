@@ -2,8 +2,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MediaContent } from '../../../../clients/media-library.clients';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MediaFoldersEditorService } from '../../../../services/media-folders-editor/media-folders-editor.service';
-import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 import { Subscription } from 'rxjs';
+import { MediaFolderEventsService } from '../../../../services/media-folder-events/media-folder-events.service';
 
 @Component({
   selector: 'aly-media-folder-image-item',
@@ -20,11 +20,11 @@ export class MediaFolderImageItemComponent implements OnInit, OnDestroy {
   
   constructor(
     private domSanitizer: DomSanitizer,
-    private mediaFoldersService: MediaFolderService,
+    private mediaFolderEventsService: MediaFolderEventsService,
     private mediaFoldersEditorService: MediaFoldersEditorService) { }
 
   ngOnInit() {
-    this.selectedMediaSub = this.mediaFoldersService.mediaSelected().subscribe(x => this.selectedMediaId = x ? x.media.id : undefined);
+    this.selectedMediaSub = this.mediaFolderEventsService.mediaSelected().subscribe(x => this.selectedMediaId = x ? x.media.id : undefined);
   }
 
   ngOnDestroy(): void {
@@ -42,7 +42,7 @@ export class MediaFolderImageItemComponent implements OnInit, OnDestroy {
   }
 
   selectImage() {
-    this.mediaFoldersService.selectMedia(this.media);
+    this.mediaFolderEventsService.selectMedia(this.media);
   }
 
   delete() {

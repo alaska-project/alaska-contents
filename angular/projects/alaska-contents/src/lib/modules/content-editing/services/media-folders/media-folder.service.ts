@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MediaLibraryClient, MediaFolder, MediaContent } from '../../clients/media-library.clients';
-import { Subject, BehaviorSubject } from 'rxjs';
-import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderReloadEvent, MediaCreatedEvent, MediaDeletedEvent, MediaSelectedEvent, MediaConfirmedEvent } from './media-folder.models';
 import { FileData } from '../../components/editors/media/file-selector-control/file-selector-control.models';
 import { FileConverterService } from '../file-converter/file-converter.service';
+import { MediaFolderEventsService } from '../media-folder-events/media-folder-events.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,78 +11,14 @@ export class MediaFolderService {
 
   private currentSelectedFolder: MediaFolder;
 
-  private folderCreated$ = new Subject<FolderCreatedEvent>();
-  private folderDeleted$ = new Subject<FolderDeletedEvent>();
-  private folderSelected$ = new BehaviorSubject<FolderSelectedEvent>(undefined);
-  private folderReload$ = new Subject<FolderReloadEvent>();
-
-  private mediaCreated$ = new Subject<MediaCreatedEvent>();
-  private mediaDeleted$ = new Subject<MediaDeletedEvent>();
-  private mediaSelected$ = new BehaviorSubject<MediaSelectedEvent>(undefined);
-  private mediaConfirmed$ = new Subject<MediaConfirmedEvent>();
-  private mediaDiscarded$ = new Subject();
-
   constructor(
+    private events: MediaFolderEventsService,
     private fileConverter: FileConverterService,
     private mediaLibraryClient: MediaLibraryClient) { }
 
-  folderCreated() {
-    return this.folderCreated$.asObservable();
-  }
-
-  folderDeleted() {
-    return this.folderDeleted$.asObservable();
-  }
-
-  folderSelected() {
-    return this.folderSelected$.asObservable();
-  }
-
-  folderReloaded() {
-    return this.folderReload$.asObservable();
-  }
-
-  mediaCreated() {
-    return this.mediaCreated$.asObservable();
-  }
-
-  mediaDeleted() {
-    return this.mediaDeleted$.asObservable();
-  }
-
-  mediaSelected() {
-    return this.mediaSelected$.asObservable();
-  }
-
-  mediaConfirmed() {
-    return this.mediaConfirmed$.asObservable();
-  }
-
-  mediaDiscarded() {
-    return this.mediaDiscarded$.asObservable();
-  }
-
-  selectMedia(media: MediaContent) {
-    this.mediaSelected$.next({
-      media: media
-    });
-  }
-
-  confirmMedia(media: MediaContent) {
-    this.mediaConfirmed$.next({
-      media: media
-    });
-  }
-
-  discardMedia() {
-    this.mediaDiscarded$.next();
-  }
-
   async deleteMedia(media: MediaContent) {
     await this.mediaLibraryClient.deleteMedia(media.id).toPromise();
-    this.mediaDeleted$.next({
-      media: media
-    });
+    this.events.emitMediaDeleted(media);
   }
 
   async uploadMedia(content: FileData, folder: MediaFolder) {
@@ -94,10 +29,7 @@ export class MediaFolderService {
       contentType: this.fileConverter.getContentType(content),
       mediaContent: fileContent,
     }).toPromise();
-    this.mediaCreated$.next({
-      media: media,
-      folder: folder,
-    });
+    this.events.emitMediaCreated(media, folder);
     return media;
   }
 
@@ -115,22 +47,16 @@ export class MediaFolderService {
 
   selectFolder(folder: MediaFolder) {
     this.currentSelectedFolder = folder;
-    this.folderSelected$.next({
-      folder: folder
-    });
+    this.events.emitFolderSelected(folder);
   }
 
   reloadFolder(folder: MediaFolder) {
-    this.folderReload$.next({
-      folder: folder
-    });
+    this.events.emitReloadFolder(folder);
   }
 
   async deleteFolder(folder: MediaFolder) {
     await this.mediaLibraryClient.deleteFolder(folder.id).toPromise();
-    this.folderDeleted$.next({
-      folder: folder
-    });
+    this.events.emitFolderDeleted(folder);
     if (this.currentSelectedFolder.id === folder.id) {
       this.selectFolder(undefined);
     }
@@ -146,19 +72,13 @@ export class MediaFolderService {
 
   private async createRootFolder(name: string) {
     const folder = await this.mediaLibraryClient.createRootFolder(name).toPromise();
-    this.folderCreated$.next({
-      folder: folder,
-      parent: undefined,
-    });
+    this.events.emitFolderCreated(folder, undefined);
     this.selectFolder(folder);
   }
 
   private async createChildFolder(name: string, parent: MediaFolder) {
     const folder = await this.mediaLibraryClient.createFolder(name, parent.id).toPromise();
-    this.folderCreated$.next({
-      folder: folder,
-      parent: parent,
-    });
+    this.events.emitFolderCreated(folder, parent);
     this.selectFolder(folder);
   }
 }

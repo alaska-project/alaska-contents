@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MediaPickerData } from './media-picker-dialog.models';
-import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 import { Subscription } from 'rxjs';
 import { MediaContent } from '../../../../clients/media-library.clients';
+import { MediaFolderEventsService } from '../../../../services/media-folder-events/media-folder-events.service';
 
 @Component({
   selector: 'aly-media-picker-dialog',
@@ -17,7 +17,7 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialogRef: MatDialogRef<MediaPickerDialogComponent>,
-    private mediaFolderService: MediaFolderService,
+    private mediaFolderService: MediaFolderEventsService,
     @Inject(MAT_DIALOG_DATA) private data: MediaPickerData
   ) { }
 
@@ -28,6 +28,7 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.mediaConfirmedSub.unsubscribe();
+    this.mediaDiscardedSub.unsubscribe();
   }
 
   private confirm(media: MediaContent) {

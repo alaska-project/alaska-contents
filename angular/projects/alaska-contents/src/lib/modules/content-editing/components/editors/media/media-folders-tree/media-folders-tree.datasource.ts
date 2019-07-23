@@ -6,7 +6,8 @@ import { CollectionViewer, SelectionChange } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { MediaFolderTreeNode } from './media-folders-tree.models';
 import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
-import { FolderDeletedEvent, FolderCreatedEvent, FolderReloadEvent } from '../../../../services/media-folders/media-folder.models';
+import { MediaFolderEventsService } from '../../../../services/media-folder-events/media-folder-events.service';
+import { FolderReloadEvent, FolderDeletedEvent, FolderCreatedEvent } from '../../../../services/media-folder-events/media-folder-events.models';
 
 @Injectable()
 export class MediaFoldersDataSource {
@@ -21,6 +22,7 @@ export class MediaFoldersDataSource {
 
     constructor(
         private _treeControl: FlatTreeControl<MediaFolderTreeNode>,
+        private mediaEvents: MediaFolderEventsService,
         private mediaFolderService: MediaFolderService) { }
 
     connect(collectionViewer: CollectionViewer): Observable<MediaFolderTreeNode[]> {
@@ -36,9 +38,9 @@ export class MediaFoldersDataSource {
 
     loadRootFolders() {
         this.mediaFolderService.getRootFolders().subscribe(x => this.data = x.map(folder => this.convertToNode(folder, undefined)));
-        this.mediaFolderService.folderCreated().subscribe(x => this.hendleFolderCreated(x));
-        this.mediaFolderService.folderDeleted().subscribe(x => this.handleFolderDelete(x));
-        this.mediaFolderService.folderReloaded().subscribe(x => this.handleFolderReload(x));
+        this.mediaEvents.folderCreated().subscribe(x => this.hendleFolderCreated(x));
+        this.mediaEvents.folderDeleted().subscribe(x => this.handleFolderDelete(x));
+        this.mediaEvents.folderReloaded().subscribe(x => this.handleFolderReload(x));
     }
 
     handleTreeControl(change: SelectionChange<MediaFolderTreeNode>) {

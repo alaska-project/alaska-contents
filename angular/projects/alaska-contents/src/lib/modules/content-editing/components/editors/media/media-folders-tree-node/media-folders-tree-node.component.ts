@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import { MediaFolderTreeNode } from '../media-folders-tree/media-folders-tree.models';
-import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 import { Subscription } from 'rxjs';
+import { MediaFolderEventsService } from '../../../../services/media-folder-events/media-folder-events.service';
+import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
 
 @Component({
   selector: 'aly-media-folders-tree-node',
@@ -17,13 +18,15 @@ export class MediaFoldersTreeNodeComponent implements OnInit, OnDestroy, AfterVi
 
   isSelected = false;
   
-  constructor(private mediaFolderService: MediaFolderService) { }
+  constructor(
+    private mediaFolderEventsService: MediaFolderEventsService,
+    private mediaFolderService: MediaFolderService) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void {
-    this.sub = this.mediaFolderService.folderSelected().subscribe(x => {
+    this.sub = this.mediaFolderEventsService.folderSelected().subscribe(x => {
       if (x) {
         this.isSelected = this.node.value.id === x.folder.id
       }

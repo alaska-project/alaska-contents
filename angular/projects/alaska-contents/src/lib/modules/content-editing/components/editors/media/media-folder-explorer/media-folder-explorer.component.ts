@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MediaFolderService } from '../../../../services/media-folders/media-folder.service';
+import { MediaFolder, MediaContent } from '../../../../clients/media-library.clients';
 import { Subscription } from 'rxjs';
-import { MediaFolder } from '../../../../clients/media-library.clients';
-import { MediaContent } from 'alaska-contents/lib/modules/content-editing/clients/media-library.clients';
+import { MediaFolderEventsService } from '../../../../services/media-folder-events/media-folder-events.service';
 
 @Component({
   selector: 'aly-media-folder-explorer',
@@ -17,14 +16,14 @@ export class MediaFolderExplorerComponent implements OnInit, OnDestroy {
   selectedFolder: MediaFolder;
   selectedMedia: MediaContent;
   
-  constructor(private mediaFolderService: MediaFolderService) { 
+  constructor(private mediaFolderEventsService: MediaFolderEventsService) { 
   }
 
   ngOnInit() {
-    this.folderSubscription = this.mediaFolderService.folderSelected().subscribe(x => {
+    this.folderSubscription = this.mediaFolderEventsService.folderSelected().subscribe(x => {
       this.selectedFolder = x ? x.folder : undefined;
     });
-    this.mediaSubscription = this.mediaFolderService.mediaSelected().subscribe(x => {
+    this.mediaSubscription = this.mediaFolderEventsService.mediaSelected().subscribe(x => {
       this.selectedMedia = x ? x.media : undefined;
     });
   }
@@ -34,14 +33,18 @@ export class MediaFolderExplorerComponent implements OnInit, OnDestroy {
     this.mediaSubscription.unsubscribe();
   }
 
+  remove() {
+
+  }
+
   cancel() {
-    this.mediaFolderService.discardMedia();
+    this.mediaFolderEventsService.discardMedia();
   }
 
   ok() {
     if (!this.selectedMedia) {
       return;
     }
-    this.mediaFolderService.confirmMedia(this.selectedMedia);
+    this.mediaFolderEventsService.confirmMedia(this.selectedMedia);
   }
 }
