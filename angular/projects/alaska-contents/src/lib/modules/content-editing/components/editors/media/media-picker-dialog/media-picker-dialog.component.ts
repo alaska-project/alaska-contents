@@ -14,6 +14,7 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
 
   private mediaConfirmedSub: Subscription;
   private mediaDiscardedSub: Subscription;
+  private mediaRemovedSub: Subscription;
 
   constructor(
     private dialogRef: MatDialogRef<MediaPickerDialogComponent>,
@@ -23,15 +24,26 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.mediaConfirmedSub = this.mediaFolderService.mediaConfirmed().subscribe(x => this.confirm(x.media));
+    this.mediaRemovedSub = this.mediaFolderService.mediaRemoved().subscribe(x => this.removeMedia());
     this.mediaDiscardedSub = this.mediaFolderService.mediaDiscarded().subscribe(x => this.dialogRef.close());
   }
 
   ngOnDestroy(): void {
     this.mediaConfirmedSub.unsubscribe();
     this.mediaDiscardedSub.unsubscribe();
+    this.mediaRemovedSub.unsubscribe();
   }
 
   private confirm(media: MediaContent) {
     this.dialogRef.close(media);
+  }
+
+  private removeMedia() {
+    this.dialogRef.close(<MediaContent>{
+      id: '',
+      url: '',
+      name: '',
+      thumbnailUrl: ''
+    });
   }
 }

@@ -19,6 +19,7 @@ export class MediaFolderEventsService {
   private mediaSelected$ = new BehaviorSubject<MediaSelectedEvent>(undefined);
   private mediaConfirmed$ = new Subject<MediaConfirmedEvent>();
   private mediaDiscarded$ = new Subject();
+  private mediaRemoved$ = new Subject();
   
   constructor() { }
 
@@ -58,6 +59,10 @@ export class MediaFolderEventsService {
     return this.mediaDiscarded$.asObservable();
   }
 
+  mediaRemoved() {
+    return this.mediaRemoved$.asObservable();
+  }
+
   selectMedia(media: MediaContent) {
     this.mediaSelected$.next({
       media: media
@@ -72,6 +77,10 @@ export class MediaFolderEventsService {
 
   discardMedia() {
     this.mediaDiscarded$.next();
+  }
+
+  removeMedia() {
+    this.mediaRemoved$.next();
   }
 
   emitMediaDeleted(media: MediaContent) {

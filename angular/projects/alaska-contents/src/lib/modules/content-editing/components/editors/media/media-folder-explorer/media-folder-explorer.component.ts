@@ -32,9 +32,9 @@ export class MediaFolderExplorerComponent implements OnInit, OnDestroy {
     this.folderSubscription.unsubscribe();
     this.mediaSubscription.unsubscribe();
   }
-
+  
   remove() {
-
+    this.mediaFolderEventsService.removeMedia();
   }
 
   cancel() {
