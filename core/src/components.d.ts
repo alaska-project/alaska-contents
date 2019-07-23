@@ -10,6 +10,7 @@ import {
   ContentField,
   ImageFieldData,
   LinkFieldData,
+  VideoFieldData,
 } from './models/content-models';
 import {
   ContentMode,
@@ -107,6 +108,18 @@ export namespace Components {
   }
   interface AlaskaTextFieldEditor {
     'field': ContentField<string>;
+  }
+  interface AlaskaVideoField {
+    'field': ContentField<VideoFieldData>;
+    'height': string;
+    'setField': (field: ContentField<VideoFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+    'width': string;
+  }
+  interface AlaskaVideoFieldYoutube {
+    'height': number;
+    'src': string;
+    'width': number;
   }
 }
 
@@ -226,6 +239,18 @@ declare global {
     prototype: HTMLAlaskaTextFieldEditorElement;
     new (): HTMLAlaskaTextFieldEditorElement;
   };
+
+  interface HTMLAlaskaVideoFieldElement extends Components.AlaskaVideoField, HTMLStencilElement {}
+  var HTMLAlaskaVideoFieldElement: {
+    prototype: HTMLAlaskaVideoFieldElement;
+    new (): HTMLAlaskaVideoFieldElement;
+  };
+
+  interface HTMLAlaskaVideoFieldYoutubeElement extends Components.AlaskaVideoFieldYoutube, HTMLStencilElement {}
+  var HTMLAlaskaVideoFieldYoutubeElement: {
+    prototype: HTMLAlaskaVideoFieldYoutubeElement;
+    new (): HTMLAlaskaVideoFieldYoutubeElement;
+  };
   interface HTMLElementTagNameMap {
     'alaska-background-image-field': HTMLAlaskaBackgroundImageFieldElement;
     'alaska-background-image-field-default': HTMLAlaskaBackgroundImageFieldDefaultElement;
@@ -246,6 +271,8 @@ declare global {
     'alaska-text-field': HTMLAlaskaTextFieldElement;
     'alaska-text-field-default': HTMLAlaskaTextFieldDefaultElement;
     'alaska-text-field-editor': HTMLAlaskaTextFieldEditorElement;
+    'alaska-video-field': HTMLAlaskaVideoFieldElement;
+    'alaska-video-field-youtube': HTMLAlaskaVideoFieldYoutubeElement;
   }
 }
 
@@ -395,6 +422,17 @@ declare namespace LocalJSX {
     'field'?: ContentField<string>;
     'onInputChanged'?: (event: CustomEvent<string>) => void;
   }
+  interface AlaskaVideoField extends JSXBase.HTMLAttributes<HTMLAlaskaVideoFieldElement> {
+    'field'?: ContentField<VideoFieldData>;
+    'height'?: string;
+    'onEdit'?: (event: CustomEvent<any>) => void;
+    'width'?: string;
+  }
+  interface AlaskaVideoFieldYoutube extends JSXBase.HTMLAttributes<HTMLAlaskaVideoFieldYoutubeElement> {
+    'height'?: number;
+    'src'?: string;
+    'width'?: number;
+  }
 
   interface IntrinsicElements {
     'alaska-background-image-field': AlaskaBackgroundImageField;
@@ -416,6 +454,8 @@ declare namespace LocalJSX {
     'alaska-text-field': AlaskaTextField;
     'alaska-text-field-default': AlaskaTextFieldDefault;
     'alaska-text-field-editor': AlaskaTextFieldEditor;
+    'alaska-video-field': AlaskaVideoField;
+    'alaska-video-field-youtube': AlaskaVideoFieldYoutube;
   }
 }
 

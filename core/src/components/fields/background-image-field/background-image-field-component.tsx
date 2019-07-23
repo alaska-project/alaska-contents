@@ -64,9 +64,6 @@ export class BackgroundImageFieldComponent {
             'width': this.width,
             'height': this.height,
         } : {};
-        if (this.field) {
-            console.log(`${this.field.value.url}`, this.style);
-        }
     }
 
     render() {
