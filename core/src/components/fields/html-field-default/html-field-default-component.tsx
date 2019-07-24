@@ -9,6 +9,9 @@ import { ContentField } from '../../../models/content-models';
 export class HtmlFieldDefaultComponent {
 
     @Prop()
+    version: string;
+    
+    @Prop()
     field: ContentField<string>;
 
     render() {

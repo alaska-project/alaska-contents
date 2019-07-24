@@ -61,9 +61,7 @@ export class VideoFieldComponent implements OnInit, AfterViewInit, OnDestroy, On
         this.getField().value = video;
         this.subscription.unsubscribe();
         this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
-        //TODO: fix forceUpdate
-        // this.fieldElement.nativeElement.setMode('Default');
-        // setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
+        this.fieldElement.nativeElement.refresh();
       }
       this.isEditing = false;
     });

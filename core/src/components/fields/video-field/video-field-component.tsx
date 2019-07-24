@@ -2,6 +2,7 @@ import { Component, Prop, h, Method, State, Event, EventEmitter } from '@stencil
 import { ContentField, VideoFieldData } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 import { Assets } from '../../assets/assets';
+import { randomId } from '../../../utils/utils';
 
 @Component({
     tag: 'alaska-video-field',
@@ -11,6 +12,9 @@ import { Assets } from '../../assets/assets';
 export class VideoFieldComponent {
 
     private readonly editingHeight = '300px';
+
+    @State()
+    version: string;
 
     @Event()
     edit: EventEmitter;
@@ -31,8 +35,12 @@ export class VideoFieldComponent {
         this.field = field;
     }
 
-    render() {
+    @Method()
+    async refresh() {
+        this.version = randomId();
+    }
 
+    render() {
         if (this.mode === 'Default' && !this.field.value.url) {
             return undefined;
         }

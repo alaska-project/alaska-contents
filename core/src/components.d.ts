@@ -45,14 +45,17 @@ export namespace Components {
   }
   interface AlaskaHtmlField {
     'field': ContentField<any>;
+    'refresh': () => Promise<void>;
     'setField': (field: ContentField<string>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaHtmlFieldDefault {
     'field': ContentField<string>;
+    'version': string;
   }
   interface AlaskaHtmlFieldEditor {
     'field': ContentField<string>;
+    'version': string;
   }
   interface AlaskaImageField {
     'field': ContentField<ImageFieldData>;
@@ -111,6 +114,7 @@ export namespace Components {
   }
   interface AlaskaVideoField {
     'field': ContentField<VideoFieldData>;
+    'refresh': () => Promise<void>;
     'setField': (field: ContentField<VideoFieldData>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
@@ -301,10 +305,12 @@ declare namespace LocalJSX {
   }
   interface AlaskaHtmlFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldDefaultElement> {
     'field'?: ContentField<string>;
+    'version'?: string;
   }
   interface AlaskaHtmlFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldEditorElement> {
     'field'?: ContentField<string>;
     'onEdit'?: (event: CustomEvent<any>) => void;
+    'version'?: string;
   }
   interface AlaskaImageField extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldElement> {
     'field'?: ContentField<ImageFieldData>;

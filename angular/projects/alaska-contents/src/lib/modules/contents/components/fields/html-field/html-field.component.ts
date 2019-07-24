@@ -63,9 +63,7 @@ export class HtmlFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnC
       if (x) {
         this.getField().value = x;
         this.fieldElement.nativeElement.field.value = x;
-        //TODO: fix forceUpdate
-        this.fieldElement.nativeElement.setMode('Default');
-        setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
+        this.fieldElement.nativeElement.refresh();
       }
     });
   }

@@ -13,14 +13,13 @@ export class HtmlFieldEditorComponent {
     // private editor: HTMLAlaskaRichTextEditorElement;
 
     @Prop()
+    version: string;
+    
+    @Prop()
     field: ContentField<string>;
 
     @Event()
     edit: EventEmitter;
-
-    componentWillRender() {
-        // console.log('render inner');
-    }
 
     render() {
         if (!this.field) {
