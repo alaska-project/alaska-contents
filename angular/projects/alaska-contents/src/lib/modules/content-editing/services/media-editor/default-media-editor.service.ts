@@ -31,7 +31,7 @@ export class DefaultMediaEditorService extends MediaEditor {
   editVideo(videoField: ContentField<VideoFieldData>) {
     const dialog = this.dialog.open(VideoEditorDialogComponent, {
       data: {
-        field: videoField
+        field: videoField.value
       }
     });
     return dialog.afterClosed();

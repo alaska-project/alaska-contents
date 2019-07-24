@@ -1,0 +1,26 @@
+
+.video-url {
+    width: 100%;
+}
+
+.video-size {
+    display: flex;
+    flex-direction: row;
+
+    .width {
+        margin-right: 2px;
+    }
+
+    .height {
+        margin-left: 2px;
+    }
+
+    .width,
+    .height {
+        flex: 1;
+    }
+}
+
+.actions {
+    text-align: center;
+}

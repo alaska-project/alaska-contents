@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy, AfterViewInit, Optional } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy, AfterViewInit, Optional, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContentItem } from '../../../models/content-models';
 import { ContentEditingService } from '../../../services/content-editing/content-editing.service';
@@ -9,7 +9,7 @@ import { MediaEditor } from '../../../abstractions/media-editing.interfaces';
   templateUrl: './video-field.component.html',
   styleUrls: ['./video-field.component.scss']
 })
-export class VideoFieldComponent implements OnInit, AfterViewInit, OnDestroy {
+export class VideoFieldComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 
   private subscription: Subscription;
   private isEditing = false;
@@ -43,6 +43,12 @@ export class VideoFieldComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
   }
 
+  ngOnChanges(changes: any): void {
+    if (changes.item && changes.item.firstChange === false) {
+      this.subscription.unsubscribe();
+      this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
+    }
+  }
 
   edit() {
     if (this.isEditing) {
@@ -51,6 +57,7 @@ export class VideoFieldComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isEditing = true;
     this.mediaEditor.editVideo(this.item.fields[this.field]).subscribe(video => {
       if (video) {
+        debugger;
         this.getField().value = video;
         this.subscription.unsubscribe();
         this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);

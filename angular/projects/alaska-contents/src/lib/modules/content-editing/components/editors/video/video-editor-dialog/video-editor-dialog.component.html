@@ -1,3 +1,19 @@
-<p>
-  video-editor-dialog works!
-</p>
+<div class="editor">
+  <form>
+    <mat-form-field class="video-url">
+      <input [(ngModel)]="videoData.url" name="url" matInput placeholder="Url">
+    </mat-form-field>
+    <div class="video-size">
+      <mat-form-field class="width">
+        <input [(ngModel)]="videoData.width" name="width" matInput placeholder="Width">
+      </mat-form-field>
+      <mat-form-field class="height">
+        <input [(ngModel)]="videoData.height" name="height" matInput placeholder="Height">
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button class="cancel" mat-button (click)="cancel()">Cancel</button>
+  <button class="ok" mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+</div>
