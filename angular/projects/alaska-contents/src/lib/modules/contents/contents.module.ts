@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ContentEditingService } from './services/content-editing/content-editing.service';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { AlaskaContentsSettings } from './models/settings';
 import { SettingsService } from './services/settings/settings.service';
@@ -39,6 +40,7 @@ import { VideoFieldComponent } from './components/fields/video-field/video-field
     MatButtonModule,
     MatDialogModule,
     MatSelectModule,
+    MatInputModule,
   ],
   exports: [
     TextFieldComponent,
