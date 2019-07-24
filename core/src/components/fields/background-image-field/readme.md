@@ -26,6 +26,16 @@
 
 ## Methods
 
+### `refresh() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setField(field: ContentField<ImageFieldData>) => Promise<void>`
 
 

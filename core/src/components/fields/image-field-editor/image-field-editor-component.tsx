@@ -10,6 +10,9 @@ import { Assets } from '../../assets/assets';
 export class ImageFieldEditorComponent {
 
     @Prop()
+    version: string;
+    
+    @Prop()
     field: ContentField<ImageFieldData>;
 
     @Event()

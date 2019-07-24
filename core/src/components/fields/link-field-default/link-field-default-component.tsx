@@ -12,6 +12,9 @@ export class LinkFieldDefaultComponent {
     element: HTMLElement;
 
     @Prop()
+    version: string;
+
+    @Prop()
     field: ContentField<LinkFieldData>;
 
     render() {

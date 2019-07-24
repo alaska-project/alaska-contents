@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                           | Default     |
-| -------- | --------- | ----------- | ------------------------------ | ----------- |
-| `field`  | --        |             | `ContentField<ImageFieldData>` | `undefined` |
+| Property  | Attribute | Description | Type                           | Default     |
+| --------- | --------- | ----------- | ------------------------------ | ----------- |
+| `field`   | --        |             | `ContentField<ImageFieldData>` | `undefined` |
+| `version` | `version` |             | `string`                       | `undefined` |
 
 
 ## Events

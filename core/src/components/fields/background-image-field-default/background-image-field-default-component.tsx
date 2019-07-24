@@ -9,6 +9,9 @@ import { ImageFieldData, ContentField } from '../../../models/content-models';
 export class BackgroundImageFieldComponentDefault {
 
     @Prop()
+    version: string;
+
+    @Prop()
     innerContent: string;
 
     @Prop()

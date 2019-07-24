@@ -12,6 +12,7 @@
 | `backgroundStyle` | --              |             | `{ [key: string]: string; }`   | `undefined` |
 | `field`           | --              |             | `ContentField<ImageFieldData>` | `undefined` |
 | `innerContent`    | `inner-content` |             | `string`                       | `undefined` |
+| `version`         | `version`       |             | `string`                       | `undefined` |
 
 
 ## Dependencies

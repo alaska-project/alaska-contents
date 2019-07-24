@@ -70,9 +70,6 @@ export class BackgroundImageFieldComponent implements OnInit, OnChanges {
         this.getField().value = image;
         this.subscription.unsubscribe();
         this.subscription = this.contentEditing.updateField(this.item, this.field, this.fieldElement);
-        //TODO: fix forceUpdate
-        this.fieldElement.nativeElement.setMode('Default');
-        setTimeout(() => this.fieldElement.nativeElement.setMode('Editing'));
       }
       this.isEditing = false;
     });

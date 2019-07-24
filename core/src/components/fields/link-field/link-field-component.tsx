@@ -1,6 +1,7 @@
 import { Component, h, Prop, Element, State, Method, EventEmitter, Event } from '@stencil/core';
 import { LinkFieldData, ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
+import { randomId } from '../../../utils/utils';
 
 @Component({
     tag: 'alaska-link-field',
@@ -15,6 +16,9 @@ export class LinkFieldComponent {
     element: HTMLElement;
 
     @State()
+    version: string;
+
+    @State()
     mode: ContentMode = 'Default';
 
     @Method()
@@ -25,6 +29,11 @@ export class LinkFieldComponent {
     @Prop()
     field: ContentField<LinkFieldData>;
 
+    @Method()
+    async refresh() {
+        this.version = randomId();
+    }
+    
     @Method()
     async setField(field: ContentField<LinkFieldData>) {
         this.field = field;
@@ -41,9 +50,9 @@ export class LinkFieldComponent {
     render() {
         switch (this.mode) {
             case 'Default':
-                return <alaska-link-field-default field={this.field} innerHTML={this.innerHtml}></alaska-link-field-default>;
+                return <alaska-link-field-default version={this.version} field={this.field} innerHTML={this.innerHtml}></alaska-link-field-default>;
             case 'Editing':
-                return <alaska-link-field-editor onEdit={() => this.edit.emit()} field={this.field} innerHTML={this.innerHtml}></alaska-link-field-editor>;
+                return <alaska-link-field-editor version={this.version} onEdit={() => this.edit.emit()} field={this.field} innerHTML={this.innerHtml}></alaska-link-field-editor>;
             default:
                 undefined;
         }

@@ -16,6 +16,9 @@ export class LinkFieldEditorComponent {
     element: HTMLElement;
 
     @Prop()
+    version: string;
+    
+    @Prop()
     field: ContentField<LinkFieldData>;
 
     @Event()

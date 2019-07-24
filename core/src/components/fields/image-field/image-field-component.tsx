@@ -1,6 +1,7 @@
 import { Component, h, Prop, Method, State, EventEmitter, Event } from '@stencil/core';
 import { ImageFieldData, ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
+import { randomId } from '../../../utils/utils';
 
 @Component({
     tag: 'alaska-image-field',
@@ -11,6 +12,9 @@ export class ImageFieldComponent {
 
     @Event()
     edit: EventEmitter;
+
+    @State()
+    version: string;
 
     @State()
     mode: ContentMode = 'Default';
@@ -24,6 +28,11 @@ export class ImageFieldComponent {
     field: ContentField<ImageFieldData>;
 
     @Method()
+    async refresh() {
+        this.version = randomId();
+    }
+    
+    @Method()
     async setField(field: ContentField<ImageFieldData>) {
         this.field = field;
     }
@@ -31,9 +40,9 @@ export class ImageFieldComponent {
     render() {
         switch (this.mode) {
             case 'Default':
-                return <alaska-image-field-default field={this.field}></alaska-image-field-default>;
+                return <alaska-image-field-default version={this.version} field={this.field}></alaska-image-field-default>;
             case 'Editing':
-                return <alaska-image-field-editor onEdit={() => this.edit.emit()} field={this.field}></alaska-image-field-editor>;
+                return <alaska-image-field-editor version={this.version} onEdit={() => this.edit.emit()} field={this.field}></alaska-image-field-editor>;
             default:
                 undefined;
         }

@@ -9,6 +9,9 @@ import { ImageFieldData, ContentField } from '../../../models/content-models';
 export class ImageFieldDefaultComponent {
 
     @Prop()
+    version: string;
+    
+    @Prop()
     field: ContentField<ImageFieldData>;
 
     render() {

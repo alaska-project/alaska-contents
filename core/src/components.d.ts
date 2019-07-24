@@ -27,6 +27,7 @@ export namespace Components {
     'field': ContentField<ImageFieldData>;
     'height': string;
     'position': string;
+    'refresh': () => Promise<void>;
     'repeat': boolean;
     'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
@@ -37,11 +38,13 @@ export namespace Components {
     'backgroundStyle': { [key: string]: string };
     'field': ContentField<ImageFieldData>;
     'innerContent': string;
+    'version': string;
   }
   interface AlaskaBackgroundImageFieldEditor {
     'backgroundStyle': { [key: string]: string };
     'field': ContentField<ImageFieldData>;
     'innerContent': string;
+    'version': string;
   }
   interface AlaskaHtmlField {
     'field': ContentField<any>;
@@ -59,28 +62,34 @@ export namespace Components {
   }
   interface AlaskaImageField {
     'field': ContentField<ImageFieldData>;
+    'refresh': () => Promise<void>;
     'setField': (field: ContentField<ImageFieldData>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaImageFieldDefault {
     'field': ContentField<ImageFieldData>;
+    'version': string;
   }
   interface AlaskaImageFieldEditor {
     'field': ContentField<ImageFieldData>;
+    'version': string;
   }
   interface AlaskaLinkEditor {
     'linkData': LinkFieldData;
   }
   interface AlaskaLinkField {
     'field': ContentField<LinkFieldData>;
+    'refresh': () => Promise<void>;
     'setField': (field: ContentField<LinkFieldData>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
   interface AlaskaLinkFieldDefault {
     'field': ContentField<LinkFieldData>;
+    'version': string;
   }
   interface AlaskaLinkFieldEditor {
     'field': ContentField<LinkFieldData>;
+    'version': string;
   }
   interface AlaskaModal {
     'presentModal': () => Promise<void>;
@@ -103,6 +112,7 @@ export namespace Components {
   }
   interface AlaskaTextField {
     'field': ContentField<string>;
+    'refresh': () => Promise<void>;
     'setField': (field: ContentField<string>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
   }
@@ -292,12 +302,14 @@ declare namespace LocalJSX {
     'backgroundStyle'?: { [key: string]: string };
     'field'?: ContentField<ImageFieldData>;
     'innerContent'?: string;
+    'version'?: string;
   }
   interface AlaskaBackgroundImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaBackgroundImageFieldEditorElement> {
     'backgroundStyle'?: { [key: string]: string };
     'field'?: ContentField<ImageFieldData>;
     'innerContent'?: string;
     'onEdit'?: (event: CustomEvent<any>) => void;
+    'version'?: string;
   }
   interface AlaskaHtmlField extends JSXBase.HTMLAttributes<HTMLAlaskaHtmlFieldElement> {
     'field'?: ContentField<any>;
@@ -318,10 +330,12 @@ declare namespace LocalJSX {
   }
   interface AlaskaImageFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldDefaultElement> {
     'field'?: ContentField<ImageFieldData>;
+    'version'?: string;
   }
   interface AlaskaImageFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaImageFieldEditorElement> {
     'field'?: ContentField<ImageFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
+    'version'?: string;
   }
   interface AlaskaLinkEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkEditorElement> {
     'linkData'?: LinkFieldData;
@@ -332,10 +346,12 @@ declare namespace LocalJSX {
   }
   interface AlaskaLinkFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldDefaultElement> {
     'field'?: ContentField<LinkFieldData>;
+    'version'?: string;
   }
   interface AlaskaLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldEditorElement> {
     'field'?: ContentField<LinkFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
+    'version'?: string;
   }
   interface AlaskaModal extends JSXBase.HTMLAttributes<HTMLAlaskaModalElement> {}
   interface AlaskaRichTextEditor extends JSXBase.HTMLAttributes<HTMLAlaskaRichTextEditorElement> {

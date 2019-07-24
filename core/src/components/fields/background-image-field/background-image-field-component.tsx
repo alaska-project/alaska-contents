@@ -2,6 +2,7 @@ import { Component, h, Prop, Method, State, EventEmitter, Event, Element } from 
 import { ImageFieldData, ContentField } from '../../../models/content-models';
 import { ContentMode } from '../../../models/component-models';
 import { Assets } from '../../assets/assets';
+import { randomId } from '../../../utils/utils';
 
 @Component({
     tag: 'alaska-background-image-field',
@@ -35,6 +36,9 @@ export class BackgroundImageFieldComponent {
     edit: EventEmitter;
 
     @State()
+    version: string;
+
+    @State()
     mode: ContentMode = 'Default';
 
     @Method()
@@ -44,6 +48,11 @@ export class BackgroundImageFieldComponent {
 
     @Prop()
     field: ContentField<ImageFieldData>;
+
+    @Method()
+    async refresh() {
+        this.version = randomId();
+    }
 
     @Method()
     async setField(field: ContentField<ImageFieldData>) {
@@ -69,9 +78,9 @@ export class BackgroundImageFieldComponent {
     render() {
         switch (this.mode) {
             case 'Default':
-                return <alaska-background-image-field-default field={this.field} backgroundStyle={this.style} innerContent={this.innerHtml}></alaska-background-image-field-default>;
+                return <alaska-background-image-field-default version={this.version} field={this.field} backgroundStyle={this.style} innerContent={this.innerHtml}></alaska-background-image-field-default>;
             case 'Editing':
-                return <alaska-background-image-field-editor onEdit={() => this.edit.emit()} field={this.field} backgroundStyle={this.style} innerContent={this.innerHtml}></alaska-background-image-field-editor>;
+                return <alaska-background-image-field-editor version={this.version} onEdit={() => this.edit.emit()} field={this.field} backgroundStyle={this.style} innerContent={this.innerHtml}></alaska-background-image-field-editor>;
             default:
                 undefined;
         }

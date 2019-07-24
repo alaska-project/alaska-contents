@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                          | Default     |
-| -------- | --------- | ----------- | ----------------------------- | ----------- |
-| `field`  | --        |             | `ContentField<LinkFieldData>` | `undefined` |
+| Property  | Attribute | Description | Type                          | Default     |
+| --------- | --------- | ----------- | ----------------------------- | ----------- |
+| `field`   | --        |             | `ContentField<LinkFieldData>` | `undefined` |
+| `version` | `version` |             | `string`                      | `undefined` |
 
 
 ## Events

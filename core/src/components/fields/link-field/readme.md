@@ -21,6 +21,16 @@
 
 ## Methods
 
+### `refresh() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setField(field: ContentField<LinkFieldData>) => Promise<void>`
 
 

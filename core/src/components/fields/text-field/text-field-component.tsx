@@ -16,6 +16,10 @@ export class TextFieldComponent {
     valueChanged: EventEmitter<string>;
 
     @Method()
+    async refresh() {
+    }
+
+    @Method()
     async setMode(mode: ContentMode) {
         this.mode = mode;
     }

@@ -29,6 +29,7 @@ export class ContentEditingService {
 
     const fieldValue = item.fields[field];
     fieldElement.nativeElement.field = fieldValue;
+    fieldElement.nativeElement.refresh();
     return this.editingMode().subscribe(x => {
       fieldElement.nativeElement.setMode(x);
       if (x === 'Editing') {
