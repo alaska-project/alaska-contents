@@ -47,6 +47,7 @@
       document.getElementById('htmlField').setMode(mode);
       document.getElementById('emptyImgField').setMode(mode);
       document.getElementById('videoField').setMode(mode);
+      document.getElementById('emptyVideoField').setMode(mode);
       document.getElementById('imgField').setMode(mode);
       document.getElementById('bckImgField').setMode(mode);
       document.getElementById('emptyBckImgField').setMode(mode);
@@ -76,18 +77,36 @@
     });
   </script>
 
-<h4>Video Field</h4>
-<alaska-video-field id="videoField" width="560px" height="315px"></alaska-video-field>
-<script>
-  window.addEventListener("load", function (event) {
-    document.getElementById('videoField').setField({
-      type: 'video',
-      value: {
-        url: 'https://www.youtube.com/embed/jgHLgdMTLH0?controls=0',
-      }
+  <h4>Video Field</h4>
+  <alaska-video-field id="videoField"></alaska-video-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('videoField').setField({
+        type: 'video',
+        value: {
+          url: 'https://www.youtube.com/embed/jgHLgdMTLH0?controls=0',
+          width: '560px',
+          height: '315px',
+        }
+      });
     });
-  });
-</script>
+  </script>
+
+  <h4>Empty Video Field</h4>
+  <alaska-video-field id="emptyVideoField"></alaska-video-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('emptyVideoField').setField({
+        type: 'video',
+        value: {
+          url: '',
+          width: '',
+          height: '',
+        }
+      });
+    });
+  </script>
+
 
   <h4>Image Field</h4>
   <alaska-image-field id="imgField"></alaska-image-field>

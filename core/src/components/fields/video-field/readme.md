@@ -10,8 +10,6 @@
 | Property | Attribute | Description | Type                           | Default     |
 | -------- | --------- | ----------- | ------------------------------ | ----------- |
 | `field`  | --        |             | `ContentField<VideoFieldData>` | `undefined` |
-| `height` | `height`  |             | `string`                       | `undefined` |
-| `width`  | `width`   |             | `string`                       | `undefined` |
 
 
 ## Events

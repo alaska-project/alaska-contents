@@ -18,6 +18,7 @@ import { SettingsService } from './services/settings/settings.service';
 import { BackgroundImageFieldComponent } from './components/fields/background-image-field/background-image-field.component';
 import { LinkEditorModalComponent } from './components/editors/link-editor-modal/link-editor-modal.component';
 import { RichTextEditorModalComponent } from './components/editors/rich-text-editor-modal/rich-text-editor-modal.component';
+import { VideoFieldComponent } from './components/fields/video-field/video-field.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RichTextEditorModalComponent } from './components/editors/rich-text-edi
     BackgroundImageFieldComponent,
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
+    VideoFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { RichTextEditorModalComponent } from './components/editors/rich-text-edi
     BackgroundImageFieldComponent,
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
+    VideoFieldComponent,
   ],
   entryComponents: [
     RichTextEditorModalComponent,

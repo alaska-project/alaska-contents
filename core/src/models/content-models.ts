@@ -31,6 +31,8 @@ export interface ImageFieldData {
 
 export interface VideoFieldData {
     url: string;
+    height: string;
+    width: string;
 }
 
 export interface LinkFieldData {

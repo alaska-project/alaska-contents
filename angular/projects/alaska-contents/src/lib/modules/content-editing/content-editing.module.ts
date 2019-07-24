@@ -35,6 +35,7 @@ import { ImagesUploadControlComponent } from './components/editors/media/images-
 import { FileSelectorControlComponent } from './components/editors/media/file-selector-control/file-selector-control.component';
 import { MediaFolderImageSelectorComponent } from './components/editors/media/media-folder-image-selector/media-folder-image-selector.component';
 import { MediaFolderImageItemComponent } from './components/editors/media/media-folder-image-item/media-folder-image-item.component';
+import { VideoEditorDialogComponent } from './components/editors/video/video-editor-dialog/video-editor-dialog.component';
 
 @NgModule({
     declarations: [
@@ -60,6 +61,7 @@ import { MediaFolderImageItemComponent } from './components/editors/media/media-
         FileSelectorControlComponent,
         MediaFolderImageSelectorComponent,
         MediaFolderImageItemComponent,
+        VideoEditorDialogComponent,
     ],
     imports: [
         CommonModule,
@@ -92,6 +94,7 @@ import { MediaFolderImageItemComponent } from './components/editors/media/media-
         MediaPickerDialogComponent,
         CreateFolderDialogComponent,
         DeleteFolderDialogComponent,
+        VideoEditorDialogComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -111,10 +111,8 @@ export namespace Components {
   }
   interface AlaskaVideoField {
     'field': ContentField<VideoFieldData>;
-    'height': string;
     'setField': (field: ContentField<VideoFieldData>) => Promise<void>;
     'setMode': (mode: ContentMode) => Promise<void>;
-    'width': string;
   }
   interface AlaskaVideoFieldYoutube {
     'height': number;
@@ -424,9 +422,7 @@ declare namespace LocalJSX {
   }
   interface AlaskaVideoField extends JSXBase.HTMLAttributes<HTMLAlaskaVideoFieldElement> {
     'field'?: ContentField<VideoFieldData>;
-    'height'?: string;
     'onEdit'?: (event: CustomEvent<any>) => void;
-    'width'?: string;
   }
   interface AlaskaVideoFieldYoutube extends JSXBase.HTMLAttributes<HTMLAlaskaVideoFieldYoutubeElement> {
     'height'?: number;
