@@ -1,6 +1,6 @@
 {
   "name": "@alaska-project/contents-core",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Alaska Contents Core",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -21,7 +21,7 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "link": "npm link",
-    "publish:npm": "npm publish --access public"
+    "publish:npm": "npm build && npm publish --access public"
   },
   "devDependencies": {
     "@stencil/core": "^1.0.7",

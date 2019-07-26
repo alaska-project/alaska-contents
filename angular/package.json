@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "ng build alaska-contents",
-    "publish:npm": "npm publish .\\dist\\alaska-contents --access public",
+    "publish:npm": "npm run build:lib & npm publish .\\dist\\alaska-contents --access public",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

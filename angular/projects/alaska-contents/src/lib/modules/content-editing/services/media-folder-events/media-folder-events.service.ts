@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderReloadEvent } from 'alaska-contents/lib/modules/content-editing/services/media-folders/media-folder.models';
 import { MediaContent, MediaFolder } from '../../clients/media-library.clients';
-import { MediaCreatedEvent, MediaDeletedEvent, MediaSelectedEvent, MediaConfirmedEvent } from './media-folder-events.models';
+import { MediaCreatedEvent, MediaDeletedEvent, MediaSelectedEvent, MediaConfirmedEvent, FolderCreatedEvent, FolderDeletedEvent, FolderSelectedEvent, FolderReloadEvent } from './media-folder-events.models';
 
 @Injectable({
   providedIn: 'root'

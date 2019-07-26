@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   contentEditing: {
-    contentsApiEndpoint: 'http://swilca01/',
+    contentsApiEndpoint: 'https://localhost:44392/',
     defaultLanguage: 'it-IT',
     previewContentsTarget: 'preview',
     webContentsTarget: 'web',
