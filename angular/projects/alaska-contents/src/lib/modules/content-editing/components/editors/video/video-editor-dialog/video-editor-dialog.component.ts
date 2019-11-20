@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { VideoEditorData } from './video-editor-dialog.model';
-import { VideoFieldData } from 'projects/alaska-contents/src/lib/modules/contents/models/content-models';
+import { VideoFieldData } from '../../../../../contents/models/content-models';
 
 @Component({
   selector: 'aly-video-editor-dialog',

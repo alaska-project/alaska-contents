@@ -35,7 +35,7 @@ import { VideoFieldComponent } from './components/fields/video-field/video-field
   imports: [
     CommonModule,
     FormsModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
     MatDialogModule,
