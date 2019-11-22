@@ -101,6 +101,7 @@ export interface MediaContent {
     url: string;
     thumbnailUrl: string;
     contentType: string;
+    duration: number;
 }
 
 export interface MediaCreationRequest {

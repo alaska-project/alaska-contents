@@ -1,6 +1,6 @@
 {
   "name": "@alaska-project/contents-core",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "description": "Alaska Contents Core",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextFieldComponent } from './components/fields/text-field/text-field.component';
 import { LinkFieldComponent } from './components/fields/link-field/link-field.component';
 import { ImageFieldComponent } from './components/fields/image-field/image-field.component';
+import { MediaFieldComponent } from './components/fields/media-field/media-field.component';
 import { HtmlFieldComponent } from './components/fields/html-field/html-field.component';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { defineCustomElements } from '@alaska-project/contents-core/loader';
@@ -31,6 +32,7 @@ import { VideoFieldComponent } from './components/fields/video-field/video-field
     RichTextEditorModalComponent,
     LinkEditorModalComponent,
     VideoFieldComponent,
+    MediaFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { VideoFieldComponent } from './components/fields/video-field/video-field
     TextFieldComponent,
     LinkFieldComponent,
     ImageFieldComponent,
+    MediaFieldComponent,
     HtmlFieldComponent,
     BackgroundImageFieldComponent,
     RichTextEditorModalComponent,

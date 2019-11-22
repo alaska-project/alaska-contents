@@ -10,6 +10,7 @@ import {
   ContentField,
   ImageFieldData,
   LinkFieldData,
+  MediaFieldData,
   VideoFieldData,
 } from './models/content-models';
 import {
@@ -89,6 +90,20 @@ export namespace Components {
   }
   interface AlaskaLinkFieldEditor {
     'field': ContentField<LinkFieldData>;
+    'version': string;
+  }
+  interface AlaskaMediaField {
+    'field': ContentField<MediaFieldData>;
+    'refresh': () => Promise<void>;
+    'setField': (field: ContentField<MediaFieldData>) => Promise<void>;
+    'setMode': (mode: ContentMode) => Promise<void>;
+  }
+  interface AlaskaMediaFieldDefault {
+    'field': ContentField<MediaFieldData>;
+    'version': string;
+  }
+  interface AlaskaMediaFieldEditor {
+    'field': ContentField<MediaFieldData>;
     'version': string;
   }
   interface AlaskaModal {
@@ -216,6 +231,24 @@ declare global {
     new (): HTMLAlaskaLinkFieldEditorElement;
   };
 
+  interface HTMLAlaskaMediaFieldElement extends Components.AlaskaMediaField, HTMLStencilElement {}
+  var HTMLAlaskaMediaFieldElement: {
+    prototype: HTMLAlaskaMediaFieldElement;
+    new (): HTMLAlaskaMediaFieldElement;
+  };
+
+  interface HTMLAlaskaMediaFieldDefaultElement extends Components.AlaskaMediaFieldDefault, HTMLStencilElement {}
+  var HTMLAlaskaMediaFieldDefaultElement: {
+    prototype: HTMLAlaskaMediaFieldDefaultElement;
+    new (): HTMLAlaskaMediaFieldDefaultElement;
+  };
+
+  interface HTMLAlaskaMediaFieldEditorElement extends Components.AlaskaMediaFieldEditor, HTMLStencilElement {}
+  var HTMLAlaskaMediaFieldEditorElement: {
+    prototype: HTMLAlaskaMediaFieldEditorElement;
+    new (): HTMLAlaskaMediaFieldEditorElement;
+  };
+
   interface HTMLAlaskaModalElement extends Components.AlaskaModal, HTMLStencilElement {}
   var HTMLAlaskaModalElement: {
     prototype: HTMLAlaskaModalElement;
@@ -277,6 +310,9 @@ declare global {
     'alaska-link-field': HTMLAlaskaLinkFieldElement;
     'alaska-link-field-default': HTMLAlaskaLinkFieldDefaultElement;
     'alaska-link-field-editor': HTMLAlaskaLinkFieldEditorElement;
+    'alaska-media-field': HTMLAlaskaMediaFieldElement;
+    'alaska-media-field-default': HTMLAlaskaMediaFieldDefaultElement;
+    'alaska-media-field-editor': HTMLAlaskaMediaFieldEditorElement;
     'alaska-modal': HTMLAlaskaModalElement;
     'alaska-rich-text-editor': HTMLAlaskaRichTextEditorElement;
     'alaska-select': HTMLAlaskaSelectElement;
@@ -351,6 +387,21 @@ declare namespace LocalJSX {
   interface AlaskaLinkFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaLinkFieldEditorElement> {
     'field'?: ContentField<LinkFieldData>;
     'onEdit'?: (event: CustomEvent<any>) => void;
+    'version'?: string;
+  }
+  interface AlaskaMediaField extends JSXBase.HTMLAttributes<HTMLAlaskaMediaFieldElement> {
+    'field'?: ContentField<MediaFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
+    'onStateChanged'?: (event: CustomEvent<any>) => void;
+  }
+  interface AlaskaMediaFieldDefault extends JSXBase.HTMLAttributes<HTMLAlaskaMediaFieldDefaultElement> {
+    'field'?: ContentField<MediaFieldData>;
+    'version'?: string;
+  }
+  interface AlaskaMediaFieldEditor extends JSXBase.HTMLAttributes<HTMLAlaskaMediaFieldEditorElement> {
+    'field'?: ContentField<MediaFieldData>;
+    'onEdit'?: (event: CustomEvent<any>) => void;
+    'onStateChanged'?: (event: CustomEvent<any>) => void;
     'version'?: string;
   }
   interface AlaskaModal extends JSXBase.HTMLAttributes<HTMLAlaskaModalElement> {}
@@ -466,6 +517,9 @@ declare namespace LocalJSX {
     'alaska-link-field': AlaskaLinkField;
     'alaska-link-field-default': AlaskaLinkFieldDefault;
     'alaska-link-field-editor': AlaskaLinkFieldEditor;
+    'alaska-media-field': AlaskaMediaField;
+    'alaska-media-field-default': AlaskaMediaFieldDefault;
+    'alaska-media-field-editor': AlaskaMediaFieldEditor;
     'alaska-modal': AlaskaModal;
     'alaska-rich-text-editor': AlaskaRichTextEditor;
     'alaska-select': AlaskaSelect;

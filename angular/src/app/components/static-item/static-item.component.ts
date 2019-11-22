@@ -29,7 +29,15 @@ export class StaticItemComponent implements OnInit {
       image: {
         type: 'image',
         value: {
-          url: 'https://source.unsplash.com/random/300x200',
+          url: '',
+          alt: 'My Image',
+          class: 'my-image',
+        }
+      },
+      media: {
+        type: 'image',
+        value: {
+          url: '',
           alt: 'My Image',
           class: 'my-image',
         }
@@ -45,7 +53,30 @@ export class StaticItemComponent implements OnInit {
       }
     }
   };
-  
+  item2: ContentItem = {
+    info: {
+      id: '',
+      idPath: [],
+      language: '',
+      path: [],
+      publishingTarget: '',
+      templateId: ''
+    },
+    fields: {
+      title: {
+        type: 'string',
+        value: 'Titolo'
+      },
+      media: {
+        type: 'video',
+        value: {
+          url: '',
+          alt: 'My Image',
+          class: 'my-image',
+        }
+      },
+    }
+  };
   constructor() { }
 
   ngOnInit() {
