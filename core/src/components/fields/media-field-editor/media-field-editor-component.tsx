@@ -33,8 +33,10 @@ export class MediaFieldEditorComponent {
         } else {
             let type = getMediaType(url);
             if(type === 'image'){
+                this.field.type = "image";
                 return <img onLoad={()=>this.updateDuration(10)} onClick={() => this.edit.emit()} class={'image-editor ' + this.field.value.class} src={url} alt={this.field.value.alt}></img>;
             } else if(type === 'video'){
+                this.field.type = "video";
                 let videoType = `video/${getExtension(url)}`
                 return (
                     <video muted 
