@@ -1,11 +1,11 @@
 {
   "name": "@alaska-project/contents-angular",
-  "version": "0.0.7",
+  "version": "0.7.4",
   "scripts": {
     "link:alaska": "npm link @alaska-project/contents-angular"
   },
   "peerDependencies": {
-    "@alaska-project/contents-core": "^0.0.3",
+    "@alaska-project/contents-core": "^0.7.4",
     "@angular/common": "^8.0.1",
     "@angular/core": "^8.0.1",
     "@angular/animations": "^8.0.1",

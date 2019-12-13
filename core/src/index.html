@@ -52,6 +52,8 @@
       document.getElementById('bckImgField').setMode(mode);
       document.getElementById('emptyBckImgField').setMode(mode);
       document.getElementById('linkField').setMode(mode);
+      document.getElementById('mediaFieldImage').setMode(mode);
+      document.getElementById('mediaFieldVideo').setMode(mode);
     }
   </script>
 
@@ -202,6 +204,38 @@
     });
   </script> -->
 
+
+  <h4>Media Field Image</h4>
+  <alaska-media-field id="mediaFieldImage"></alaska-media-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('mediaFieldImage').setField({
+        type: 'image',
+        value: {
+          url: 'https://alaskaresources.blob.core.windows.net/media/mmmmm/I_2010120.jpg',
+          class: 'my-img',
+          alt: 'My Img'
+        }
+      });
+    });
+  </script>
+
+
+<h4>Media Field Video</h4>
+  <alaska-media-field id="mediaFieldVideo"></alaska-media-field>
+  <script>
+    window.addEventListener("load", function (event) {
+      document.getElementById('mediaFieldVideo').setField({
+        type: 'video',
+        value: {
+          url: 'https://alaskaresources.blob.core.windows.net/media/mmmmm/giphy.mp4',
+          class: 'my-img',
+          alt: 'My Img'
+        }
+      });
+    });
+  </script>
+  
 </body>
 
 </html>

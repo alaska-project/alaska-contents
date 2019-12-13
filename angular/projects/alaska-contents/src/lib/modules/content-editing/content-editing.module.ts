@@ -66,7 +66,7 @@ import { VideoEditorDialogComponent } from './components/editors/video/video-edi
     imports: [
         CommonModule,
         FormsModule,
-        BrowserAnimationsModule,
+        // BrowserAnimationsModule,
         HttpClientModule,
         MatButtonModule,
         MatDialogModule,

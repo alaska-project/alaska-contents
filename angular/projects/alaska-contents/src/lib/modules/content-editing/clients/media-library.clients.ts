@@ -178,11 +178,12 @@ export interface MediaFolder {
 }
 
 export interface MediaContent {
-  id: string;
-  name: string;
-  url: string;
-  thumbnailUrl: string;
-  contentType: string;
+    id: string;
+    name: string;
+    url: string;
+    thumbnailUrl: string;
+    contentType: string;
+    duration: number;
 }
 
 export interface MediaCreationRequest {

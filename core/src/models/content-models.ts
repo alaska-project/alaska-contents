@@ -34,6 +34,15 @@ export interface VideoFieldData {
     height: string;
     width: string;
 }
+export interface MediaFieldData {
+    id: string;
+    url: string;
+    alt: string;
+    class: string;
+    type: string;
+    extension: string;
+    duration: number;
+}
 
 export interface LinkFieldData {
     linkType: string;

@@ -35,7 +35,7 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
   }
 
   private confirm(media: MediaContent) {
-    this.dialogRef.close(media);
+    this.dialogRef.close({...media, duration: 0});
   }
 
   private removeMedia() {
@@ -43,7 +43,8 @@ export class MediaPickerDialogComponent implements OnInit, OnDestroy {
       id: '',
       url: '',
       name: '',
-      thumbnailUrl: ''
+      thumbnailUrl: '',
+      duration: 0,
     });
   }
 }

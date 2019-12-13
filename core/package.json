@@ -1,6 +1,6 @@
 {
   "name": "@alaska-project/contents-core",
-  "version": "0.0.6",
+  "version": "0.7.4",
   "description": "Alaska Contents Core",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -33,6 +33,5 @@
     "rollup-plugin-node-globals": "^1.4.0"
   },
   "license": "MIT",
-  "dependencies": {
-  }
+  "dependencies": {}
 }

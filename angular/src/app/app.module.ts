@@ -10,6 +10,7 @@ import { DynamicItemComponent } from './components/dynamic-item/dynamic-item.com
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { StaticItemPageComponent } from './pages/static-item-page/static-item-page.component';
 import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DynamicItemPageComponent } from './pages/dynamic-item-page/dynamic-item
     MatIconModule,
     AlaskaContentsModule.forRoot(),
     AlaskaContentEditingModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     ContentsService,
